@@ -1,4 +1,0 @@
-{
-  "valid_envelope": "PASS",
-  "tampered_payload": "FAIL: E_ENV_PAYLOAD_HASH_MISMATCH"
-}
