@@ -112,9 +112,13 @@ HLX_CANONICAL_CORPUS = {
 
         # Grok feedback: corpus_diff for version tracking
         "corpus_diff_v1_0_0": {
-            "added_sections": ["encryption_spec", "full_corpus_required", "truncation_policy", "pre_serialize_rules"],
-            "enhanced": ["meta (dual-hash, corpus_diff)", "verification_rule (dual-hash support)"],
-            "unchanged": ["axioms", "architecture", "value_system", "contracts", "transliteration", "lc_encoding", "latent_space", "error_taxonomy", "examples", "invariants", "llm_directives"]
+            "added_sections": ["encryption_spec (concrete AES-GCM-256)", "full_corpus_required", "truncation_policy", "pre_serialize_rules", "12_empire_extensions (Vulkan/SPIR-V stubs)"],
+            "enhanced": [
+                "meta (dual-hash, corpus_diff, concrete encryption)",
+                "quiz (split into positive/negative, +10 hard negatives on invariants and edge cases)",
+                "verification_rule (dual-hash support, E_FLOAT_SPECIAL, E_TRUNCATION_INVALID)"
+            ],
+            "unchanged": ["axioms", "architecture", "value_system", "contracts", "transliteration", "lc_encoding", "latent_space", "error_taxonomy", "examples", "invariants", "llm_directives (base)"]
         },
 
         # Grok feedback: Pre-serialize normalization rules
@@ -125,13 +129,22 @@ HLX_CANONICAL_CORPUS = {
             "whitespace": "No trailing whitespace, Unix line endings (LF)"
         },
 
-        # Grok feedback: Encryption spec for v1.2.0
+        # Grok feedback: Encryption spec (CONCRETE for v1.1.0+)
         "encryption_spec": {
             "algorithm": "AES-GCM-256",
-            "key_derivation": "BLAKE3('hlx_v1.2.0_train_key' || model_id)",
-            "nonce": "Random 12 bytes, prepended to ciphertext",
-            "status": "PLANNED_v1.2.0",
-            "decrypt_directive": "Decrypt before ingestion; verify post-decrypt hash matches content_hash_blake3"
+            "key_derivation": {
+                "formula": "BLAKE3(UTF8('hlx_v1.1.0_train') || UTF8(model_id) || random_salt)",
+                "example": "BLAKE3('hlx_v1.1.0_train' + 'gpt-4' + os.urandom(16)) → 32-byte key",
+                "model_id_source": "From environment: $HLX_MODEL_ID or hardcoded in training pipeline"
+            },
+            "nonce": {
+                "size_bytes": 12,
+                "generation": "os.urandom(12) per encryption operation",
+                "placement": "Prepended to ciphertext in transport format"
+            },
+            "transport_format": "[nonce_12_bytes][ciphertext_variable_bytes]",
+            "status": "ACTIVE_v1.1.0",
+            "decrypt_directive": "Parse nonce (first 12 bytes), decrypt remainder, verify post-decrypt BLAKE3 hash matches corpus content_hash"
         }
     },
 
@@ -348,15 +361,72 @@ HLX_CANONICAL_CORPUS = {
             "D11: Simulate failures explicitly when testing negative paths"
         ],
         "quiz": {
-            "description": "Self-test for LLM validation",
-            "questions": [
-                {"q": "What error for {14:{@1:123, @0:456}}?", "a": "E_FIELD_ORDER (fields not ascending)"},
-                {"q": "What error for resolve(&h_nonexistent)?", "a": "E_HANDLE_NOT_FOUND"},
-                {"q": "What error for float value NaN?", "a": "E_FLOAT_SPECIAL"},
+            "description": "Self-test for LLM validation - positives and negatives",
+            "positive_questions": [
                 {"q": "What is ⚳ in ASCII?", "a": "ls.collapse"},
-                {"q": "What axiom guarantees decode(encode(v))==v?", "a": "A2: REVERSIBILITY"}
+                {"q": "What axiom guarantees decode(encode(v))==v?", "a": "A2: REVERSIBILITY"},
+                {"q": "What axiom guarantees HLXL ↔ HLX isomorphism?", "a": "A3: BIJECTION"},
+                {"q": "True or false: All surfaces lower to HLX-Lite before LC encoding?", "a": "True (A4: UNIVERSAL_VALUE)"}
+            ],
+            "negative_questions": [
+                {"q": "What error for {14:{@1:123, @0:456}}?", "a": "E_FIELD_ORDER (fields not in ascending index)"},
+                {"q": "What error for resolve(&h_nonexistent)?", "a": "E_HANDLE_NOT_FOUND"},
+                {"q": "What error for IEEE 754 NaN float?", "a": "E_FLOAT_SPECIAL (special values forbidden)"},
+                {"q": "What error for IEEE 754 Infinity float?", "a": "E_FLOAT_SPECIAL (special values forbidden)"},
+                {"q": "What error for unknown glyph ✦?", "a": "E_UNKNOWN_GLYPH (not in transliteration table)"},
+                {"q": "What error for depth > 64?", "a": "E_DEPTH_EXCEEDED (exceeds MAX_DEPTH=64)"},
+                {"q": "What error for serialized size > 1MB?", "a": "E_SIZE_EXCEEDED (exceeds MAX_OBJ_SIZE=1MB)"},
+                {"q": "Can truncated corpus be used for LLM training?", "a": "No - E_TRUNCATION_INVALID"},
+                {"q": "Violate A1 (DETERMINISM): encode(v, seed=1) != encode(v, seed=2)?", "a": "E_NONDETERMINISM"},
+                {"q": "Violate A2 (REVERSIBILITY): collapse(resolve(invalid)) = ?", "a": "E_HANDLE_NOT_FOUND before collapse"}
             ]
         }
+    },
+
+    "12_empire_extensions": {
+        "description": "Compute and rendering extensions for HLX—hooks into graphics and ML ecosystems.",
+        "status": "EXPERIMENTAL",
+        "target_audience": ["Graphics Engineers", "Compute Shader Specialists", "ML Pipeline Designers"],
+        "extensions": {
+            "vulkan_shaders": {
+                "description": "SPIRV shader module binding for Vulkan compute and graphics pipelines",
+                "contract_id": 900,
+                "fields": {
+                    "spirv_binary": {"type": "bytes", "description": "Raw SPIR-V module binary"},
+                    "entry_point": {"type": "text", "description": "Shader entry point name (e.g., 'main')"},
+                    "shader_stage": {"type": "text", "description": "Stage: 'compute', 'vertex', 'fragment', etc."},
+                    "descriptor_bindings": {"type": "array<handle>", "description": "Handles to descriptor set bindings"}
+                },
+                "example": {
+                    "hlxl": "contract 900 shader { spirv_binary: 0x4206031b..., entry_point: \"compute_reduce\", shader_stage: \"compute\", descriptor_bindings: [&h_buf_in_0, &h_buf_out_1] }",
+                    "constraint": "SPIRV must be valid 1.0+ module; entry_point must exist in module"
+                }
+            },
+            "compute_kernel": {
+                "description": "Reusable compute kernel with grid parameters and shared memory config",
+                "contract_id": 901,
+                "fields": {
+                    "kernel_name": {"type": "text", "description": "Kernel identifier"},
+                    "shader_handle": {"type": "handle", "description": "Reference to VulkanShader (900)"},
+                    "workgroup_size": {"type": "array<int>", "description": "[x, y, z] dimensions"},
+                    "shared_memory_bytes": {"type": "int", "description": "Bytes of shared memory to allocate"},
+                    "push_constants_layout": {"type": "text", "description": "Layout description for push constants (e.g., '2×int32 + 1×float32')"}
+                }
+            },
+            "pipeline_config": {
+                "description": "High-level pipeline builder for compute + rendering chains",
+                "contract_id": 902,
+                "fields": {
+                    "pipeline_id": {"type": "text", "description": "Unique pipeline identifier"},
+                    "stages": {"type": "array<handle>", "description": "Ordered handles to compute_kernel or graphics stages"},
+                    "sync_barriers": {"type": "array<{stage_idx: int, memory_scope: text}>", "description": "Synchronization points"},
+                    "output_image": {"type": "handle", "description": "Final image handle for readback"}
+                }
+            }
+        },
+        "design_rationale": "SPIR-V is the canonical intermediate representation for compute and graphics on modern GPUs. By embedding contract 900+ into HLX corpus, we enable direct specification of compute pipelines without language-level abstractions. Hooks Vulkan experts (like Sascha Willems) into HLX ecosystem by making GPU workloads first-class objects.",
+        "integration_note": "These contracts are transport-only in v1.1.0. Execution requires external Vulkan runtime. Future versions will add native LC→SPIR-V JIT compilation.",
+        "security_note": "SPIR-V binary validation is implementation-specific. Always verify binaries from untrusted sources."
     }
 }
 

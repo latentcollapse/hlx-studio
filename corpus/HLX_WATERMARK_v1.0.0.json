@@ -3,8 +3,8 @@
   "author": "Matt (latentcollapse)",
   "repository": "https://github.com/latentcollapse/HLXv1.1.0",
   "license": "MIT OR Apache-2.0",
-  "timestamp": "2025-12-14T20:08:41.736866Z",
-  "content_hash_blake2b": "2beffd4366e1d0af746da4db66040c2e13e8f8ddea976baddaa2202df14c03e0",
-  "signature": "fdc9a098edfab72ef2948ecf19c0a32831ba5a74f187276a22c6ce4bedb3aa59",
+  "timestamp": "2025-12-14T20:24:46.443972Z",
+  "content_hash_blake2b": "daad8d6538c9aaaaa927fcc296646fc98c636bd7b18007512007902935920ca6",
+  "signature": "a0d187cd2080dc7f9cba63b809dc18cd8a5ffe2d3feef5e3e7f6ffdbb1f5989b",
   "verification_rule": "To verify: (1) Remove 'signature' field, (2) JSON-serialize with sort_keys=True and separators=(',',':'), (3) BLAKE2b-256 hash must equal signature. Secondary: If blake3 available, verify content_hash_blake3 matches BLAKE3 of corpus JSON."
 }
