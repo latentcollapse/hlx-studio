@@ -1,0 +1,5 @@
+{
+  "name": "Helix Studio",
+  "description": "The first LLM-native development environment. Implements the Helix architecture and HLX language family.",
+  "requestFramePermissions": []
+}

@@ -1,0 +1,39 @@
+{
+  "engine": "HLX Reference Runtime",
+  "version": "1.0",
+  "role": "Reference Implementation",
+  "states": {
+    "IDLE": { 
+      "description": "Engine ready, no active context.",
+      "transitions": { "START": "EXECUTING" } 
+    },
+    "EXECUTING": {
+      "description": "Processing instructions.",
+      "transitions": {
+        "SUCCESS": "COMMITTED",
+        "ERROR": "ROLLED_BACK",
+        "FATAL": "FAULT",
+        "CHECK": "VALIDATING"
+      }
+    },
+    "VALIDATING": {
+      "description": "Enforcing schema contracts and invariants.",
+      "transitions": {
+        "PASS": "EXECUTING",
+        "FAIL": "ROLLED_BACK"
+      }
+    },
+    "COMMITTED": { 
+      "description": "Changes persisted to CAS.",
+      "transitions": { "RESET": "IDLE" } 
+    },
+    "ROLLED_BACK": { 
+      "description": "Changes discarded due to error/abort.",
+      "transitions": { "RESET": "IDLE", "RETRY": "EXECUTING" } 
+    },
+    "FAULT": { 
+      "description": "Unrecoverable runtime error (e.g. OOM, Corrupt CAS).",
+      "transitions": { "HARD_RESET": "IDLE" } 
+    }
+  }
+}

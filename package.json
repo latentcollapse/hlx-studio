@@ -1,0 +1,61 @@
+{
+  "name": "helix-studio",
+  "version": "1.0.1",
+  "private": true,
+  "description": "LLM-native IDE with reversible HLX language pipeline.",
+  "license": "(MIT OR Apache-2.0)",
+  "main": "electron/main.js",
+  "scripts": {
+    "dev": "vite",
+    "start": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "electron": "electron .",
+    "electron:build": "tsc && vite build && electron-builder",
+    "electron:build:win": "tsc && vite build && electron-builder --win",
+    "electron:build:linux": "tsc && vite build && electron-builder --linux",
+    "tauri": "tauri",
+    "tauri:dev": "tauri dev",
+    "tauri:build": "tauri build"
+  },
+  "build": {
+    "appId": "com.helix.studio",
+    "productName": "Helix Studio",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*"
+    ],
+    "win": {
+      "target": ["nsis"],
+      "icon": "public/favicon.ico"
+    },
+    "linux": {
+      "target": ["AppImage"],
+      "icon": "public/favicon.ico",
+      "category": "Development"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true
+    }
+  },
+  "dependencies": {
+    "lucide-react": "^0.344.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^25.0.2",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "electron": "^39.2.7",
+    "electron-builder": "^26.0.12",
+    "typescript": "^5.5.3",
+    "vite": "^5.4.2"
+  }
+}
