@@ -1,10 +1,10 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "Matt (latentcollapse)",
-  "repository": "https://github.com/latentcollapse/HLXv1.0.0",
+  "repository": "https://github.com/latentcollapse/HLXv1.1.0",
   "license": "MIT OR Apache-2.0",
-  "timestamp": "2025-12-14T13:41:19.066326Z",
-  "content_hash": "32f91dbdfe95d3b98429204c521522a6664042e321bcb8fb6c7912ce40becf4c",
-  "signature": "a7d6b60d4008efd9a897ca930f1e1841b25bbf1debe50bfb85c8be05b129b394",
-  "verification_rule": "To verify: Remove 'signature' field, JSON-serialize with sort_keys=True and separators=(',',':'), then BLAKE2b-256 hash must equal signature."
+  "timestamp": "2025-12-14T20:08:41.736866Z",
+  "content_hash_blake2b": "2beffd4366e1d0af746da4db66040c2e13e8f8ddea976baddaa2202df14c03e0",
+  "signature": "fdc9a098edfab72ef2948ecf19c0a32831ba5a74f187276a22c6ce4bedb3aa59",
+  "verification_rule": "To verify: (1) Remove 'signature' field, (2) JSON-serialize with sort_keys=True and separators=(',',':'), (3) BLAKE2b-256 hash must equal signature. Secondary: If blake3 available, verify content_hash_blake3 matches BLAKE3 of corpus JSON."
 }
