@@ -1,0 +1,44 @@
+{
+  "title": "HLX Canonical Corpus v1.1.0 (3-Chapter Edition)",
+  "status": "PRODUCTION",
+  "chapters": {
+    "CORE": {
+      "sequence": 1,
+      "sections": [
+        "meta",
+        "1_axioms",
+        "2_architecture",
+        "3_value_system",
+        "4_contracts",
+        "5_transliteration"
+      ],
+      "purpose": "Foundational language spec (always load first)"
+    },
+    "RUNTIME": {
+      "sequence": 2,
+      "sections": [
+        "6_lc_encoding",
+        "7_latent_space",
+        "8_error_taxonomy",
+        "10_invariants"
+      ],
+      "purpose": "Operational mechanics (load after CORE)"
+    },
+    "EXTENSIONS": {
+      "sequence": 3,
+      "sections": [
+        "9_examples",
+        "11_llm_directives",
+        "12_empire_extensions"
+      ],
+      "purpose": "Examples, directives, Vulkan (optional but recommended)"
+    }
+  },
+  "integrity": {
+    "content_hash_blake2b": "dad9af288b0631c324e6632485a178397a0aa8b645a40bed09007cf362fe9ee0",
+    "content_hash_blake3": "Not available",
+    "watermark_signature": "018df134632c1294e6d254c5e626fc30124b673fa384cde75e7dd5d72592ed81"
+  },
+  "loading_notes": "All 3 chapters must be complete and untruncated for full verification. Load in CORE → RUNTIME → EXTENSIONS order.",
+  "security": "Model_id must be normalized to lowercase before AES-GCM key derivation"
+}

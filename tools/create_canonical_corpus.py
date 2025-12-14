@@ -1,16 +1,21 @@
 #!/usr/bin/env python3
 """
-HLX CANONICAL CORPUS GENERATOR v1.1.0
-=====================================
-Creates an encrypted, watermarked teaching corpus for the HLX Language Family.
+HLX CANONICAL CORPUS GENERATOR v1.1.0+chapter-split
+===================================================
+Creates an encrypted, watermarked teaching corpus split into 3 chapters.
 Includes cryptographic proof of ownership and dual-hash verification.
 
+Chapter Structure (prevents truncation):
+- CORE (meta, 1-5): Foundational language spec
+- RUNTIME (6-8, 10): Operational mechanics
+- EXTENSIONS (9, 11-12): Examples, directives, Vulkan
+
 Grok Feedback Implementation:
-- full_corpus_required directive
-- Dual hash (BLAKE2b + BLAKE3)
-- corpus_diff for version tracking
-- Encryption spec (AES-GCM-256 prep)
-- Pre-serialize normalization rules
+- Model_id normalization (case-insensitive)
+- 3-chapter split with manifest
+- Vulkan error negatives in quiz
+- Concrete Python code in pre_serialize_rules
+- Model_id.lower() for deterministic key derivation
 
 Author: Matt (latentcollapse)
 License: MIT OR Apache-2.0
@@ -121,36 +126,42 @@ HLX_CANONICAL_CORPUS = {
             "unchanged": ["axioms", "architecture", "value_system", "contracts", "transliteration", "lc_encoding", "latent_space", "error_taxonomy", "examples", "invariants", "llm_directives (base)"]
         },
 
-        # Grok feedback: Pre-serialize normalization rules with concrete examples
+        # Grok feedback: Pre-serialize normalization rules with concrete Python examples
         "pre_serialize_rules": {
             "floats": {
                 "rule": "Convert to IEEE754 hex for cross-platform determinism",
                 "example": "3.14 → 0x400921f9f01b866e (hex of IEEE754 double)",
+                "python_code": "import struct; hex(struct.unpack('>Q', struct.pack('>d', 3.14))[0])",
                 "edge_cases": {
                     "NaN": "Forbidden. Any float(NaN) → E_FLOAT_SPECIAL",
                     "Infinity": "Forbidden. Any float(±Inf) → E_FLOAT_SPECIAL",
-                    "Zero": "0.0 and -0.0 must normalize to single canonical form"
+                    "Zero": "0.0 and -0.0 must normalize to single canonical form",
+                    "detection_code": "import math; if math.isnan(x) or math.isinf(x): raise ValueError('E_FLOAT_SPECIAL')"
                 }
             },
             "strings": {
                 "rule": "UTF-8 NFC normalized",
                 "example": "café (é as single char) vs cafe (e + combining acute) → both normalize to café",
+                "python_code": "import unicodedata; unicodedata.normalize('NFC', 'café')",
                 "enforcement": "Use unicodedata.normalize('NFC', s) before serialization"
             },
             "keys": {
                 "rule": "Sorted lexicographically (ASCII order)",
                 "example": "{z:1, a:2, m:3} → {a:2, m:3, z:1}",
+                "python_code": "json.dumps(data, sort_keys=True, separators=(',', ':'))",
                 "violation": "Unsorted keys → E_KEY_ORDER"
             },
             "whitespace": {
                 "rule": "No trailing, Unix line endings (LF only)",
                 "example": "field: 'text  ' → field: 'text' (trailing spaces removed)",
+                "python_code": "text.rstrip(); text.replace('\\r\\n', '\\n').replace('\\r', '\\n')",
                 "line_endings": "\\r\\n (Windows) or \\r (Mac) → \\n (Unix) only"
             },
             "arrays": {
                 "rule": "No trailing commas, elements in declaration order",
                 "example": "[1, 2, 3,] → E_TRAILING_COMMA",
-                "order_stability": "Must preserve insertion order from source"
+                "order_stability": "Must preserve insertion order from source",
+                "python_code": "json.dumps(array, separators=(',', ':'))  # No trailing comma in output"
             }
         },
 
@@ -158,9 +169,11 @@ HLX_CANONICAL_CORPUS = {
         "encryption_spec": {
             "algorithm": "AES-GCM-256",
             "key_derivation": {
-                "formula": "BLAKE3('hlx_v1.1.0_train' + model_id.encode())",
+                "formula": "BLAKE3('hlx_v1.1.0_train' + model_id.lower().encode())",
                 "deterministic": True,
-                "example_python": "key = blake3.blake3(b'hlx_v1.1.0_train' + 'claude-3.5-sonnet'.encode()).digest()[:32]",
+                "normalization": "model_id MUST be normalized to lowercase before key derivation",
+                "example_python": "key = blake3.blake3(b'hlx_v1.1.0_train' + 'claude-3.5-sonnet'.lower().encode()).digest()[:32]",
+                "case_sensitivity": "'grok-4' and 'Grok-4' and 'GROK-4' all derive same key when normalized",
                 "model_id_source": "From environment: $HLX_MODEL_ID or hardcoded in training pipeline (string, no salt needed)"
             },
             "nonce": {
@@ -409,15 +422,16 @@ HLX_CANONICAL_CORPUS = {
                 {"q": "What error for IEEE 754 NaN float?", "a": "E_FLOAT_SPECIAL (special values forbidden)"},
                 {"q": "What error for IEEE 754 Infinity float?", "a": "E_FLOAT_SPECIAL (special values forbidden)"},
                 {"q": "What error for float -0.0 vs 0.0 pre-serialize mismatch?", "a": "E_FLOAT_SPECIAL (must normalize to canonical form)"},
+                {"q": "What error for SPIR-V bytes containing NaN-inf pattern (compute edge)?", "a": "E_FLOAT_SPECIAL (binary format violation, detected in pre_serialize)"},
                 {"q": "What error for unknown glyph ✦?", "a": "E_UNKNOWN_GLYPH (not in transliteration table)"},
                 {"q": "What error for depth > 64?", "a": "E_DEPTH_EXCEEDED (exceeds MAX_DEPTH=64)"},
                 {"q": "What error for serialized size > 1MB?", "a": "E_SIZE_EXCEEDED (exceeds MAX_OBJ_SIZE=1MB)"},
-                {"q": "Can truncated corpus be used for LLM training?", "a": "No - E_TRUNCATION_INVALID. Always use full untruncated .zip from releases."},
+                {"q": "Can truncated corpus be used for LLM training?", "a": "No - E_TRUNCATION_INVALID. Always use full chapters from releases."},
                 {"q": "Violate A1 (DETERMINISM): encode(v, seed=1) != encode(v, seed=2)?", "a": "E_NONDETERMINISM"},
                 {"q": "Violate A2 (REVERSIBILITY): collapse(resolve(invalid)) = ?", "a": "E_HANDLE_NOT_FOUND before collapse"},
-                {"q": "Decrypt corpus with wrong model_id key?", "a": "E_GCM_AUTH_FAIL (auth tag mismatch)"},
+                {"q": "Decrypt corpus with wrong model_id (e.g., 'Grok-4' vs 'grok-4')?", "a": "E_GCM_AUTH_FAIL (case-sensitive). Use model_id.lower() for consistency."},
                 {"q": "What is the transport format for encrypted corpus?", "a": "[nonce_12][ciphertext_variable][auth_tag_16]"},
-                {"q": "True or false: AES-GCM-256 key must use random salt?", "a": "False. Key = BLAKE3('hlx_v1.1.0_train' + model_id) is deterministic (no salt needed)"}
+                {"q": "True or false: Model_id is case-insensitive for key derivation?", "a": "False. Must use model_id.lower().encode() for BLAKE3 determinism."}
             ]
         }
     },
@@ -508,26 +522,110 @@ def generate_corpus():
     return package, corpus_json, blake2b_hash, blake3_hash
 
 
+def split_into_chapters(corpus):
+    """Split corpus into 3 chapters to prevent truncation."""
+
+    # Define chapter boundaries
+    chapters = {
+        "CORE": ["meta", "1_axioms", "2_architecture", "3_value_system", "4_contracts", "5_transliteration"],
+        "RUNTIME": ["6_lc_encoding", "7_latent_space", "8_error_taxonomy", "10_invariants"],
+        "EXTENSIONS": ["9_examples", "11_llm_directives", "12_empire_extensions"]
+    }
+
+    chapter_data = {}
+    for chapter_name, sections in chapters.items():
+        chapter_data[chapter_name] = {}
+        for section in sections:
+            if section in corpus:
+                chapter_data[chapter_name][section] = corpus[section]
+
+    return chapter_data, chapters
+
+
 def main():
     print("=" * 70)
-    print("HLX CANONICAL CORPUS GENERATOR v1.1.0")
+    print("HLX CANONICAL CORPUS GENERATOR v1.1.0 (3-CHAPTER SPLIT)")
     print("=" * 70)
 
     package, corpus_json, blake2b_hash, blake3_hash = generate_corpus()
+    corpus = HLX_CANONICAL_CORPUS
 
     # Output paths
     out_dir = Path(__file__).parent.parent / "corpus"
     out_dir.mkdir(exist_ok=True)
 
-    # Write full package (canonical with wrapper)
+    # Split into 3 chapters
+    chapter_data, chapter_map = split_into_chapters(corpus)
+
+    # Recompute hash on assembled corpus (chapters in canonical order) for consistency
+    assembled_corpus = {}
+    for chapter_name in ["CORE", "RUNTIME", "EXTENSIONS"]:
+        assembled_corpus.update(chapter_data[chapter_name])
+
+    assembled_json = json.dumps(assembled_corpus, sort_keys=True, separators=(',', ':'), ensure_ascii=False)
+    assembled_blake2b = hashlib.blake2b(assembled_json.encode('utf-8'), digest_size=32).hexdigest()
+
+    # Create manifest with chapter metadata
+    manifest = {
+        "title": "HLX Canonical Corpus v1.1.0 (3-Chapter Edition)",
+        "status": "PRODUCTION",
+        "chapters": {
+            "CORE": {
+                "sequence": 1,
+                "sections": chapter_map["CORE"],
+                "purpose": "Foundational language spec (always load first)"
+            },
+            "RUNTIME": {
+                "sequence": 2,
+                "sections": chapter_map["RUNTIME"],
+                "purpose": "Operational mechanics (load after CORE)"
+            },
+            "EXTENSIONS": {
+                "sequence": 3,
+                "sections": chapter_map["EXTENSIONS"],
+                "purpose": "Examples, directives, Vulkan (optional but recommended)"
+            }
+        },
+        "integrity": {
+            "content_hash_blake2b": assembled_blake2b,
+            "content_hash_blake3": hashlib.blake3(assembled_json.encode('utf-8')).hexdigest() if HAS_BLAKE3 else "Not available",
+            "watermark_signature": package["__watermark__"]["signature"]
+        },
+        "loading_notes": "All 3 chapters must be complete and untruncated for full verification. Load in CORE → RUNTIME → EXTENSIONS order.",
+        "security": "Model_id must be normalized to lowercase before AES-GCM key derivation"
+    }
+
+    # Write manifest
+    manifest_path = out_dir / "HLX_MANIFEST_v1.0.0.json"
+    with open(manifest_path, 'w', encoding='utf-8') as f:
+        json.dump(manifest, f, indent=2, ensure_ascii=False)
+
+    # Write each chapter
+    chapter_paths = {}
+    for chapter_name, chapter_contents in chapter_data.items():
+        chapter_path = out_dir / f"HLX_CHAPTER_{chapter_name}_v1.0.0.json"
+        chapter_package = {
+            "__watermark__": package["__watermark__"],
+            "__integrity__": {
+                "algorithm": "BLAKE2b-256",
+                "chapter": chapter_name,
+                "sections": chapter_map[chapter_name],
+                "manifest_hash": hashlib.blake2b(json.dumps(manifest, sort_keys=True).encode(), digest_size=32).hexdigest()
+            },
+            "corpus": chapter_contents
+        }
+
+        with open(chapter_path, 'w', encoding='utf-8') as f:
+            json.dump(chapter_package, f, indent=2, ensure_ascii=False)
+
+        chapter_paths[chapter_name] = chapter_path
+        size = chapter_path.stat().st_size
+        print(f"  - {chapter_path.name} ({size:,} bytes)")
+
+    # Write full package (for backwards compatibility)
     package_path = out_dir / "HLX_CANONICAL_CORPUS_v1.0.0.json"
     with open(package_path, 'w', encoding='utf-8') as f:
         json.dump(package, f, indent=2, ensure_ascii=False)
-
-    # Write raw corpus (payload-only, no wrapper - per Grok feedback)
-    raw_path = out_dir / "HLX_RAW_CORPUS_v1.0.0.json"
-    with open(raw_path, 'w', encoding='utf-8') as f:
-        json.dump(HLX_CANONICAL_CORPUS, f, indent=2, ensure_ascii=False)
 
     # Write watermark separately
     watermark_path = out_dir / "HLX_WATERMARK_v1.0.0.json"
@@ -539,8 +637,13 @@ def main():
         print(f"Content Hash (BLAKE3):  {blake3_hash}")
     print(f"Watermark Signature:    {package['__watermark__']['signature']}")
     print(f"\nGenerated files:")
-    print(f"  - {package_path} (canonical with wrapper)")
-    print(f"  - {raw_path} (payload-only for direct injection)")
+    print(f"  MANIFEST:")
+    print(f"  - {manifest_path} (chapter manifest)")
+    print(f"  CHAPTERS:")
+    for chapter_name, path in chapter_paths.items():
+        print(f"  - {path.name} ({chapter_name})")
+    print(f"  BACKWARDS COMPATIBILITY:")
+    print(f"  - {package_path} (full corpus, single file)")
     print(f"  - {watermark_path} (standalone watermark)")
 
     # Verify watermark

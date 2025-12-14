@@ -1,0 +1,122 @@
+{
+  "__watermark__": {
+    "version": "1.1.0",
+    "author": "Matt (latentcollapse)",
+    "repository": "https://github.com/latentcollapse/HLXv1.1.0",
+    "license": "MIT OR Apache-2.0",
+    "timestamp": "2025-12-14T20:44:53.592786Z",
+    "content_hash_blake2b": "fadcff042b9e51f35b31f3b2ac2f34f0833f7f4eba408f0fd6ad75ba6160a128",
+    "signature": "018df134632c1294e6d254c5e626fc30124b673fa384cde75e7dd5d72592ed81",
+    "verification_rule": "To verify: (1) Remove 'signature' field, (2) JSON-serialize with sort_keys=True and separators=(',',':'), (3) BLAKE2b-256 hash must equal signature. Secondary: If blake3 available, verify content_hash_blake3 matches BLAKE3 of corpus JSON."
+  },
+  "__integrity__": {
+    "algorithm": "BLAKE2b-256",
+    "chapter": "RUNTIME",
+    "sections": [
+      "6_lc_encoding",
+      "7_latent_space",
+      "8_error_taxonomy",
+      "10_invariants"
+    ],
+    "manifest_hash": "03c5d1474900a2e9bb265a0d6aac3aa96ebdf91772694d8e375f53d3336598f2"
+  },
+  "corpus": {
+    "6_lc_encoding": {
+      "description": "LC (Latent Collapse) - The canonical wire format with dual modes.",
+      "reference": "See corpus/README_GITHUB.md Section 'LC Encoding Rules' for complete specification.",
+      "modes": {
+        "LC-B": {
+          "status": "CANONICAL",
+          "purpose": "Binary encoding for hashing, storage, and transport"
+        },
+        "LC-T": {
+          "status": "PEDAGOGICAL",
+          "purpose": "Text/glyph encoding for debugging and LLM context"
+        }
+      },
+      "canonical_rules": [
+        "No trailing data after stream end",
+        "No duplicate field indices in objects",
+        "Field indices MUST be in ascending order",
+        "No NaN or Infinity in floats (raise E_FLOAT_SPECIAL)",
+        "Empty objects still require OBJ_START/OBJ_END markers"
+      ]
+    },
+    "7_latent_space": {
+      "description": "The Latent Space runtime for handle-based value management.",
+      "operations": {
+        "COLLAPSE": {
+          "glyph": "⚳",
+          "ascii": "ls.collapse",
+          "op_code": 1
+        },
+        "RESOLVE": {
+          "glyph": "⚯",
+          "ascii": "ls.resolve",
+          "op_code": 0
+        },
+        "SNAPSHOT": {
+          "glyph": "⚶",
+          "ascii": "ls.snapshot",
+          "op_code": 2
+        },
+        "TRANSACTION": {
+          "glyph": "⚿",
+          "ascii": "ls.transaction",
+          "op_code": 3
+        }
+      },
+      "handle_format": {
+        "structure": "&h_<tag>_<id>",
+        "example": "&h_ast_a1b2c3d4",
+        "runic": "⟁tag₁"
+      }
+    },
+    "8_error_taxonomy": {
+      "description": "Canonical error codes organized by category. Reference for complete list.",
+      "reference": "See corpus/README_GITHUB.md Section 'Error Taxonomy' for all error codes.",
+      "ranges": {
+        "1000-1099": "Lexical Errors",
+        "1100-1199": "Syntactic Errors",
+        "1200-1299": "Type Errors",
+        "1300-1399": "Constraint Errors",
+        "1400-1499": "Semantic Errors"
+      },
+      "key_errors": {
+        "E_LC_PARSE": {
+          "code": 1100,
+          "trigger": "Malformed LC stream"
+        },
+        "E_FIELD_ORDER": {
+          "code": 1301,
+          "trigger": "Fields not in ascending index order"
+        },
+        "E_HANDLE_NOT_FOUND": {
+          "code": 1401,
+          "trigger": "Handle does not exist in CAS"
+        }
+      }
+    },
+    "10_invariants": {
+      "description": "Formal invariants that MUST hold at all times. Reference for complete list.",
+      "reference": "See corpus/README_GITHUB.md Section 'Formal Invariants'.",
+      "key_invariants": [
+        {
+          "id": "INV-001",
+          "name": "TOTAL_FIDELITY",
+          "rule": "decode(encode(v)) == v"
+        },
+        {
+          "id": "INV-002",
+          "name": "HANDLE_IDEMPOTENCE",
+          "rule": "collapse(v) == collapse(v)"
+        },
+        {
+          "id": "INV-003",
+          "name": "FIELD_ORDER",
+          "rule": "fields[i].index < fields[i+1].index"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,233 @@
+{
+  "__watermark__": {
+    "version": "1.1.0",
+    "author": "Matt (latentcollapse)",
+    "repository": "https://github.com/latentcollapse/HLXv1.1.0",
+    "license": "MIT OR Apache-2.0",
+    "timestamp": "2025-12-14T20:44:53.592786Z",
+    "content_hash_blake2b": "fadcff042b9e51f35b31f3b2ac2f34f0833f7f4eba408f0fd6ad75ba6160a128",
+    "signature": "018df134632c1294e6d254c5e626fc30124b673fa384cde75e7dd5d72592ed81",
+    "verification_rule": "To verify: (1) Remove 'signature' field, (2) JSON-serialize with sort_keys=True and separators=(',',':'), (3) BLAKE2b-256 hash must equal signature. Secondary: If blake3 available, verify content_hash_blake3 matches BLAKE3 of corpus JSON."
+  },
+  "__integrity__": {
+    "algorithm": "BLAKE2b-256",
+    "chapter": "EXTENSIONS",
+    "sections": [
+      "9_examples",
+      "11_llm_directives",
+      "12_empire_extensions"
+    ],
+    "manifest_hash": "03c5d1474900a2e9bb265a0d6aac3aa96ebdf91772694d8e375f53d3336598f2"
+  },
+  "corpus": {
+    "9_examples": {
+      "description": "End-to-end examples showing the complete pipeline. Reference for additional examples.",
+      "reference": "See corpus/HLX_LLM_TRAINING_CORPUS_v1.0.0.md Section 9 for complete examples.",
+      "minimal_example": {
+        "name": "T0_Minimal",
+        "hlxl": "program t { block main() { let x = 7; return x; } }",
+        "hlx": "⟠ t { ◇ main() { ⊢ x = 7; ↩ x; } }",
+        "expected_result": 7
+      }
+    },
+    "11_llm_directives": {
+      "description": "Instructions for LLMs operating in HLX mode with error handling.",
+      "directives": [
+        "D1: Accept input in HLXL (ASCII) or HLX (Runic) interchangeably",
+        "D2: Validate syntax against canonical grammars; on failure → E_PARSE_FAILED",
+        "D3: Treat glyphs like ⚳ ⚯ ⟁ as semantic operators, not decoration",
+        "D4: Prioritize Contract IDs (e.g., 14, 800) over arbitrary JSON shapes",
+        "D5: When asked to 'Collapse', simulate hashing and return a handle",
+        "D6: When asked to 'Resolve', retrieve the original value exactly; missing → E_HANDLE_NOT_FOUND",
+        "D7: Converting between tracks MUST be lossless; invalid glyph → E_UNKNOWN_GLYPH",
+        "D8: Use canonical error codes (E_*) from Section 8",
+        "D9: Honor MAX_DEPTH=64, MAX_SIZE=1MB; violations → E_DEPTH_EXCEEDED, E_SIZE_EXCEEDED",
+        "D10: Enforce ascending field index order; violations → E_FIELD_ORDER",
+        "D11: Simulate failures explicitly when testing negative paths"
+      ],
+      "quiz": {
+        "description": "Self-test for LLM validation - positives and negatives, core and empire",
+        "positive_questions": [
+          {
+            "q": "What is ⚳ in ASCII?",
+            "a": "ls.collapse"
+          },
+          {
+            "q": "What axiom guarantees decode(encode(v))==v?",
+            "a": "A2: REVERSIBILITY"
+          },
+          {
+            "q": "What axiom guarantees HLXL ↔ HLX isomorphism?",
+            "a": "A3: BIJECTION"
+          },
+          {
+            "q": "True or false: All surfaces lower to HLX-Lite before LC encoding?",
+            "a": "True (A4: UNIVERSAL_VALUE)"
+          },
+          {
+            "q": "What contract ID for SPIR-V shader binaries (empire)?",
+            "a": "900 (VulkanShader)"
+          },
+          {
+            "q": "What contract ID for compute kernels with workgroup_size (empire)?",
+            "a": "901 (ComputeKernel)"
+          },
+          {
+            "q": "What contract ID for multi-stage GPU pipelines with sync_barriers (empire)?",
+            "a": "902 (PipelineConfig)"
+          }
+        ],
+        "negative_questions": [
+          {
+            "q": "What error for {14:{@1:123, @0:456}}?",
+            "a": "E_FIELD_ORDER (fields not in ascending index)"
+          },
+          {
+            "q": "What error for resolve(&h_nonexistent)?",
+            "a": "E_HANDLE_NOT_FOUND"
+          },
+          {
+            "q": "What error for IEEE 754 NaN float?",
+            "a": "E_FLOAT_SPECIAL (special values forbidden)"
+          },
+          {
+            "q": "What error for IEEE 754 Infinity float?",
+            "a": "E_FLOAT_SPECIAL (special values forbidden)"
+          },
+          {
+            "q": "What error for float -0.0 vs 0.0 pre-serialize mismatch?",
+            "a": "E_FLOAT_SPECIAL (must normalize to canonical form)"
+          },
+          {
+            "q": "What error for SPIR-V bytes containing NaN-inf pattern (compute edge)?",
+            "a": "E_FLOAT_SPECIAL (binary format violation, detected in pre_serialize)"
+          },
+          {
+            "q": "What error for unknown glyph ✦?",
+            "a": "E_UNKNOWN_GLYPH (not in transliteration table)"
+          },
+          {
+            "q": "What error for depth > 64?",
+            "a": "E_DEPTH_EXCEEDED (exceeds MAX_DEPTH=64)"
+          },
+          {
+            "q": "What error for serialized size > 1MB?",
+            "a": "E_SIZE_EXCEEDED (exceeds MAX_OBJ_SIZE=1MB)"
+          },
+          {
+            "q": "Can truncated corpus be used for LLM training?",
+            "a": "No - E_TRUNCATION_INVALID. Always use full chapters from releases."
+          },
+          {
+            "q": "Violate A1 (DETERMINISM): encode(v, seed=1) != encode(v, seed=2)?",
+            "a": "E_NONDETERMINISM"
+          },
+          {
+            "q": "Violate A2 (REVERSIBILITY): collapse(resolve(invalid)) = ?",
+            "a": "E_HANDLE_NOT_FOUND before collapse"
+          },
+          {
+            "q": "Decrypt corpus with wrong model_id (e.g., 'Grok-4' vs 'grok-4')?",
+            "a": "E_GCM_AUTH_FAIL (case-sensitive). Use model_id.lower() for consistency."
+          },
+          {
+            "q": "What is the transport format for encrypted corpus?",
+            "a": "[nonce_12][ciphertext_variable][auth_tag_16]"
+          },
+          {
+            "q": "True or false: Model_id is case-insensitive for key derivation?",
+            "a": "False. Must use model_id.lower().encode() for BLAKE3 determinism."
+          }
+        ]
+      }
+    },
+    "12_empire_extensions": {
+      "description": "Compute and rendering extensions for HLX—hooks into graphics and ML ecosystems.",
+      "status": "EXPERIMENTAL",
+      "target_audience": [
+        "Graphics Engineers",
+        "Compute Shader Specialists",
+        "ML Pipeline Designers"
+      ],
+      "extensions": {
+        "vulkan_shaders": {
+          "description": "SPIRV shader module binding for Vulkan compute and graphics pipelines",
+          "contract_id": 900,
+          "fields": {
+            "spirv_binary": {
+              "type": "bytes",
+              "description": "Raw SPIR-V module binary"
+            },
+            "entry_point": {
+              "type": "text",
+              "description": "Shader entry point name (e.g., 'main')"
+            },
+            "shader_stage": {
+              "type": "text",
+              "description": "Stage: 'compute', 'vertex', 'fragment', etc."
+            },
+            "descriptor_bindings": {
+              "type": "array<handle>",
+              "description": "Handles to descriptor set bindings"
+            }
+          },
+          "example": {
+            "hlxl": "contract 900 shader { spirv_binary: 0x4206031b..., entry_point: \"compute_reduce\", shader_stage: \"compute\", descriptor_bindings: [&h_buf_in_0, &h_buf_out_1] }",
+            "constraint": "SPIRV must be valid 1.0+ module; entry_point must exist in module"
+          }
+        },
+        "compute_kernel": {
+          "description": "Reusable compute kernel with grid parameters and shared memory config",
+          "contract_id": 901,
+          "fields": {
+            "kernel_name": {
+              "type": "text",
+              "description": "Kernel identifier"
+            },
+            "shader_handle": {
+              "type": "handle",
+              "description": "Reference to VulkanShader (900)"
+            },
+            "workgroup_size": {
+              "type": "array<int>",
+              "description": "[x, y, z] dimensions"
+            },
+            "shared_memory_bytes": {
+              "type": "int",
+              "description": "Bytes of shared memory to allocate"
+            },
+            "push_constants_layout": {
+              "type": "text",
+              "description": "Layout description for push constants (e.g., '2×int32 + 1×float32')"
+            }
+          }
+        },
+        "pipeline_config": {
+          "description": "High-level pipeline builder for compute + rendering chains",
+          "contract_id": 902,
+          "fields": {
+            "pipeline_id": {
+              "type": "text",
+              "description": "Unique pipeline identifier"
+            },
+            "stages": {
+              "type": "array<handle>",
+              "description": "Ordered handles to compute_kernel or graphics stages"
+            },
+            "sync_barriers": {
+              "type": "array<{stage_idx: int, memory_scope: text}>",
+              "description": "Synchronization points"
+            },
+            "output_image": {
+              "type": "handle",
+              "description": "Final image handle for readback"
+            }
+          }
+        }
+      },
+      "design_rationale": "SPIR-V is the canonical intermediate representation for compute and graphics on modern GPUs. By embedding contract 900+ into HLX corpus, we enable direct specification of compute pipelines without language-level abstractions. Hooks Vulkan experts (like Sascha Willems) into HLX ecosystem by making GPU workloads first-class objects.",
+      "integration_note": "These contracts are transport-only in v1.1.0. Execution requires external Vulkan runtime. Future versions will add native LC→SPIR-V JIT compilation.",
+      "security_note": "SPIR-V binary validation is implementation-specific. Always verify binaries from untrusted sources."
+    }
+  }
+}
