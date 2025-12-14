@@ -3,7 +3,15 @@
 HLX CORPUS FULL VERIFICATION TOOL v1.1.0
 ========================================
 Comprehensive integrity verification for HLX teaching corpus.
-Detects truncation, hash mismatches, and missing sections.
+Detects truncation, hash mismatches, missing sections, and handles AES-GCM decryption.
+
+Features:
+- Truncation detection (prevents LLM hallucinations on edges)
+- Dual-hash verification (BLAKE2b + BLAKE3)
+- AES-GCM-256 decryption with deterministic key derivation
+- GCM auth tag verification
+- Watermark signature validation
+- Structure completeness checks
 
 Author: Matt (latentcollapse)
 License: MIT OR Apache-2.0
@@ -12,6 +20,7 @@ License: MIT OR Apache-2.0
 import json
 import hashlib
 import sys
+import os
 from pathlib import Path
 
 # Optional BLAKE3 support
@@ -21,10 +30,76 @@ try:
 except ImportError:
     HAS_BLAKE3 = False
 
+# Optional AES-GCM support for encrypted corpus
+try:
+    from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+    from cryptography.hazmat.backends import default_backend
+    HAS_AES_GCM = True
+except ImportError:
+    HAS_AES_GCM = False
 
-def verify_corpus(corpus_path: str) -> bool:
+
+def decrypt_corpus(encrypted_bytes: bytes, model_id: str) -> bytes:
+    """
+    Decrypt AES-GCM-256 encrypted corpus.
+
+    Format: [nonce_12][ciphertext_variable][auth_tag_16]
+    Key: BLAKE3('hlx_v1.1.0_train' + model_id.encode())
+
+    Returns decrypted JSON bytes or raises SystemExit on failure.
+    """
+
+    if not HAS_AES_GCM:
+        print("[W_NO_AES_GCM] AES-GCM not available. Install: pip install cryptography")
+        print("[W_ENCRYPTED] Cannot decrypt corpus without cryptography library")
+        sys.exit(1)
+
+    if len(encrypted_bytes) < 28:  # min: nonce(12) + auth_tag(16) + 1 byte ciphertext
+        print("[E_INVALID_ENCRYPTED] Encrypted payload too small")
+        sys.exit(1)
+
+    try:
+        # Parse nonce (first 12 bytes) and auth_tag (last 16 bytes)
+        nonce = encrypted_bytes[:12]
+        ciphertext = encrypted_bytes[12:-16]
+        auth_tag = encrypted_bytes[-16:]
+
+        # Derive key deterministically
+        if HAS_BLAKE3:
+            key = blake3.blake3(b'hlx_v1.1.0_train' + model_id.encode()).digest()[:32]
+        else:
+            # Fallback to BLAKE2b if BLAKE3 not available
+            key = hashlib.blake2b(
+                b'hlx_v1.1.0_train' + model_id.encode(),
+                digest_size=32
+            ).digest()
+
+        # Decrypt with GCM
+        cipher = Cipher(
+            algorithms.AES(key),
+            modes.GCM(nonce, auth_tag),
+            backend=default_backend()
+        )
+        decryptor = cipher.decryptor()
+        decrypted = decryptor.update(ciphertext) + decryptor.finalize()
+
+        print(f"[✓] AES-GCM-256 decryption SUCCESSFUL (model_id: {model_id})")
+        return decrypted
+
+    except Exception as e:
+        print(f"[E_GCM_DECRYPT_FAIL] Decryption failed: {e}")
+        print(f"[E_GCM_AUTH_FAIL] Possible causes: wrong model_id, corrupted file, or tampered auth_tag")
+        sys.exit(1)
+
+
+def verify_corpus(corpus_path: str, model_id: str = None) -> bool:
     """
     Full corpus verification with integrity checks.
+
+    Args:
+        corpus_path: Path to corpus file (JSON or encrypted binary)
+        model_id: For encrypted corpus, the model ID used for key derivation
+                 (e.g., 'claude-3.5-sonnet', 'grok-4')
 
     Returns True if corpus is valid and untruncated.
     Raises SystemExit with E_INTEGRITY_FAIL on any error.
@@ -35,16 +110,35 @@ def verify_corpus(corpus_path: str) -> bool:
         print(f"[ERROR] File not found: {corpus_path}")
         sys.exit(1)
 
-    # Load corpus
+    # Load corpus (handle both JSON and encrypted binary)
     try:
+        # Try reading as JSON first
         with open(corpus_file, 'r', encoding='utf-8') as f:
             data = json.load(f)
-    except json.JSONDecodeError as e:
-        print(f"[E_JSON_PARSE] Malformed JSON: {e}")
-        sys.exit(1)
+        encrypted_mode = False
+    except (json.JSONDecodeError, UnicodeDecodeError):
+        # If JSON fails, try as encrypted binary
+        if model_id is None:
+            print("[E_ENCRYPTED_NO_MODEL] File appears encrypted but no model_id provided")
+            print("Usage: verify_corpus(path, model_id='claude-3.5-sonnet')")
+            sys.exit(1)
+
+        encrypted_bytes = corpus_file.read_bytes()
+        decrypted_bytes = decrypt_corpus(encrypted_bytes, model_id)
+
+        try:
+            data = json.loads(decrypted_bytes.decode('utf-8'))
+            encrypted_mode = True
+        except json.JSONDecodeError as e:
+            print(f"[E_JSON_PARSE] Decrypted data is not valid JSON: {e}")
+            sys.exit(1)
 
     print("=" * 70)
     print("HLX CORPUS FULL VERIFICATION v1.1.0")
+    if encrypted_mode:
+        print(f"Mode: DECRYPTED (AES-GCM-256, model_id: {model_id})")
+    else:
+        print("Mode: PLAINTEXT (unencrypted)")
     print("=" * 70)
 
     # =========================================================================
@@ -225,13 +319,19 @@ def verify_corpus(corpus_path: str) -> bool:
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print(f"Usage: {sys.argv[0]} <corpus_json_file>")
-        print(f"Example: {sys.argv[0]} corpus/HLX_CANONICAL_CORPUS_v1.0.0.json")
+        print(f"Usage: {sys.argv[0]} <corpus_file> [model_id]")
+        print(f"\nExamples:")
+        print(f"  {sys.argv[0]} corpus/HLX_CANONICAL_CORPUS_v1.0.0.json")
+        print(f"  {sys.argv[0]} corpus/HLX_CANONICAL_CORPUS_v1.0.0.json.enc claude-3.5-sonnet")
+        print(f"  {sys.argv[0]} corpus/HLX_CANONICAL_CORPUS_v1.0.0.json.enc grok-4")
+        print(f"\nFor encrypted corpus, model_id must match the key derivation source.")
         sys.exit(1)
 
     corpus_path = sys.argv[1]
+    model_id = sys.argv[2] if len(sys.argv) > 2 else None
+
     try:
-        verify_corpus(corpus_path)
+        verify_corpus(corpus_path, model_id)
     except Exception as e:
         print(f"[E_INTEGRITY_FAIL] Verification failed: {e}")
         sys.exit(1)

@@ -121,30 +121,62 @@ HLX_CANONICAL_CORPUS = {
             "unchanged": ["axioms", "architecture", "value_system", "contracts", "transliteration", "lc_encoding", "latent_space", "error_taxonomy", "examples", "invariants", "llm_directives (base)"]
         },
 
-        # Grok feedback: Pre-serialize normalization rules
+        # Grok feedback: Pre-serialize normalization rules with concrete examples
         "pre_serialize_rules": {
-            "floats": "Convert to string representation of IEEE754 hex for cross-platform determinism",
-            "strings": "UTF-8 NFC normalized",
-            "keys": "Sorted lexicographically",
-            "whitespace": "No trailing whitespace, Unix line endings (LF)"
+            "floats": {
+                "rule": "Convert to IEEE754 hex for cross-platform determinism",
+                "example": "3.14 → 0x400921f9f01b866e (hex of IEEE754 double)",
+                "edge_cases": {
+                    "NaN": "Forbidden. Any float(NaN) → E_FLOAT_SPECIAL",
+                    "Infinity": "Forbidden. Any float(±Inf) → E_FLOAT_SPECIAL",
+                    "Zero": "0.0 and -0.0 must normalize to single canonical form"
+                }
+            },
+            "strings": {
+                "rule": "UTF-8 NFC normalized",
+                "example": "café (é as single char) vs cafe (e + combining acute) → both normalize to café",
+                "enforcement": "Use unicodedata.normalize('NFC', s) before serialization"
+            },
+            "keys": {
+                "rule": "Sorted lexicographically (ASCII order)",
+                "example": "{z:1, a:2, m:3} → {a:2, m:3, z:1}",
+                "violation": "Unsorted keys → E_KEY_ORDER"
+            },
+            "whitespace": {
+                "rule": "No trailing, Unix line endings (LF only)",
+                "example": "field: 'text  ' → field: 'text' (trailing spaces removed)",
+                "line_endings": "\\r\\n (Windows) or \\r (Mac) → \\n (Unix) only"
+            },
+            "arrays": {
+                "rule": "No trailing commas, elements in declaration order",
+                "example": "[1, 2, 3,] → E_TRAILING_COMMA",
+                "order_stability": "Must preserve insertion order from source"
+            }
         },
 
         # Grok feedback: Encryption spec (CONCRETE for v1.1.0+)
         "encryption_spec": {
             "algorithm": "AES-GCM-256",
             "key_derivation": {
-                "formula": "BLAKE3(UTF8('hlx_v1.1.0_train') || UTF8(model_id) || random_salt)",
-                "example": "BLAKE3('hlx_v1.1.0_train' + 'gpt-4' + os.urandom(16)) → 32-byte key",
-                "model_id_source": "From environment: $HLX_MODEL_ID or hardcoded in training pipeline"
+                "formula": "BLAKE3('hlx_v1.1.0_train' + model_id.encode())",
+                "deterministic": True,
+                "example_python": "key = blake3.blake3(b'hlx_v1.1.0_train' + 'claude-3.5-sonnet'.encode()).digest()[:32]",
+                "model_id_source": "From environment: $HLX_MODEL_ID or hardcoded in training pipeline (string, no salt needed)"
             },
             "nonce": {
                 "size_bytes": 12,
                 "generation": "os.urandom(12) per encryption operation",
-                "placement": "Prepended to ciphertext in transport format"
+                "placement": "First 12 bytes of encrypted file"
             },
-            "transport_format": "[nonce_12_bytes][ciphertext_variable_bytes]",
+            "auth_tag": {
+                "size_bytes": 16,
+                "placement": "Last 16 bytes of encrypted file",
+                "purpose": "GCM authentication tag for integrity verification"
+            },
+            "transport_format": "[nonce_12][ciphertext_variable][auth_tag_16]",
+            "example_layout": "nonce(12) || AES-GCM-encrypted_corpus || auth_tag(16) = total_encrypted_size",
             "status": "ACTIVE_v1.1.0",
-            "decrypt_directive": "Parse nonce (first 12 bytes), decrypt remainder, verify post-decrypt BLAKE3 hash matches corpus content_hash"
+            "decrypt_directive": "Parse nonce (first 12 bytes) and auth_tag (last 16 bytes), decrypt middle with GCM verification, verify post-decrypt BLAKE3 hash matches content_hash_blake3"
         }
     },
 
@@ -361,24 +393,31 @@ HLX_CANONICAL_CORPUS = {
             "D11: Simulate failures explicitly when testing negative paths"
         ],
         "quiz": {
-            "description": "Self-test for LLM validation - positives and negatives",
+            "description": "Self-test for LLM validation - positives and negatives, core and empire",
             "positive_questions": [
                 {"q": "What is ⚳ in ASCII?", "a": "ls.collapse"},
                 {"q": "What axiom guarantees decode(encode(v))==v?", "a": "A2: REVERSIBILITY"},
                 {"q": "What axiom guarantees HLXL ↔ HLX isomorphism?", "a": "A3: BIJECTION"},
-                {"q": "True or false: All surfaces lower to HLX-Lite before LC encoding?", "a": "True (A4: UNIVERSAL_VALUE)"}
+                {"q": "True or false: All surfaces lower to HLX-Lite before LC encoding?", "a": "True (A4: UNIVERSAL_VALUE)"},
+                {"q": "What contract ID for SPIR-V shader binaries (empire)?", "a": "900 (VulkanShader)"},
+                {"q": "What contract ID for compute kernels with workgroup_size (empire)?", "a": "901 (ComputeKernel)"},
+                {"q": "What contract ID for multi-stage GPU pipelines with sync_barriers (empire)?", "a": "902 (PipelineConfig)"}
             ],
             "negative_questions": [
                 {"q": "What error for {14:{@1:123, @0:456}}?", "a": "E_FIELD_ORDER (fields not in ascending index)"},
                 {"q": "What error for resolve(&h_nonexistent)?", "a": "E_HANDLE_NOT_FOUND"},
                 {"q": "What error for IEEE 754 NaN float?", "a": "E_FLOAT_SPECIAL (special values forbidden)"},
                 {"q": "What error for IEEE 754 Infinity float?", "a": "E_FLOAT_SPECIAL (special values forbidden)"},
+                {"q": "What error for float -0.0 vs 0.0 pre-serialize mismatch?", "a": "E_FLOAT_SPECIAL (must normalize to canonical form)"},
                 {"q": "What error for unknown glyph ✦?", "a": "E_UNKNOWN_GLYPH (not in transliteration table)"},
                 {"q": "What error for depth > 64?", "a": "E_DEPTH_EXCEEDED (exceeds MAX_DEPTH=64)"},
                 {"q": "What error for serialized size > 1MB?", "a": "E_SIZE_EXCEEDED (exceeds MAX_OBJ_SIZE=1MB)"},
-                {"q": "Can truncated corpus be used for LLM training?", "a": "No - E_TRUNCATION_INVALID"},
+                {"q": "Can truncated corpus be used for LLM training?", "a": "No - E_TRUNCATION_INVALID. Always use full untruncated .zip from releases."},
                 {"q": "Violate A1 (DETERMINISM): encode(v, seed=1) != encode(v, seed=2)?", "a": "E_NONDETERMINISM"},
-                {"q": "Violate A2 (REVERSIBILITY): collapse(resolve(invalid)) = ?", "a": "E_HANDLE_NOT_FOUND before collapse"}
+                {"q": "Violate A2 (REVERSIBILITY): collapse(resolve(invalid)) = ?", "a": "E_HANDLE_NOT_FOUND before collapse"},
+                {"q": "Decrypt corpus with wrong model_id key?", "a": "E_GCM_AUTH_FAIL (auth tag mismatch)"},
+                {"q": "What is the transport format for encrypted corpus?", "a": "[nonce_12][ciphertext_variable][auth_tag_16]"},
+                {"q": "True or false: AES-GCM-256 key must use random salt?", "a": "False. Key = BLAKE3('hlx_v1.1.0_train' + model_id) is deterministic (no salt needed)"}
             ]
         }
     },

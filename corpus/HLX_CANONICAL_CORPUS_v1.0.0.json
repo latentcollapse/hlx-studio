@@ -4,14 +4,14 @@
     "author": "Matt (latentcollapse)",
     "repository": "https://github.com/latentcollapse/HLXv1.1.0",
     "license": "MIT OR Apache-2.0",
-    "timestamp": "2025-12-14T20:24:46.443972Z",
-    "content_hash_blake2b": "daad8d6538c9aaaaa927fcc296646fc98c636bd7b18007512007902935920ca6",
-    "signature": "a0d187cd2080dc7f9cba63b809dc18cd8a5ffe2d3feef5e3e7f6ffdbb1f5989b",
+    "timestamp": "2025-12-14T20:33:49.770249Z",
+    "content_hash_blake2b": "67350542f0484e8886a1697aa84dd1b21ff86cbb94257991157a33d5016fae17",
+    "signature": "c315036697287a27524e4121a694dcf8f66b1c7caeafb58061038f719013ac73",
     "verification_rule": "To verify: (1) Remove 'signature' field, (2) JSON-serialize with sort_keys=True and separators=(',',':'), (3) BLAKE2b-256 hash must equal signature. Secondary: If blake3 available, verify content_hash_blake3 matches BLAKE3 of corpus JSON."
   },
   "__integrity__": {
     "algorithm": "BLAKE2b-256 (primary) + BLAKE3 (secondary)",
-    "content_hash_blake2b": "daad8d6538c9aaaaa927fcc296646fc98c636bd7b18007512007902935920ca6",
+    "content_hash_blake2b": "67350542f0484e8886a1697aa84dd1b21ff86cbb94257991157a33d5016fae17",
     "content_hash_blake3": "BLAKE3 not available - install with: pip install blake3",
     "verification": "Hash of JSON corpus (excluding __watermark__ and __integrity__ sections)",
     "full_corpus_required": true,
@@ -55,26 +55,58 @@
         ]
       },
       "pre_serialize_rules": {
-        "floats": "Convert to string representation of IEEE754 hex for cross-platform determinism",
-        "strings": "UTF-8 NFC normalized",
-        "keys": "Sorted lexicographically",
-        "whitespace": "No trailing whitespace, Unix line endings (LF)"
+        "floats": {
+          "rule": "Convert to IEEE754 hex for cross-platform determinism",
+          "example": "3.14 → 0x400921f9f01b866e (hex of IEEE754 double)",
+          "edge_cases": {
+            "NaN": "Forbidden. Any float(NaN) → E_FLOAT_SPECIAL",
+            "Infinity": "Forbidden. Any float(±Inf) → E_FLOAT_SPECIAL",
+            "Zero": "0.0 and -0.0 must normalize to single canonical form"
+          }
+        },
+        "strings": {
+          "rule": "UTF-8 NFC normalized",
+          "example": "café (é as single char) vs cafe (e + combining acute) → both normalize to café",
+          "enforcement": "Use unicodedata.normalize('NFC', s) before serialization"
+        },
+        "keys": {
+          "rule": "Sorted lexicographically (ASCII order)",
+          "example": "{z:1, a:2, m:3} → {a:2, m:3, z:1}",
+          "violation": "Unsorted keys → E_KEY_ORDER"
+        },
+        "whitespace": {
+          "rule": "No trailing, Unix line endings (LF only)",
+          "example": "field: 'text  ' → field: 'text' (trailing spaces removed)",
+          "line_endings": "\\r\\n (Windows) or \\r (Mac) → \\n (Unix) only"
+        },
+        "arrays": {
+          "rule": "No trailing commas, elements in declaration order",
+          "example": "[1, 2, 3,] → E_TRAILING_COMMA",
+          "order_stability": "Must preserve insertion order from source"
+        }
       },
       "encryption_spec": {
         "algorithm": "AES-GCM-256",
         "key_derivation": {
-          "formula": "BLAKE3(UTF8('hlx_v1.1.0_train') || UTF8(model_id) || random_salt)",
-          "example": "BLAKE3('hlx_v1.1.0_train' + 'gpt-4' + os.urandom(16)) → 32-byte key",
-          "model_id_source": "From environment: $HLX_MODEL_ID or hardcoded in training pipeline"
+          "formula": "BLAKE3('hlx_v1.1.0_train' + model_id.encode())",
+          "deterministic": true,
+          "example_python": "key = blake3.blake3(b'hlx_v1.1.0_train' + 'claude-3.5-sonnet'.encode()).digest()[:32]",
+          "model_id_source": "From environment: $HLX_MODEL_ID or hardcoded in training pipeline (string, no salt needed)"
         },
         "nonce": {
           "size_bytes": 12,
           "generation": "os.urandom(12) per encryption operation",
-          "placement": "Prepended to ciphertext in transport format"
+          "placement": "First 12 bytes of encrypted file"
         },
-        "transport_format": "[nonce_12_bytes][ciphertext_variable_bytes]",
+        "auth_tag": {
+          "size_bytes": 16,
+          "placement": "Last 16 bytes of encrypted file",
+          "purpose": "GCM authentication tag for integrity verification"
+        },
+        "transport_format": "[nonce_12][ciphertext_variable][auth_tag_16]",
+        "example_layout": "nonce(12) || AES-GCM-encrypted_corpus || auth_tag(16) = total_encrypted_size",
         "status": "ACTIVE_v1.1.0",
-        "decrypt_directive": "Parse nonce (first 12 bytes), decrypt remainder, verify post-decrypt BLAKE3 hash matches corpus content_hash"
+        "decrypt_directive": "Parse nonce (first 12 bytes) and auth_tag (last 16 bytes), decrypt middle with GCM verification, verify post-decrypt BLAKE3 hash matches content_hash_blake3"
       }
     },
     "1_axioms": {
@@ -377,7 +409,7 @@
         "D11: Simulate failures explicitly when testing negative paths"
       ],
       "quiz": {
-        "description": "Self-test for LLM validation - positives and negatives",
+        "description": "Self-test for LLM validation - positives and negatives, core and empire",
         "positive_questions": [
           {
             "q": "What is ⚳ in ASCII?",
@@ -394,6 +426,18 @@
           {
             "q": "True or false: All surfaces lower to HLX-Lite before LC encoding?",
             "a": "True (A4: UNIVERSAL_VALUE)"
+          },
+          {
+            "q": "What contract ID for SPIR-V shader binaries (empire)?",
+            "a": "900 (VulkanShader)"
+          },
+          {
+            "q": "What contract ID for compute kernels with workgroup_size (empire)?",
+            "a": "901 (ComputeKernel)"
+          },
+          {
+            "q": "What contract ID for multi-stage GPU pipelines with sync_barriers (empire)?",
+            "a": "902 (PipelineConfig)"
           }
         ],
         "negative_questions": [
@@ -414,6 +458,10 @@
             "a": "E_FLOAT_SPECIAL (special values forbidden)"
           },
           {
+            "q": "What error for float -0.0 vs 0.0 pre-serialize mismatch?",
+            "a": "E_FLOAT_SPECIAL (must normalize to canonical form)"
+          },
+          {
             "q": "What error for unknown glyph ✦?",
             "a": "E_UNKNOWN_GLYPH (not in transliteration table)"
           },
@@ -427,7 +475,7 @@
           },
           {
             "q": "Can truncated corpus be used for LLM training?",
-            "a": "No - E_TRUNCATION_INVALID"
+            "a": "No - E_TRUNCATION_INVALID. Always use full untruncated .zip from releases."
           },
           {
             "q": "Violate A1 (DETERMINISM): encode(v, seed=1) != encode(v, seed=2)?",
@@ -436,6 +484,18 @@
           {
             "q": "Violate A2 (REVERSIBILITY): collapse(resolve(invalid)) = ?",
             "a": "E_HANDLE_NOT_FOUND before collapse"
+          },
+          {
+            "q": "Decrypt corpus with wrong model_id key?",
+            "a": "E_GCM_AUTH_FAIL (auth tag mismatch)"
+          },
+          {
+            "q": "What is the transport format for encrypted corpus?",
+            "a": "[nonce_12][ciphertext_variable][auth_tag_16]"
+          },
+          {
+            "q": "True or false: AES-GCM-256 key must use random salt?",
+            "a": "False. Key = BLAKE3('hlx_v1.1.0_train' + model_id) is deterministic (no salt needed)"
           }
         ]
       }
