@@ -26,7 +26,7 @@ This repository contains **complete, immutable teaching materials** for learning
 
 **Author**: Matt (latentcollapse)
 
-**License**: MIT OR Apache-2.0
+**License**: Apache-2.0
 
 ---
 
