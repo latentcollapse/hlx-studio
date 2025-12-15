@@ -565,7 +565,7 @@ def main():
     assembled_json = json.dumps(assembled_corpus, sort_keys=True, separators=(',', ':'), ensure_ascii=False)
     assembled_blake2b = hashlib.blake2b(assembled_json.encode('utf-8'), digest_size=32).hexdigest()
 
-    # Create manifest with chapter metadata
+    # Create manifest with chapter metadata and version diffs
     manifest = {
         "title": "HLX Canonical Corpus v1.1.0 (3-Chapter Edition)",
         "status": "PRODUCTION",
@@ -573,17 +573,32 @@ def main():
             "CORE": {
                 "sequence": 1,
                 "sections": chapter_map["CORE"],
-                "purpose": "Foundational language spec (always load first)"
+                "purpose": "Foundational language spec (always load first)",
+                "diff_v1_0_0": {
+                    "added": ["encryption_spec (concrete AES-GCM-256 with model_id normalization)"],
+                    "enhanced": ["meta (model_id.lower() directive added)"],
+                    "unchanged": ["axioms", "architecture", "value_system", "contracts", "transliteration"]
+                }
             },
             "RUNTIME": {
                 "sequence": 2,
                 "sections": chapter_map["RUNTIME"],
-                "purpose": "Operational mechanics (load after CORE)"
+                "purpose": "Operational mechanics (load after CORE)",
+                "diff_v1_0_0": {
+                    "added": [],
+                    "enhanced": [],
+                    "unchanged": ["lc_encoding", "latent_space", "error_taxonomy", "invariants"]
+                }
             },
             "EXTENSIONS": {
                 "sequence": 3,
                 "sections": chapter_map["EXTENSIONS"],
-                "purpose": "Examples, directives, Vulkan (optional but recommended)"
+                "purpose": "Examples, directives, Vulkan (optional but recommended)",
+                "diff_v1_0_0": {
+                    "added": ["pre_serialize_rules examples (concrete Python code)", "Vulkan negatives in quiz"],
+                    "enhanced": ["quiz (split positive/negative, +15 hard negatives, +3 empire contract Q)", "llm_directives (D11 & full set)"],
+                    "unchanged": ["examples", "empire_extensions (structure)"]
+                }
             }
         },
         "integrity": {
@@ -592,7 +607,12 @@ def main():
             "watermark_signature": package["__watermark__"]["signature"]
         },
         "loading_notes": "All 3 chapters must be complete and untruncated for full verification. Load in CORE → RUNTIME → EXTENSIONS order.",
-        "security": "Model_id must be normalized to lowercase before AES-GCM key derivation"
+        "security": "Model_id must be normalized to lowercase before AES-GCM key derivation",
+        "version": {
+            "corpus": "v1.1.0",
+            "chapter_split": "v1.1.0 (3-chapter edition)",
+            "baseline": "v1.0.0"
+        }
     }
 
     # Write manifest

@@ -12,7 +12,22 @@
         "4_contracts",
         "5_transliteration"
       ],
-      "purpose": "Foundational language spec (always load first)"
+      "purpose": "Foundational language spec (always load first)",
+      "diff_v1_0_0": {
+        "added": [
+          "encryption_spec (concrete AES-GCM-256 with model_id normalization)"
+        ],
+        "enhanced": [
+          "meta (model_id.lower() directive added)"
+        ],
+        "unchanged": [
+          "axioms",
+          "architecture",
+          "value_system",
+          "contracts",
+          "transliteration"
+        ]
+      }
     },
     "RUNTIME": {
       "sequence": 2,
@@ -22,7 +37,17 @@
         "8_error_taxonomy",
         "10_invariants"
       ],
-      "purpose": "Operational mechanics (load after CORE)"
+      "purpose": "Operational mechanics (load after CORE)",
+      "diff_v1_0_0": {
+        "added": [],
+        "enhanced": [],
+        "unchanged": [
+          "lc_encoding",
+          "latent_space",
+          "error_taxonomy",
+          "invariants"
+        ]
+      }
     },
     "EXTENSIONS": {
       "sequence": 3,
@@ -31,14 +56,33 @@
         "11_llm_directives",
         "12_empire_extensions"
       ],
-      "purpose": "Examples, directives, Vulkan (optional but recommended)"
+      "purpose": "Examples, directives, Vulkan (optional but recommended)",
+      "diff_v1_0_0": {
+        "added": [
+          "pre_serialize_rules examples (concrete Python code)",
+          "Vulkan negatives in quiz"
+        ],
+        "enhanced": [
+          "quiz (split positive/negative, +15 hard negatives, +3 empire contract Q)",
+          "llm_directives (D11 & full set)"
+        ],
+        "unchanged": [
+          "examples",
+          "empire_extensions (structure)"
+        ]
+      }
     }
   },
   "integrity": {
     "content_hash_blake2b": "dad9af288b0631c324e6632485a178397a0aa8b645a40bed09007cf362fe9ee0",
     "content_hash_blake3": "Not available",
-    "watermark_signature": "018df134632c1294e6d254c5e626fc30124b673fa384cde75e7dd5d72592ed81"
+    "watermark_signature": "28e326bffee66e9ca99f881eebba857c81938cf8e67dc8e74063119ba67691ce"
   },
   "loading_notes": "All 3 chapters must be complete and untruncated for full verification. Load in CORE → RUNTIME → EXTENSIONS order.",
-  "security": "Model_id must be normalized to lowercase before AES-GCM key derivation"
+  "security": "Model_id must be normalized to lowercase before AES-GCM key derivation",
+  "version": {
+    "corpus": "v1.1.0",
+    "chapter_split": "v1.1.0 (3-chapter edition)",
+    "baseline": "v1.0.0"
+  }
 }

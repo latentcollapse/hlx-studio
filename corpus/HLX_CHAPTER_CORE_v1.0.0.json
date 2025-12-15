@@ -4,9 +4,9 @@
     "author": "Matt (latentcollapse)",
     "repository": "https://github.com/latentcollapse/HLXv1.1.0",
     "license": "MIT OR Apache-2.0",
-    "timestamp": "2025-12-14T20:44:53.592786Z",
+    "timestamp": "2025-12-15T05:39:12.562946Z",
     "content_hash_blake2b": "fadcff042b9e51f35b31f3b2ac2f34f0833f7f4eba408f0fd6ad75ba6160a128",
-    "signature": "018df134632c1294e6d254c5e626fc30124b673fa384cde75e7dd5d72592ed81",
+    "signature": "28e326bffee66e9ca99f881eebba857c81938cf8e67dc8e74063119ba67691ce",
     "verification_rule": "To verify: (1) Remove 'signature' field, (2) JSON-serialize with sort_keys=True and separators=(',',':'), (3) BLAKE2b-256 hash must equal signature. Secondary: If blake3 available, verify content_hash_blake3 matches BLAKE3 of corpus JSON."
   },
   "__integrity__": {
@@ -20,7 +20,7 @@
       "4_contracts",
       "5_transliteration"
     ],
-    "manifest_hash": "03c5d1474900a2e9bb265a0d6aac3aa96ebdf91772694d8e375f53d3336598f2"
+    "manifest_hash": "817065c057b1e2ad7d137eb48b32da8d740c540f5e950dbcf115c96f13987cac"
   },
   "corpus": {
     "meta": {
