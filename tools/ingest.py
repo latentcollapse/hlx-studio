@@ -74,6 +74,9 @@ def ingest_corpus(manifest_path: str, model_id: str = None) -> dict:
         model_id = model_id.lower()
         print(f"\n[*] Model ID (normalized): {model_id}")
 
+    # Load-Order Validation
+    validate_load_sequence(manifest)
+
     # Load all chapters in sequence
     assembled_corpus = {}
     chapter_order = ["CORE", "RUNTIME", "EXTENSIONS"]
@@ -223,6 +226,32 @@ def decrypt_chapter(encrypted_file: Path, model_id: str) -> dict:
         print(f"[E_GCM_DECRYPT_FAIL] Decryption failed: {e}")
         print(f"[E_GCM_AUTH_FAIL] Possible: wrong model_id, corrupted file, or tampered data")
         sys.exit(1)
+
+
+def validate_load_sequence(manifest: dict):
+    """Verify chapters are configured for correct load sequence."""
+    expected_order = [
+        ("CORE", 1),
+        ("RUNTIME", 2),
+        ("EXTENSIONS", 3)
+    ]
+    
+    print(f"\n[*] Validating load sequence...")
+    
+    chapters = manifest.get("chapters", {})
+    
+    for name, expected_seq in expected_order:
+        if name not in chapters:
+             print(f"[E_MANIFEST_INVALID] Missing chapter definition: {name}")
+             sys.exit(1)
+             
+        actual_seq = chapters[name].get("sequence")
+        if actual_seq != expected_seq:
+            print(f"[E_LOAD_ORDER_MISMATCH] {name} sequence mismatch. Expected {expected_seq}, got {actual_seq}")
+            sys.exit(1)
+            
+    print(f"    Sequence: CORE(1) → RUNTIME(2) → EXTENSIONS(3) ✓")
+
 
 
 if __name__ == "__main__":

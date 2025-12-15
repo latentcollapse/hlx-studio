@@ -1,8 +1,8 @@
-# HLX Language Family v1.0.0
+# HLX Language Family v1.1.0
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-1.0.0-39f5e5?style=flat-square" alt="Version 1.0.0">
-  <img src="https://img.shields.io/badge/status-FROZEN-green?style=flat-square" alt="Status: Frozen">
+  <img src="https://img.shields.io/badge/version-1.1.0-39f5e5?style=flat-square" alt="Version 1.1.0">
+  <img src="https://img.shields.io/badge/status-PRODUCTION-green?style=flat-square" alt="Status: Production">
   <img src="https://img.shields.io/badge/license-MIT%20OR%20Apache--2.0-blue?style=flat-square" alt="License">
   <img src="https://img.shields.io/badge/LLM-Native-purple?style=flat-square" alt="LLM Native">
 </p>
@@ -26,39 +26,41 @@
 - **Handle-Based State**: Content-addressable storage with cryptographic references
 - **Perfect Reversibility**: Any collapsed value can be resolved to its exact original state
 
-### The Four Axioms
+---
 
-| Axiom | Name | Rule |
-|-------|------|------|
-| **A1** | DETERMINISM | Same input MUST produce same LC stream |
-| **A2** | REVERSIBILITY | `collapse(v)` → `resolve(h)` = `v` exactly |
-| **A3** | BIJECTION | Track A (ASCII) ↔ Track B (Runic) maps 1:1 |
-| **A4** | UNIVERSAL_VALUE | All tracks lower to HLX-Lite before encoding |
+## 3-Chapter Structure
+
+To prevent context truncation and ensure integrity during training, the HLX Corpus is split into three strictly ordered chapters.
+
+| Sequence | Chapter | Size | Content |
+|----------|---------|------|---------|
+| 1 | **CORE** | ~14KB | Axioms, Architecture, Value System (Sections 1-3) |
+| 2 | **RUNTIME** | ~4KB | Contracts, Transliteration, LC Encoding (Sections 4-6) |
+| 3 | **EXTENSIONS** | ~10KB | Latent Space, Errors, Invariants (Sections 7-12) |
+
+**Load Order Requirement:** Chapters MUST be loaded in sequence: CORE → RUNTIME → EXTENSIONS.
 
 ---
 
-## Architecture Overview
+## Tools Reference
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                    HLX LANGUAGE FAMILY                       │
-├─────────────────────────────┬───────────────────────────────┤
-│      TRACK A: HLXL          │       TRACK B: HLX            │
-│      (Engineering)          │       (LLM Native)            │
-│      ASCII Text             │       Unicode Glyphs          │
-├─────────────────────────────┴───────────────────────────────┤
-│                   ↓ Lower to CoreExpr ↓                     │
-├─────────────────────────────────────────────────────────────┤
-│                    HLX-LITE VALUE SYSTEM                    │
-│                    (Contracts 1-5)                          │
-├─────────────────────────────────────────────────────────────┤
-│                   ↓ Encode to Wire ↓                        │
-├─────────────────────────────────────────────────────────────┤
-│                    LC (LATENT COLLAPSE)                     │
-│           LC-B (Binary) ←→ LC-T (Text/Glyph)               │
-│                    CANONICAL WIRE FORMAT                    │
-└─────────────────────────────────────────────────────────────┘
-```
+The `tools/` directory contains utilities for verification and production ingestion:
+
+- **`verify_full.py`**: Validates the integrity of the entire corpus against the manifest.
+- **`ingest.py`**: Production ingestion tool. Decrypts (if needed), verifies hashes, and assembles the 3 chapters into a complete training object.
+- **`chapter_verify.py`**: Validates individual chapter files against their specific checksums.
+- **`verify_watermark.py`**: Verifies the cryptographic watermark embedded in the corpus.
+- **`create_canonical_corpus.py`**: (Dev) Regenerates the canonical corpus files from source.
+
+---
+
+## Release Bundles
+
+**[Download Latest Release](https://github.com/latentcollapse/HLXv1.0.0/releases)**
+
+- **`HLX_v1.1.0_COMPLETE.zip`**: All chapters, manifest, documentation, and tools. (Recommended)
+- **`HLX_v1.1.0_CHAPTERS_ONLY.zip`**: Just the JSON corpus files and manifest.
+- **`HLX_v1.1.0_TOOLS_ONLY.zip`**: Verification and ingestion tools.
 
 ---
 
@@ -70,8 +72,8 @@ Upload the bootstrap capsule to any LLM context window:
 
 ```bash
 # Download the capsule
-curl -LO https://github.com/latentcollapse/HLXv1.0.0/raw/main/hlx_bootstrap_capsule_v1.0.0.zip
-unzip hlx_bootstrap_capsule_v1.0.0.zip
+curl -LO https://github.com/latentcollapse/HLXv1.0.0/raw/main/hlx_bootstrap_capsule_v1.1.0.zip
+unzip hlx_bootstrap_capsule_v1.1.0.zip
 ```
 
 Then inject `hlx_bootstrap_system_prompt.txt` followed by the codex files.
@@ -129,178 +131,6 @@ program demo {
 ```
 
 Both forms are **semantically identical** and produce the **same LC stream**.
-
----
-
-## Glyph Reference
-
-### Structure
-| Glyph | ASCII | Meaning |
-|-------|-------|---------|
-| `⟠` | `program` | Program declaration |
-| `◇` | `block` | Block/function declaration |
-| `⊢` | `let` | Variable binding |
-| `⊡` | `local` | Frame-local binding |
-| `↩` | `return` | Return statement |
-
-### Control Flow
-| Glyph | ASCII | Meaning |
-|-------|-------|---------|
-| `❓` | `if` | Conditional |
-| `❗` | `else` | Else branch |
-| `⟳` | `while` | While loop |
-| `⟲` | `for` | For loop |
-
-### Latent Operations
-| Glyph | ASCII | Meaning |
-|-------|-------|---------|
-| `⚳` | `ls.collapse` | Collapse value to handle |
-| `⚯` | `ls.resolve` | Resolve handle to value |
-| `⚶` | `ls.snapshot` | Capture runtime state |
-| `⚿` | `ls.transaction` | Atomic transaction block |
-| `⟁` | `&h_` | Handle reference prefix |
-
-### LC Markers (Wire Format)
-| Glyph | Meaning | LC-B Tag |
-|-------|---------|----------|
-| `🜊` | Object start | `0x07` |
-| `🜁` | Field marker | (inline) |
-| `🜂` | Object end | `0x08` |
-| `🜃` | Array start | `0x05` |
-| `🜄` | Array end | `0x06` |
-| `🜇` | Handle reference | `0x09` |
-| `🜋` | Stream end | (terminal) |
-
----
-
-## Value System (HLX-Lite)
-
-HLX uses a typed value system with 8 primitive types:
-
-| Type | ID | LC-B Tag | Encoding |
-|------|-----|----------|----------|
-| NULL | 0 | `0x00` | No payload |
-| BOOL | 1 | `0x0A`/`0x0B` | TRUE/FALSE |
-| INT | 2 | `0x01` | Signed LEB128 |
-| FLOAT | 3 | `0x02` | IEEE 754 BE |
-| TEXT | 4 | `0x03` | LEB128 len + UTF-8 |
-| BYTES | 5 | `0x04` | LEB128 len + raw |
-| ARRAY | 6 | `0x05`/`0x06` | START/END markers |
-| OBJECT | 7 | `0x07`/`0x08` | Contract ID + sorted fields |
-
-### Field Notation
-
-Objects use `@N` notation for zero-based field indices:
-
-```json
-{14: {"@0": 123, "@1": "hello", "@2": true}}
-```
-
-**Rule**: Fields MUST be encoded in ascending index order (`@0` < `@1` < `@2`).
-
----
-
-## Contract Registry
-
-Contracts define typed object schemas:
-
-### Core Contracts (1-5)
-| ID | Name | Purpose |
-|----|------|---------|
-| 1 | HLXLiteValue | Root value wrapper |
-| 2 | HLXLiteField | Field descriptor |
-| 3 | HLXLiteObject | Typed object |
-| 4 | HLXLiteDocument | Top-level document |
-| 5 | ProvenanceLite | Document metadata |
-
-### Latent Contracts (800+)
-| ID | Name | Purpose |
-|----|------|---------|
-| 800 | LatentHandle | Handle reference |
-| 801 | LatentTable | Handle storage |
-| 820 | LSOp | LS operation instruction |
-
-### Core Execution (830+)
-| ID | Name | Purpose |
-|----|------|---------|
-| 830 | CoreProgram | Compiled program |
-| 832 | CoreState | Execution state |
-| 834 | CoreExpr | AST expression |
-| 836 | EngineSnapshot | Full runtime snapshot |
-
----
-
-## LC Encoding Rules
-
-### LC-B (Binary - Canonical)
-
-1. **Integers**: Signed LEB128
-2. **Floats**: IEEE 754 Double, Big-Endian
-3. **Text**: LEB128 length prefix + UTF-8 bytes
-4. **Objects**: Contract ID (LEB128) + fields sorted by index
-5. **Arrays**: `0x05` + elements + `0x06`
-6. **Handles**: `0x09` + LEB128 length + ASCII string
-
-### Canonical Constraints
-
-- No trailing data after stream end
-- No duplicate field indices
-- Fields MUST be in ascending order
-- No NaN/Infinity floats (E_FLOAT_SPECIAL)
-- MAX_DEPTH = 64, MAX_SIZE = 1MB
-
----
-
-## Error Taxonomy
-
-| Range | Category |
-|-------|----------|
-| 1000-1099 | Lexical Errors |
-| 1100-1199 | Syntactic Errors |
-| 1200-1299 | Type Errors |
-| 1300-1399 | Constraint Errors |
-| 1400-1499 | Semantic Errors |
-
-Common errors: `E_LC_PARSE`, `E_FIELD_ORDER`, `E_DEPTH_EXCEEDED`, `E_HANDLE_NOT_FOUND`
-
----
-
-## Formal Invariants
-
-These MUST hold at all times:
-
-```
-INV-001: decode(encode(v)) == v           # Total Fidelity
-INV-002: collapse(v) == collapse(v)       # Handle Idempotence
-INV-003: fields[i] < fields[i+1]          # Field Order
-INV-004: trans(trans(x, B), A) == x       # Bijection Hold
-INV-005: encode(v, t1) == encode(v, t2)   # Time Independence
-```
-
----
-
-## Repository Contents
-
-```
-HLXv1.0.0/
-├── README.md                           # This file
-├── hlx_bootstrap_capsule_v1.0.0.zip    # Complete bootstrap package
-└── hlx_bootstrap_capsule_v1.0.0/
-    ├── hlx_bootstrap_system_prompt.txt # LLM system prompt
-    ├── hlx_codex_v1.0.0.json           # Full specification
-    ├── hlx_runtime_conformance.json    # Validation rules
-    ├── hlx_mode_switches.json          # Mode configuration
-    ├── hlx_rosetta_examples.json       # Cross-track examples
-    └── hlx_transfer_envelope.json      # Wire format schema
-```
-
----
-
-## Versioning
-
-- **Codex Version**: 1.0.0 (FROZEN)
-- **LC-B Spec**: SD9 compliant
-- **Evolution**: SpecDelta patches only (no breaking changes in v1.x)
 
 ---
 
