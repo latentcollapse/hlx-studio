@@ -87,7 +87,7 @@ Start with `corpus/README_GITHUB.md` for:
 
 ## 📜 License
 
-Dual-licensed under **MIT** OR **Apache-2.0** at your option.
+Dual-licensed under **Apache-2.0**
 
 See `LICENSE` for full text.
 
