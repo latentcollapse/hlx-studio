@@ -1,0 +1,35 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "Helix Studio",
+  "version": "1.0.1",
+  "identifier": "com.helix.studio",
+  "build": {
+    "frontendDist": "../dist",
+    "devUrl": "http://localhost:3000",
+    "beforeDevCommand": "/home/matt/.bun/bin/bun run dev",
+    "beforeBuildCommand": "/home/matt/.bun/bin/bun run build"
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "Helix Studio",
+        "width": 1400,
+        "height": 900,
+        "minWidth": 1024,
+        "minHeight": 768,
+        "resizable": true,
+        "fullscreen": false,
+        "decorations": true,
+        "transparent": false
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["deb", "rpm"],
+    "linux": {}
+  }
+}

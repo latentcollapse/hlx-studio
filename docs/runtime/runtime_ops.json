@@ -1,0 +1,40 @@
+{
+  "meta": {
+    "spec": "HLX Runtime Operators",
+    "status": "REFERENCE"
+  },
+  "operators": {
+    "ls.collapse": {
+      "op_code": 1,
+      "glyph": "⚳",
+      "semantics": "Content-Addressable Storage Write",
+      "idempotent": true,
+      "input": ["table_id", "tag", "value"],
+      "output": "Handle"
+    },
+    "ls.resolve": {
+      "op_code": 0,
+      "glyph": "⚯",
+      "semantics": "Content-Addressable Storage Read",
+      "idempotent": true,
+      "input": ["table_id", "handle"],
+      "output": "Value"
+    },
+    "ls.snapshot": {
+      "op_code": 2,
+      "glyph": "⚶",
+      "semantics": "State Serialization",
+      "idempotent": false,
+      "input": ["table_id"],
+      "output": "Handle"
+    },
+    "ls.transaction": {
+      "op_code": 10,
+      "glyph": "⚿",
+      "semantics": "Atomic State Transition",
+      "guarantees": ["ACID", "Isolation"],
+      "input": ["block"],
+      "output": "Result"
+    }
+  }
+}

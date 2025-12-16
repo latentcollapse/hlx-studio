@@ -18,7 +18,7 @@ from hlx_runtime.lc_codec import (
 )
 from hlx_runtime.cas import CASStore, get_cas_store
 from hlx_runtime.ls_ops import collapse, resolve, snapshot, transaction
-from hlx_runtime.pre_serialize import pre_serialize
+from hlx_runtime.pre_serialize import pre_serialize, FloatSpecialError
 from hlx_runtime.contracts import wrap_literal, unwrap_literal, validate_contract, is_contract_wrapped
 from hlx_runtime.errors import E_FLOAT_SPECIAL, E_DEPTH_EXCEEDED, E_FIELD_ORDER, E_HANDLE_NOT_FOUND
 
@@ -400,8 +400,8 @@ def test_pre_serialize():
     try:
         pre_serialize(float('nan'))
         test("Pre-serialize NaN", False)
-    except ValueError as e:
-        test("Pre-serialize NaN", E_FLOAT_SPECIAL in str(e))
+    except FloatSpecialError as e:
+        test("Pre-serialize NaN", e.code == E_FLOAT_SPECIAL)
 
     return True
 

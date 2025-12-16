@@ -29,6 +29,10 @@ CONTRACT_IDS = {
     'ASSIGNMENT': 103,
     'FUNCTION_DEF': 104,
     'FUNCTION_CALL': 105,
+    # Empire Extensions (Vulkan)
+    'VULKAN_SHADER': 900,
+    'COMPUTE_KERNEL': 901,
+    'PIPELINE_CONFIG': 902,
 }
 
 CONTRACT_NAMES = {v: k for k, v in CONTRACT_IDS.items()}
@@ -44,6 +48,26 @@ CONTRACT_SCHEMAS = {
     20: {'@0': str},
     21: {},
     22: {'@0': bool},
+    # Empire Extensions
+    900: {
+        'spirv_binary': (bytes, bytearray),
+        'entry_point': str,
+        'shader_stage': str,
+        'descriptor_bindings': list
+    },
+    901: {
+        'kernel_name': str,
+        'shader_handle': str,
+        'workgroup_size': list,
+        'shared_memory_bytes': int,
+        'push_constants_layout': str
+    },
+    902: {
+        'pipeline_id': str,
+        'stages': list,
+        'sync_barriers': list,
+        'output_image': str
+    }
 }
 
 def is_contract_wrapped(value: Any) -> bool:

@@ -1,0 +1,582 @@
+# ══════════════════════════════════════════════════════════════════════════════
+# HLX-LS IMPLEMENTATION DIRECTIVES: HLX-LITE v0.1
+# ══════════════════════════════════════════════════════════════════════════════
+# 
+# These directives define the complete implementation of HLX-Lite v0.1.
+# An LS-capable engine can use these to:
+#   1. Register the Lite contracts
+#   2. Implement the parser and encoder
+#   3. Validate conformance
+#   4. Run test vectors
+#
+# Target: Any HLX-LS engine (Claude, Gemini, GPT, etc.)
+# Profile: hlx-lite-0.1
+# Layer: Foundation (no dependencies except UTF-8 and IEEE 754)
+#
+# ══════════════════════════════════════════════════════════════════════════════
+
+
+# ──────────────────────────────────────────────────────────────────────────────
+# §1 — LITE CONTRACT REGISTRATION
+# ──────────────────────────────────────────────────────────────────────────────
+# 
+# These contracts form the minimal foundation. Contract IDs 1-5 are reserved
+# for HLX-Lite. They do NOT conflict with the main HLX contracts (10+).
+
+🜁185  # SpecDelta: Register HLX-Lite contracts
+🜅0🜈0.0.0
+🜅1🜈0.1.0-lite
+🜅2🜃
+
+  # ─── Contract 1: HLXLiteValue ───
+  🜁130
+    🜅0🜈add_contract
+    🜅1🜁181
+      🜅0🜈HLXLiteValue
+      🜅1 1
+      🜅2🜃
+        🜁180🜅0 0🜅1🜈kind🜅2🜈ENUM🜅3🜈NULL|BOOL|INT|FLOAT|TEXT|BYTES|ARRAY|OBJECT🜂
+        🜁180🜅0 1🜅1🜈bool_value🜅2🜈BOOL🜅3🜈present when kind=BOOL🜂
+        🜁180🜅0 2🜅1🜈int_value🜅2🜈INT🜅3🜈present when kind=INT🜂
+        🜁180🜅0 3🜅1🜈float_value🜅2🜈FLOAT🜅3🜈present when kind=FLOAT🜂
+        🜁180🜅0 4🜅1🜈text_value🜅2🜈TEXT🜅3🜈present when kind=TEXT🜂
+        🜁180🜅0 5🜅1🜈bytes_value🜅2🜈BYTES🜅3🜈present when kind=BYTES🜂
+        🜁180🜅0 6🜅1🜈array_value🜅2🜈ARRAY[HLXLiteValue]🜅3🜈present when kind=ARRAY🜂
+        🜁180🜅0 7🜅1🜈object_value🜅2🜈HLXLiteObject🜅3🜈present when kind=OBJECT🜂
+      🜄
+    🜂
+  🜂
+
+  # ─── Contract 2: HLXLiteField ───
+  🜁130
+    🜅0🜈add_contract
+    🜅1🜁181
+      🜅0🜈HLXLiteField
+      🜅1 2
+      🜅2🜃
+        🜁180🜅0 0🜅1🜈index🜅2🜈INT🜅3🜈0 ≤ index ≤ 65534🜂
+        🜁180🜅0 1🜅1🜈name🜅2🜈TEXT🜅3🜈optional human-readable name🜂
+        🜁180🜅0 2🜅1🜈value🜅2🜈HLXLiteValue🜅3🜈required🜂
+      🜄
+    🜂
+  🜂
+
+  # ─── Contract 3: HLXLiteObject ───
+  🜁130
+    🜅0🜈add_contract
+    🜅1🜁181
+      🜅0🜈HLXLiteObject
+      🜅1 3
+      🜅2🜃
+        🜁180🜅0 0🜅1🜈contract_id🜅2🜈INT🜅3🜈0 ≤ id ≤ 2147483647🜂
+        🜁180🜅0 1🜅1🜈fields🜅2🜈ARRAY[HLXLiteField]🜅3🜈sorted by index ascending🜂
+      🜄
+      🜅3🜃
+        🜈fields must be sorted by index in ascending order
+        🜈field indices must be unique within object
+        🜈max 65535 fields per object
+      🜄
+    🜂
+  🜂
+
+  # ─── Contract 4: HLXLiteDocument ───
+  🜁130
+    🜅0🜈add_contract
+    🜅1🜁181
+      🜅0🜈HLXLiteDocument
+      🜅1 4
+      🜅2🜃
+        🜁180🜅0 0🜅1🜈root🜅2🜈HLXLiteValue🜅3🜈required🜂
+        🜁180🜅0 1🜅1🜈provenance🜅2🜈ProvenanceLite🜅3🜈required🜂
+      🜄
+    🜂
+  🜂
+
+  # ─── Contract 5: ProvenanceLite ───
+  🜁130
+    🜅0🜈add_contract
+    🜅1🜁181
+      🜅0🜈ProvenanceLite
+      🜅1 5
+      🜅2🜃
+        🜁180🜅0 0🜅1🜈profile🜅2🜈TEXT🜅3🜈required: must be "hlx-lite-0.1"🜂
+        🜁180🜅0 1🜅1🜈created_at🜅2🜈TEXT🜅3🜈optional ISO 8601 timestamp🜂
+        🜁180🜅0 2🜅1🜈engine_id🜅2🜈TEXT🜅3🜈optional engine identifier🜂
+        🜁180🜅0 3🜅1🜈content_hash🜅2🜈BYTES🜅3🜈optional hash of root🜂
+        🜁180🜅0 4🜅1🜈origin🜅2🜈TEXT🜅3🜈optional source URI🜂
+      🜄
+    🜂
+  🜂
+
+🜄
+🜂
+
+
+# ──────────────────────────────────────────────────────────────────────────────
+# §2 — PRIMITIVE TYPE CONSTRAINTS
+# ──────────────────────────────────────────────────────────────────────────────
+
+🜁130
+  🜅0🜈add_type_constraint
+  🜅1🜈INT
+  🜅2🜃
+    🜈range: -9223372036854775808 to 9223372036854775807 (signed 64-bit)
+    🜈overflow produces E_INT_OVERFLOW (1301)
+    🜈canonical form: no leading zeros, no plus sign
+  🜄
+🜂
+
+🜁130
+  🜅0🜈add_type_constraint
+  🜅1🜈FLOAT
+  🜅2🜃
+    🜈IEEE 754 binary64 (double precision)
+    🜈FINITE VALUES ONLY
+    🜈NaN produces E_FLOAT_NOT_FINITE (1302)
+    🜈+∞/-∞ produces E_FLOAT_NOT_FINITE (1302)
+    🜈canonical form: no leading zeros except 0.x, no plus sign
+  🜄
+🜂
+
+🜁130
+  🜅0🜈add_type_constraint
+  🜅1🜈TEXT
+  🜅2🜃
+    🜈encoding: UTF-8 only
+    🜈normalization: NFC required
+    🜈max bytes: 2147483647 (2^31-1)
+    🜈violation produces E_STRING_TOO_LONG (1305) or E_NFC_VIOLATION (1309)
+  🜄
+🜂
+
+🜁130
+  🜅0🜈add_type_constraint
+  🜅1🜈BYTES
+  🜅2🜃
+    🜈text literal: x"lowercase_hex"
+    🜈max bytes: 2147483647 (2^31-1)
+    🜈canonical hex: lowercase only
+    🜈odd hex length produces E_ODD_HEX_LENGTH (1006)
+  🜄
+🜂
+
+
+# ──────────────────────────────────────────────────────────────────────────────
+# §3 — RESOURCE LIMITS
+# ──────────────────────────────────────────────────────────────────────────────
+
+🜁130
+  🜅0🜈set_resource_limits
+  🜅1🜁199
+    🜅0 64        # max_nesting_depth
+    🜅1 2147483647  # max_array_length (2^31-1)
+    🜅2 2147483647  # max_string_bytes (2^31-1)
+    🜅3 2147483647  # max_bytes_length (2^31-1)
+    🜅4 4294967295  # max_document_bytes (2^32-1)
+    🜅5 65535       # max_fields_per_object (2^16-1)
+  🜂
+🜂
+
+
+# ──────────────────────────────────────────────────────────────────────────────
+# §4 — CANONICAL FORM RULES
+# ──────────────────────────────────────────────────────────────────────────────
+
+🜁130
+  🜅0🜈define_canonical_rules
+  🜅1🜃
+    🜁190🜅0🜈CF001🜅1🜈no_whitespace🜅2🜈No whitespace outside string literals🜂
+    🜁190🜅0🜈CF002🜅1🜈no_trailing_commas🜅2🜈Arrays and field lists: no trailing commas🜂
+    🜁190🜅0🜈CF003🜅1🜈field_order🜅2🜈Fields sorted by index ascending🜂
+    🜁190🜅0🜈CF004🜅1🜈minimal_escapes🜅2🜈Only escape required characters🜂
+    🜁190🜅0🜈CF005🜅1🜈int_format🜅2🜈No leading zeros, no plus sign🜂
+    🜁190🜅0🜈CF006🜅1🜈float_format🜅2🜈No leading zeros (except 0.x), no plus sign🜂
+    🜁190🜅0🜈CF007🜅1🜈hex_lowercase🜅2🜈Bytes use lowercase hex🜂
+    🜁190🜅0🜈CF008🜅1🜈nfc_normalization🜅2🜈All text is NFC normalized🜂
+  🜄
+🜂
+
+
+# ──────────────────────────────────────────────────────────────────────────────
+# §5 — ERROR CODE REGISTRY
+# ──────────────────────────────────────────────────────────────────────────────
+
+🜁130
+  🜅0🜈register_error_family
+  🜅1🜈LEXICAL
+  🜅2 1000
+  🜅3 1099
+  🜅4🜃
+    🜁191🜅0 1001🜅1🜈E_INVALID_UTF8🜅2🜈Invalid UTF-8 byte sequence🜂
+    🜁191🜅0 1002🜅1🜈E_UNKNOWN_ESCAPE🜅2🜈Unknown escape sequence🜂
+    🜁191🜅0 1003🜅1🜈E_UNTERMINATED_STRING🜅2🜈String not closed🜂
+    🜁191🜅0 1004🜅1🜈E_UNTERMINATED_BYTES🜅2🜈Bytes literal not closed🜂
+    🜁191🜅0 1005🜅1🜈E_INVALID_HEX🜅2🜈Invalid hex character🜂
+    🜁191🜅0 1006🜅1🜈E_ODD_HEX_LENGTH🜅2🜈Odd number of hex digits🜂
+    🜁191🜅0 1007🜅1🜈E_INVALID_NUMBER🜅2🜈Malformed number🜂
+    🜁191🜅0 1008🜅1🜈E_UNEXPECTED_CHAR🜅2🜈Unexpected character🜂
+  🜄
+🜂
+
+🜁130
+  🜅0🜈register_error_family
+  🜅1🜈SYNTACTIC
+  🜅2 1100
+  🜅3 1199
+  🜅4🜃
+    🜁191🜅0 1101🜅1🜈E_UNEXPECTED_TOKEN🜅2🜈Unexpected token🜂
+    🜁191🜅0 1102🜅1🜈E_MISSING_COMMA🜅2🜈Expected comma🜂
+    🜁191🜅0 1103🜅1🜈E_MISSING_COLON🜅2🜈Expected colon🜂
+    🜁191🜅0 1104🜅1🜈E_UNCLOSED_ARRAY🜅2🜈Array not closed🜂
+    🜁191🜅0 1105🜅1🜈E_UNCLOSED_OBJECT🜅2🜈Object not closed🜂
+    🜁191🜅0 1106🜅1🜈E_TRAILING_COMMA🜅2🜈Trailing comma not allowed🜂
+    🜁191🜅0 1107🜅1🜈E_MISSING_CONTRACT_ID🜅2🜈Object missing contract ID🜂
+    🜁191🜅0 1108🜅1🜈E_INVALID_FIELD_INDEX🜅2🜈Invalid field index🜂
+    🜁191🜅0 1109🜅1🜈E_DUPLICATE_FIELD_INDEX🜅2🜈Duplicate field index🜂
+    🜁191🜅0 1110🜅1🜈E_UNSORTED_FIELDS🜅2🜈Fields not sorted🜂
+  🜄
+🜂
+
+🜁130
+  🜅0🜈register_error_family
+  🜅1🜈TYPE
+  🜅2 1200
+  🜅3 1299
+  🜅4🜃
+    🜁191🜅0 1201🜅1🜈E_TYPE_MISMATCH🜅2🜈Type mismatch🜂
+    🜁191🜅0 1202🜅1🜈E_MISSING_REQUIRED_FIELD🜅2🜈Required field missing🜂
+    🜁191🜅0 1203🜅1🜈E_UNKNOWN_ENUM_VALUE🜅2🜈Unknown enum value🜂
+    🜁191🜅0 1204🜅1🜈E_INVALID_CONTRACT_ID🜅2🜈Invalid contract ID🜂
+  🜄
+🜂
+
+🜁130
+  🜅0🜈register_error_family
+  🜅1🜈CONSTRAINT
+  🜅2 1300
+  🜅3 1399
+  🜅4🜃
+    🜁191🜅0 1301🜅1🜈E_INT_OVERFLOW🜅2🜈Integer out of range🜂
+    🜁191🜅0 1302🜅1🜈E_FLOAT_NOT_FINITE🜅2🜈Float is NaN or infinity🜂
+    🜁191🜅0 1303🜅1🜈E_DEPTH_EXCEEDED🜅2🜈Nesting too deep (max 64)🜂
+    🜁191🜅0 1304🜅1🜈E_ARRAY_TOO_LONG🜅2🜈Array too long🜂
+    🜁191🜅0 1305🜅1🜈E_STRING_TOO_LONG🜅2🜈String too long🜂
+    🜁191🜅0 1306🜅1🜈E_BYTES_TOO_LONG🜅2🜈Bytes too long🜂
+    🜁191🜅0 1307🜅1🜈E_DOCUMENT_TOO_LARGE🜅2🜈Document too large🜂
+    🜁191🜅0 1308🜅1🜈E_TOO_MANY_FIELDS🜅2🜈Too many fields🜂
+    🜁191🜅0 1309🜅1🜈E_NFC_VIOLATION🜅2🜈Text not NFC normalized🜂
+  🜄
+🜂
+
+🜁130
+  🜅0🜈register_error_family
+  🜅1🜈SEMANTIC
+  🜅2 1400
+  🜅3 1499
+  🜅4🜃
+    🜁191🜅0 1401🜅1🜈E_UNKNOWN_CONTRACT🜅2🜈Contract not registered🜂
+    🜁191🜅0 1402🜅1🜈E_INVALID_PROVENANCE🜅2🜈Bad provenance🜂
+    🜁191🜅0 1403🜅1🜈E_WRONG_PROFILE🜅2🜈Profile must be hlx-lite-0.1🜂
+    🜁191🜅0 1404🜅1🜈E_HASH_MISMATCH🜅2🜈Content hash mismatch🜂
+  🜄
+🜂
+
+
+# ──────────────────────────────────────────────────────────────────────────────
+# §6 — HLX-TEXT-LITE BNF GRAMMAR
+# ──────────────────────────────────────────────────────────────────────────────
+
+🜁130
+  🜅0🜈define_grammar
+  🜅1🜈hlx_text_lite
+  🜅2🜃
+    🜈document   := object
+    🜈value      := null | bool | int | float | text | bytes | array | object
+    🜈null       := 'null'
+    🜈bool       := 'true' | 'false'
+    🜈int        := ['-'] digit+
+    🜈float      := ['-'] digit+ '.' digit+ [exponent]
+    🜈exponent   := ('e' | 'E') ['+' | '-'] digit+
+    🜈text       := '"' char* '"'
+    🜈bytes      := 'x"' hexdigit* '"'
+    🜈array      := '[' [value (',' value)*] ']'
+    🜈object     := '{' contract_id ':' '{' [field (',' field)*] '}' '}'
+    🜈contract_id := digit+
+    🜈field      := '@' index ':' value
+    🜈index      := digit+
+    🜈digit      := '0'..'9'
+    🜈hexdigit   := '0'..'9' | 'a'..'f'
+    🜈char       := <any UTF-8 char except control chars, or escape sequence>
+    🜈escape     := '\\' ('"' | '\\' | 'n' | 'r' | 't' | 'u' XXXX)
+  🜄
+🜂
+
+
+# ──────────────────────────────────────────────────────────────────────────────
+# §7 — HLX-B-LITE BINARY OPCODES
+# ──────────────────────────────────────────────────────────────────────────────
+
+🜁130
+  🜅0🜈define_binary_opcodes
+  🜅1🜈hlx_b_lite
+  🜅2🜃
+    🜁192🜅0 0x00🜅1🜈NULL🜅2🜈no payload🜂
+    🜁192🜅0 0x01🜅1🜈BOOL🜅2🜈1 byte: 0x00=false, 0x01=true🜂
+    🜁192🜅0 0x02🜅1🜈INT🜅2🜈LEB128 signed🜂
+    🜁192🜅0 0x03🜅1🜈FLOAT🜅2🜈8 bytes IEEE 754 big-endian🜂
+    🜁192🜅0 0x04🜅1🜈TEXT🜅2🜈LEB128 length + UTF-8 bytes🜂
+    🜁192🜅0 0x05🜅1🜈BYTES🜅2🜈LEB128 length + raw bytes🜂
+    🜁192🜅0 0x06🜅1🜈ARRAY🜅2🜈LEB128 count + values🜂
+    🜁192🜅0 0x07🜅1🜈OBJECT🜅2🜈LEB128 contract_id + LEB128 field_count + fields🜂
+    🜁192🜅0 0x08🜅1🜈FIELD🜅2🜈LEB128 index + value🜂
+  🜄
+🜂
+
+
+# ──────────────────────────────────────────────────────────────────────────────
+# §8 — INVARIANTS (MUST HOLD FOR ALL IMPLEMENTATIONS)
+# ──────────────────────────────────────────────────────────────────────────────
+
+🜁130
+  🜅0🜈define_invariants
+  🜅1🜃
+    🜁193🜅0🜈INV001🜅1🜈RoundTripEquivalence🜅2🜈encode(decode(bytes)) == bytes🜂
+    🜁193🜅0🜈INV002🜅1🜈ValueRoundTrip🜅2🜈decode(encode(value)) == value🜂
+    🜁193🜅0🜈INV003🜅1🜈CanonicalUniqueness🜅2🜈∀V: ∃! canonical B where decode(B)==V🜂
+    🜁193🜅0🜈INV004🜅1🜈CrossImplAgreement🜅2🜈All parsers produce same value or error🜂
+    🜁193🜅0🜈INV005🜅1🜈ErrorCompleteness🜅2🜈Every byte seq is valid XOR has error code🜂
+  🜄
+🜂
+
+
+# ──────────────────────────────────────────────────────────────────────────────
+# §9 — TEST VECTORS
+# ──────────────────────────────────────────────────────────────────────────────
+
+🜁130
+  🜅0🜈register_test_vectors
+  🜅1🜃
+
+    # ─── Valid Cases ───
+    🜁194
+      🜅0🜈TV001_minimal
+      🜅1🜈valid
+      🜅2🜈{4:{@0:null,@1:{5:{@0:"hlx-lite-0.1"}}}}
+      🜅3🜈Minimal document with null root
+    🜂
+
+    🜁194
+      🜅0🜈TV002_all_primitives
+      🜅1🜈valid
+      🜅2🜈{4:{@0:[null,true,false,42,-17,3.14159,"hello",x"deadbeef"],@1:{5:{@0:"hlx-lite-0.1"}}}}
+      🜅3🜈Array containing all primitive types
+    🜂
+
+    🜁194
+      🜅0🜈TV003_nested_objects
+      🜅1🜈valid
+      🜅2🜈{4:{@0:{3:{@0:100,@1:[{3:{@0:101,@1:[]}}]}},@1:{5:{@0:"hlx-lite-0.1"}}}}
+      🜅3🜈Nested object structure
+    🜂
+
+    🜁194
+      🜅0🜈TV004_empty_array
+      🜅1🜈valid
+      🜅2🜈{4:{@0:[],@1:{5:{@0:"hlx-lite-0.1"}}}}
+      🜅3🜈Empty array
+    🜂
+
+    🜁194
+      🜅0🜈TV005_empty_object
+      🜅1🜈valid
+      🜅2🜈{4:{@0:{3:{@0:999,@1:[]}},@1:{5:{@0:"hlx-lite-0.1"}}}}
+      🜅3🜈Object with no fields
+    🜂
+
+    🜁194
+      🜅0🜈TV006_unicode_text
+      🜅1🜈valid
+      🜅2🜈{4:{@0:"日本語テスト",@1:{5:{@0:"hlx-lite-0.1"}}}}
+      🜅3🜈UTF-8 text with Japanese characters
+    🜂
+
+    🜁194
+      🜅0🜈TV007_max_int
+      🜅1🜈valid
+      🜅2🜈{4:{@0:9223372036854775807,@1:{5:{@0:"hlx-lite-0.1"}}}}
+      🜅3🜈Maximum 64-bit signed integer
+    🜂
+
+    🜁194
+      🜅0🜈TV008_min_int
+      🜅1🜈valid
+      🜅2🜈{4:{@0:-9223372036854775808,@1:{5:{@0:"hlx-lite-0.1"}}}}
+      🜅3🜈Minimum 64-bit signed integer
+    🜂
+
+    # ─── Invalid Cases ───
+    🜁194
+      🜅0🜈TV101_trailing_comma
+      🜅1🜈invalid
+      🜅2🜈{4:{@0:[1,2,3,],@1:{5:{@0:"hlx-lite-0.1"}}}}
+      🜅3 1106
+      🜅4🜈E_TRAILING_COMMA
+    🜂
+
+    🜁194
+      🜅0🜈TV102_unsorted_fields
+      🜅1🜈invalid
+      🜅2🜈{4:{@1:{5:{@0:"hlx-lite-0.1"}},@0:null}}
+      🜅3 1110
+      🜅4🜈E_UNSORTED_FIELDS
+    🜂
+
+    🜁194
+      🜅0🜈TV103_duplicate_field
+      🜅1🜈invalid
+      🜅2🜈{4:{@0:null,@0:"duplicate",@1:{5:{@0:"hlx-lite-0.1"}}}}
+      🜅3 1109
+      🜅4🜈E_DUPLICATE_FIELD_INDEX
+    🜂
+
+    🜁194
+      🜅0🜈TV104_int_overflow
+      🜅1🜈invalid
+      🜅2🜈{4:{@0:9999999999999999999999,@1:{5:{@0:"hlx-lite-0.1"}}}}
+      🜅3 1301
+      🜅4🜈E_INT_OVERFLOW
+    🜂
+
+    🜁194
+      🜅0🜈TV105_uppercase_hex
+      🜅1🜈invalid
+      🜅2🜈{4:{@0:x"DEADBEEF",@1:{5:{@0:"hlx-lite-0.1"}}}}
+      🜅3 1005
+      🜅4🜈E_INVALID_HEX (uppercase not canonical)
+    🜂
+
+    🜁194
+      🜅0🜈TV106_missing_contract_id
+      🜅1🜈invalid
+      🜅2🜈{4:{@0:{@0:null},@1:{5:{@0:"hlx-lite-0.1"}}}}
+      🜅3 1107
+      🜅4🜈E_MISSING_CONTRACT_ID
+    🜂
+
+    🜁194
+      🜅0🜈TV107_wrong_profile
+      🜅1🜈invalid
+      🜅2🜈{4:{@0:null,@1:{5:{@0:"hlx-0.5"}}}}
+      🜅3 1403
+      🜅4🜈E_WRONG_PROFILE (must be hlx-lite-0.1)
+    🜂
+
+    🜁194
+      🜅0🜈TV108_unclosed_array
+      🜅1🜈invalid
+      🜅2🜈{4:{@0:[1,2,3,@1:{5:{@0:"hlx-lite-0.1"}}}}
+      🜅3 1104
+      🜅4🜈E_UNCLOSED_ARRAY
+    🜂
+
+  🜄
+🜂
+
+
+# ──────────────────────────────────────────────────────────────────────────────
+# §10 — IMPLEMENTATION DIRECTIVE
+# ──────────────────────────────────────────────────────────────────────────────
+#
+# This directive tells an LS-capable engine what to do with the above.
+
+🜁130
+  🜅0🜈implementation_directive
+  🜅1🜁195
+    🜅0🜈hlx_lite_v0_1
+    🜅1🜃
+      🜈REGISTER contracts 1-5 from §1
+      🜈ENFORCE type constraints from §2
+      🜈ENFORCE resource limits from §3
+      🜈ENFORCE canonical form rules from §4
+      🜈MAP error codes from §5
+      🜈IMPLEMENT parser per grammar §6
+      🜈IMPLEMENT binary encoder/decoder per §7
+      🜈VERIFY invariants from §8
+      🜈PASS all test vectors from §9
+    🜄
+    🜅2🜃
+      🜈Parser MUST accept valid HLX-Text-Lite
+      🜈Parser MAY accept HLX-B-Lite (binary)
+      🜈Encoder MUST produce canonical form
+      🜈Round-trip MUST be lossless
+      🜈Unknown contracts MUST produce E_UNKNOWN_CONTRACT unless in permissive mode
+    🜄
+    🜅3🜃
+      🜈HLX-Glyph-Text support is OPTIONAL
+      🜈LS_REF resolution is NOT part of Lite (use HLX-Opt)
+      🜈Dictionary compression is NOT part of Lite (use HLX-Opt)
+      🜈SpecDelta is NOT part of Lite (use HLX-Core)
+    🜄
+  🜂
+🜂
+
+
+# ──────────────────────────────────────────────────────────────────────────────
+# §11 — LATENT HANDLES FOR THIS DIRECTIVE SET
+# ──────────────────────────────────────────────────────────────────────────────
+
+🜊800🜁0
+  🜅0 0
+  🜅1 185
+  🜅2🜈fp:hlx_lite_contracts_v0_1
+  🜅3🜈HLX-Lite contract registration delta
+  🜅4🜈claude@matt
+🜂
+
+🜊800🜁1
+  🜅0 1
+  🜅1 130
+  🜅2🜈fp:hlx_lite_type_constraints
+  🜅3🜈Primitive type constraint definitions
+  🜅4🜈claude@matt
+🜂
+
+🜊800🜁2
+  🜅0 2
+  🜅1 130
+  🜅2🜈fp:hlx_lite_error_codes
+  🜅3🜈Complete error code registry
+  🜅4🜈claude@matt
+🜂
+
+🜊800🜁3
+  🜅0 3
+  🜅1 130
+  🜅2🜈fp:hlx_lite_grammar
+  🜅3🜈BNF grammar for HLX-Text-Lite
+  🜅4🜈claude@matt
+🜂
+
+🜊800🜁4
+  🜅0 4
+  🜅1 130
+  🜅2🜈fp:hlx_lite_test_vectors
+  🜅3🜈Validation test vector suite
+  🜅4🜈claude@matt
+🜂
+
+🜊800🜁5
+  🜅0 5
+  🜅1 195
+  🜅2🜈fp:hlx_lite_impl_directive
+  🜅3🜈Complete implementation directive
+  🜅4🜈claude@matt
+🜂
+
+
+🜋  # end_stream
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# END OF HLX-LITE v0.1 IMPLEMENTATION DIRECTIVES
+# ══════════════════════════════════════════════════════════════════════════════

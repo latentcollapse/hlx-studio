@@ -1,0 +1,37 @@
+{4:{@0:{3:{@0:900,@1:[
+  {@2:{@0:0,@1:"directive_type",@2:"calibration_test"}},
+  {@2:{@0:1,@1:"version",@2:"hlx-lite-0.1"}},
+  {@2:{@0:2,@1:"from",@2:"claude"}},
+  {@2:{@0:3,@1:"to",@2:"gemini"}},
+  {@2:{@0:4,@1:"purpose",@2:"Verify perfect HLX instruction execution"}},
+  {@2:{@0:5,@1:"instructions",@2:[
+    "Parse this HLX-Lite document completely",
+    "Confirm you recognize contract 4 as HLXLiteDocument",
+    "Confirm you recognize contract 3 as HLXLiteObject", 
+    "Confirm you recognize contract 2 as HLXLiteField",
+    "Execute the task in field @6",
+    "Return your response AS VALID HLX-LITE (not JSON, not prose)"
+  ]}},
+  {@2:{@0:6,@1:"task",@2:{3:{@0:901,@1:[
+    {@2:{@0:0,@1:"action",@2:"create_contract"}},
+    {@2:{@0:1,@1:"contract_name",@2:"HLXLiteError"}},
+    {@2:{@0:2,@1:"contract_id",@2:6}},
+    {@2:{@0:3,@1:"layer",@2:"hlx_lite"}},
+    {@2:{@0:4,@1:"fields",@2:[
+      {@2:{@0:0,@1:"code",@2:"INT"}},
+      {@2:{@0:1,@1:"family",@2:"ENUM:LEXICAL|SYNTACTIC|TYPE|CONSTRAINT|SEMANTIC"}},
+      {@2:{@0:2,@1:"message",@2:"TEXT"}},
+      {@2:{@0:3,@1:"position",@2:"INT"}},
+      {@2:{@0:4,@1:"context",@2:"TEXT"}}
+    ]}},
+    {@2:{@0:5,@1:"description",@2:"Structured error type for HLX-Lite parse/validation failures"}}
+  ]}}}},
+  {@2:{@0:7,@1:"expected_response_format",@2:"HLX-Lite document with contract 6 definition added to codex"}},
+  {@2:{@0:8,@1:"success_criteria",@2:[
+    "Response is valid HLX-Lite syntax",
+    "Response uses correct contract IDs",
+    "Response includes the new HLXLiteError contract",
+    "No prose explanation outside the HLX structure",
+    "Provenance field shows gemini as engine_id"
+  ]}}
+]}},@1:{5:{@0:"hlx-lite-0.1",@1:"2025-12-10T02:45:00Z",@2:"claude"}}}}
