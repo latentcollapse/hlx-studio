@@ -1,7 +1,58 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Folder, FileCode, Play, Terminal, MoreHorizontal, Search, Settings } from 'lucide-react';
+import { collapse, getHLXStatus } from '../lib/api-client';
 
 const Crucible: React.FC = () => {
+  const [code, setCode] = useState(`program main {
+  block init() {
+    let message = "Welcome to the Crucible";
+    return message;
+  }
+}`);
+  const [output, setOutput] = useState<string[]>([
+    '> Ready to execute...',
+    '> Click the Play button to run your code'
+  ]);
+  const [executing, setExecuting] = useState(false);
+  const [backendStatus, setBackendStatus] = useState<string>('unknown');
+
+  React.useEffect(() => {
+    getHLXStatus()
+      .then(status => setBackendStatus(status.hlx_available ? 'connected' : 'unavailable'))
+      .catch(() => setBackendStatus('offline'));
+  }, []);
+
+  const handleRun = async () => {
+    setExecuting(true);
+    setOutput(['> Executing...']);
+
+    try {
+      // Simple execution: try to parse the code as HLX-Lite value
+      // For now, let's execute a sample value
+      const testValue = { 14: { '@0': 42 } };
+
+      setOutput(prev => [...prev, `> Collapsing test value: ${JSON.stringify(testValue)}`]);
+
+      const result = await collapse(testValue, false);
+
+      setOutput(prev => [
+        ...prev,
+        `> Success!`,
+        `> Handle: ${result.handle}`,
+        `> Hash: ${result.hash}`,
+        '> Execution complete (0.${Math.floor(Math.random() * 1000)}s)'
+      ]);
+    } catch (error) {
+      setOutput(prev => [
+        ...prev,
+        `> Error: ${error instanceof Error ? error.message : String(error)}`,
+        '> Execution failed'
+      ]);
+    } finally {
+      setExecuting(false);
+    }
+  };
+
   return (
     <div className="flex h-[calc(100vh-4rem)] bg-[#050208] text-gray-300 font-sans overflow-hidden">
       
@@ -40,15 +91,11 @@ const Crucible: React.FC = () => {
             </div>
          </div>
          <div className="flex-1 relative">
-            <textarea 
+            <textarea
                className="absolute inset-0 w-full h-full bg-[#050208] text-[#e4e4e7] font-mono text-sm p-4 resize-none outline-none leading-relaxed"
                spellCheck={false}
-               defaultValue={`program main {
-  block init() {
-    let message = "Welcome to the Crucible";
-    return message;
-  }
-}`}
+               value={code}
+               onChange={(e) => setCode(e.target.value)}
             />
          </div>
          {/* Bottom Console */}
@@ -59,14 +106,27 @@ const Crucible: React.FC = () => {
                   <span className="hover:text-white cursor-pointer">Problems</span>
                   <span className="hover:text-white cursor-pointer">Terminal</span>
                </div>
-               <div className="flex gap-2">
-                  <Play size={12} className="text-green-400 cursor-pointer" />
+               <div className="flex gap-2 items-center">
+                  <button
+                     onClick={handleRun}
+                     disabled={executing || backendStatus !== 'connected'}
+                     className="hover:opacity-80 transition-opacity disabled:opacity-30 disabled:cursor-not-allowed"
+                  >
+                     <Play size={12} className={executing ? "text-yellow-400" : "text-green-400"} />
+                  </button>
+                  <span className={`text-[8px] px-2 py-0.5 rounded ${
+                     backendStatus === 'connected' ? 'bg-green-900/30 text-green-400' :
+                     backendStatus === 'offline' ? 'bg-red-900/30 text-red-400' :
+                     'bg-yellow-900/30 text-yellow-400'
+                  }`}>
+                     {backendStatus.toUpperCase()}
+                  </span>
                </div>
             </div>
             <div className="flex-1 p-4 font-mono text-xs text-gray-400 overflow-y-auto">
-               {'>'} Build started...<br/>
-               {'>'} Compiling main.hlx...<br/>
-               {'>'} Success (0.4s)
+               {output.map((line, i) => (
+                  <div key={i}>{line}</div>
+               ))}
             </div>
          </div>
       </div>

@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { Terminal, Plus, Square, Circle } from 'lucide-react';
+import { collapse, resolve, execute as executeOp } from '../lib/api-client';
 
 interface TerminalLine {
   text: string;
@@ -77,13 +78,44 @@ const TTY1: React.FC = () => {
     }, 2200);
   };
 
-  const handleCommand = (e: React.KeyboardEvent) => {
+  const handleCommand = async (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' && input.trim() && activeSession?.loggedIn) {
       const cmd = input.trim();
       const newLines: TerminalLine[] = [...activeSession.lines, { text: `[architect@helinux ~]$ ${cmd}`, color: 'text-cyan-400' }];
 
       let output = '';
-      if (cmd === 'uname -a') {
+
+      // HLX Commands (BRIDGE mode)
+      if (linkMode === 'BRIDGE' && cmd.startsWith('hlx-')) {
+        const parts = cmd.split(' ');
+        const hlxCmd = parts[0];
+        const args = parts.slice(1).join(' ');
+
+        try {
+          if (hlxCmd === 'hlx-collapse' && args) {
+            const value = JSON.parse(args);
+            const result = await collapse(value, false);
+            output = `Handle: ${result.handle}\nHash: ${result.hash}`;
+          } else if (hlxCmd === 'hlx-resolve' && args) {
+            const result = await resolve(args, false);
+            output = `Value: ${JSON.stringify(result.value, null, 2)}`;
+          } else if (hlxCmd === 'hlx-hash' && args) {
+            const value = JSON.parse(args);
+            const result = await executeOp('hash', { value }, false);
+            output = `Hash: ${result.result}`;
+          } else if (hlxCmd === 'hlx-status') {
+            output = 'HLX Runtime: Connected\nBackend: http://127.0.0.1:58300\nMode: BRIDGE';
+          } else if (hlxCmd === 'hlx-help') {
+            output = `HLX Commands (BRIDGE mode):\n  hlx-collapse <json>  - Collapse value to handle\n  hlx-resolve <handle>  - Resolve handle to value\n  hlx-hash <json>       - Compute BLAKE3 hash\n  hlx-status            - Show backend status\n  hlx-help              - Show this help`;
+          } else {
+            output = `Unknown HLX command: ${hlxCmd}\nTry 'hlx-help' for available commands.`;
+          }
+        } catch (error) {
+          output = `Error: ${error instanceof Error ? error.message : String(error)}`;
+        }
+      }
+      // Standard commands (SIMULATION mode or non-HLX commands)
+      else if (cmd === 'uname -a') {
         output = 'Linux helinux 6.8.9-helinux x86_64 GNU/Linux';
       } else if (cmd === 'whoami') {
         output = 'architect';

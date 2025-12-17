@@ -6,6 +6,7 @@
 // ============================================================================
 
 import React, { useState, useMemo } from 'react';
+import { collapse, resolve, roundTrip as apiRoundTrip, getHLXStatus } from '../lib/api-client';
 
 // -----------------------------------------------------------------------------
 // COMPLETE GLYPH TRANSLITERATION MAP
@@ -1090,17 +1091,59 @@ export default function HLXPlayground() {
   const [hlxSource, setHlxSource] = useState<string>(HLX_TASKS[0].hlx_example);
   const [activeTask, setActiveTask] = useState<string>(HLX_TASKS[0].id);
   const [showReference, setShowReference] = useState<boolean>(true);
-  
+
+  // Backend execution state
+  const [testValue, setTestValue] = useState<string>('{"@0": 42}');
+  const [executing, setExecuting] = useState<boolean>(false);
+  const [executionResult, setExecutionResult] = useState<any>(null);
+  const [executionError, setExecutionError] = useState<string | null>(null);
+  const [backendStatus, setBackendStatus] = useState<string>('unknown');
+
   // Transliterate HLX → HLXL
   const hlxlSource = useMemo(() => transliterateHLXtoHLXL(hlxSource), [hlxSource]);
-  
+
   // Round-trip verification
   const roundTrip = useMemo(() => transliterateHLXLtoHLX(hlxlSource), [hlxlSource]);
   const isRoundTripValid = roundTrip.trim() === hlxSource.trim();
-  
+
   // Find current task
   const currentTask = HLX_TASKS.find(t => t.id === activeTask);
   const isCorrect = currentTask && hlxlSource.trim() === currentTask.expected_hlxl.trim();
+
+  // Check backend status on mount
+  React.useEffect(() => {
+    getHLXStatus()
+      .then(status => setBackendStatus(status.hlx_available ? 'connected' : 'unavailable'))
+      .catch(() => setBackendStatus('offline'));
+  }, []);
+
+  const executeCollapse = async () => {
+    setExecuting(true);
+    setExecutionError(null);
+    try {
+      const value = JSON.parse(testValue);
+      const result = await collapse(value, false);
+      setExecutionResult({ type: 'collapse', ...result });
+    } catch (error) {
+      setExecutionError(error instanceof Error ? error.message : String(error));
+    } finally {
+      setExecuting(false);
+    }
+  };
+
+  const executeRoundTrip = async () => {
+    setExecuting(true);
+    setExecutionError(null);
+    try {
+      const value = JSON.parse(testValue);
+      const result = await apiRoundTrip(value);
+      setExecutionResult({ type: 'round-trip', ...result });
+    } catch (error) {
+      setExecutionError(error instanceof Error ? error.message : String(error));
+    } finally {
+      setExecuting(false);
+    }
+  };
 
   return (
     <div className="hlx-playground" style={{ display: 'flex', gap: '1rem', padding: '1rem' }}>
@@ -1237,6 +1280,121 @@ export default function HLXPlayground() {
           fontSize: '0.85rem',
         }}>
           Round-trip: {isRoundTripValid ? '✓ Bijective' : '⚠ Mismatch'}
+        </div>
+
+        {/* Backend Execution Panel */}
+        <div style={{
+          background: '#1a1a2e',
+          border: '1px solid #333',
+          borderRadius: '4px',
+          padding: '1rem',
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.75rem' }}>
+            <h3 style={{ margin: 0, fontSize: '1rem' }}>Backend Execution</h3>
+            <span style={{
+              fontSize: '0.7rem',
+              padding: '0.2rem 0.4rem',
+              borderRadius: '3px',
+              background: backendStatus === 'connected' ? '#1a2e1a' : backendStatus === 'offline' ? '#2e1a1a' : '#2e2e1a',
+              color: backendStatus === 'connected' ? '#4aff4a' : backendStatus === 'offline' ? '#ff4a4a' : '#ffaa4a',
+            }}>
+              {backendStatus.toUpperCase()}
+            </span>
+          </div>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+            <label style={{ fontSize: '0.85rem', opacity: 0.8 }}>Test Value (HLX-Lite JSON):</label>
+            <textarea
+              value={testValue}
+              onChange={e => setTestValue(e.target.value)}
+              style={{
+                width: '100%',
+                minHeight: '60px',
+                fontFamily: 'monospace',
+                fontSize: '13px',
+                background: '#0a0a0a',
+                color: '#e0e0e0',
+                border: '1px solid #333',
+                borderRadius: '4px',
+                padding: '0.5rem',
+              }}
+              placeholder='{"@0": 42}'
+            />
+
+            <div style={{ display: 'flex', gap: '0.5rem' }}>
+              <button
+                onClick={executeCollapse}
+                disabled={executing || backendStatus !== 'connected'}
+                style={{
+                  flex: 1,
+                  padding: '0.5rem 1rem',
+                  fontSize: '0.85rem',
+                  background: executing || backendStatus !== 'connected' ? '#333' : '#4a9eff',
+                  color: '#fff',
+                  border: 'none',
+                  borderRadius: '4px',
+                  cursor: executing || backendStatus !== 'connected' ? 'not-allowed' : 'pointer',
+                  opacity: executing || backendStatus !== 'connected' ? 0.5 : 1,
+                }}
+              >
+                {executing ? 'Executing...' : 'Collapse'}
+              </button>
+
+              <button
+                onClick={executeRoundTrip}
+                disabled={executing || backendStatus !== 'connected'}
+                style={{
+                  flex: 1,
+                  padding: '0.5rem 1rem',
+                  fontSize: '0.85rem',
+                  background: executing || backendStatus !== 'connected' ? '#333' : '#22c55e',
+                  color: '#fff',
+                  border: 'none',
+                  borderRadius: '4px',
+                  cursor: executing || backendStatus !== 'connected' ? 'not-allowed' : 'pointer',
+                  opacity: executing || backendStatus !== 'connected' ? 0.5 : 1,
+                }}
+              >
+                {executing ? 'Executing...' : 'Round-Trip Test'}
+              </button>
+            </div>
+
+            {executionError && (
+              <div style={{
+                padding: '0.5rem',
+                background: '#2e1a1a',
+                border: '1px solid #ff4a4a',
+                borderRadius: '4px',
+                fontSize: '0.85rem',
+                color: '#ff4a4a',
+              }}>
+                Error: {executionError}
+              </div>
+            )}
+
+            {executionResult && (
+              <div style={{
+                padding: '0.5rem',
+                background: '#0a0a0a',
+                border: '1px solid #4aff4a',
+                borderRadius: '4px',
+                fontSize: '0.85rem',
+              }}>
+                <div style={{ fontWeight: 'bold', marginBottom: '0.5rem', color: '#4aff4a' }}>
+                  Result ({executionResult.type}):
+                </div>
+                <pre style={{
+                  margin: 0,
+                  whiteSpace: 'pre-wrap',
+                  wordBreak: 'break-all',
+                  fontSize: '0.8rem',
+                  color: '#e0e0e0',
+                }}>
+                  {JSON.stringify(executionResult, null, 2)}
+                </pre>
+              </div>
+            )}
+          </div>
         </div>
       </div>
       
