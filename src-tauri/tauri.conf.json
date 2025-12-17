@@ -1,8 +1,8 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "Helix Studio",
+  "productName": "HLX Dev Studio",
   "version": "1.0.1",
-  "identifier": "com.helix.studio",
+  "identifier": "com.hlx.devstudio",
   "build": {
     "frontendDist": "../dist",
     "devUrl": "http://localhost:3000",
@@ -12,7 +12,7 @@
   "app": {
     "windows": [
       {
-        "title": "Helix Studio",
+        "title": "HLX Dev Studio",
         "width": 1400,
         "height": 900,
         "minWidth": 1024,

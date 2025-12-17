@@ -32,7 +32,7 @@ vulkaninfo | head -20
 
 ### 2. Install Python Vulkan Bindings
 ```bash
-cd /home/matt/helix-studio
+cd /home/matt/hlx-dev-studio
 source venv/bin/activate  # If using venv
 
 pip install vulkan numpy
@@ -68,7 +68,7 @@ vulkaninfo | grep -A5 "queueCount"
 ### Goal: Create file structure and test imports
 
 ```bash
-cd /home/matt/helix-studio
+cd /home/matt/hlx-dev-studio
 
 # Create stub files
 touch hlx_runtime/vulkan_runtime.py
@@ -243,7 +243,7 @@ if __name__ == '__main__':
 ### Run the test
 
 ```bash
-cd /home/matt/helix-studio
+cd /home/matt/hlx-dev-studio
 python3 hlx_runtime/tests/test_vulkan_integration.py
 ```
 
@@ -454,7 +454,7 @@ void main() {
 # Ubuntu: apt install glslang-tools
 # Arch: pacman -S glslang
 
-cd /home/matt/helix-studio
+cd /home/matt/hlx-dev-studio
 mkdir -p shaders
 
 # Compile GLSL → SPIR-V

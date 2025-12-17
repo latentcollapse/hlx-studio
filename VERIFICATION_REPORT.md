@@ -4,7 +4,7 @@
 **Date:** 2025-12-15
 **Test Suite:** Opus Audit (106 tests)
 **Pass Rate:** 106/106 (100%)
-**Repository:** https://github.com/latentcollapse/helix-studio
+**Repository:** https://github.com/latentcollapse/hlx-dev-studio
 
 ---
 
@@ -99,8 +99,8 @@ hlx_runtime/
 
 ```bash
 # Clone repository
-git clone https://github.com/latentcollapse/helix-studio.git
-cd helix-studio
+git clone https://github.com/latentcollapse/hlx-dev-studio.git
+cd hlx-dev-studio
 
 # Run verification tests
 python3 hlx_runtime/tests/test_opus_audit.py
@@ -236,14 +236,14 @@ Date:   Sun Dec 15 09:XX:XX 2025
 
 **Signed:** Claude Opus 4.5
 **Date:** 2025-12-15
-**Test Suite:** [hlx_runtime/tests/test_opus_audit.py](https://github.com/latentcollapse/helix-studio/blob/main/hlx_runtime/tests/test_opus_audit.py)
+**Test Suite:** [hlx_runtime/tests/test_opus_audit.py](https://github.com/latentcollapse/hlx-dev-studio/blob/main/hlx_runtime/tests/test_opus_audit.py)
 
 ---
 
 ## Contact
 
 - **Author:** Matt (latentcollapse)
-- **Repository:** https://github.com/latentcollapse/helix-studio
+- **Repository:** https://github.com/latentcollapse/hlx-dev-studio
 - **Corpus:** https://github.com/latentcollapse/HLXv1.1.0
 - **License:** MIT OR Apache-2.0
 

@@ -90,7 +90,7 @@ const TTY1: React.FC = () => {
       } else if (cmd === 'pwd') {
         output = '/home/architect';
       } else if (cmd === 'ls') {
-        output = 'Documents  Downloads  helix-studio  .hlx';
+        output = 'Documents  Downloads  hlx-dev-studio  .hlx';
       } else if (cmd === 'neofetch') {
         output = `                   -\`                    architect@helinux
                   .o+\`                   -----------------

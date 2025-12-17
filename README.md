@@ -77,8 +77,8 @@ Start with `corpus/README_GITHUB.md` for:
 
 ## 🔗 Related Repositories
 
-- **helix-studio**: Full IDE and development environment (TypeScript/React/Tauri)
-  - https://github.com/latentcollapse/helix-studio
+- **hlx-dev-studio**: Full IDE and development environment (TypeScript/React/Tauri)
+  - https://github.com/latentcollapse/hlx-dev-studio
 
 - **HLXv1.0.0**: Original bootstrap capsule (historical archive)
   - https://github.com/latentcollapse/HLXv1.0.0

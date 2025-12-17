@@ -9,7 +9,7 @@
 
 ## The Problem
 
-Right now everything lives in `helix-studio`:
+Right now everything lives in `hlx-dev-studio`:
 - ✅ HLX v1.1.0 Corpus (frozen, complete, 106/106 tests passing)
 - 🔄 HLX Runtime v1.0 (Python implementation)
 - 🔄 Studio GUI (Electron/React/TypeScript)
@@ -165,7 +165,7 @@ latency vs CUDA on repeated inference workloads.
 Not production-ready.
 ```
 
-**Status:** ❌ Doesn't exist yet (currently partial in helix-studio)
+**Status:** ❌ Doesn't exist yet (currently partial in hlx-dev-studio)
 **Action:** Create new repo, start Phase 1 implementation
 
 ---
@@ -176,7 +176,7 @@ Not production-ready.
 **Goal:** Make HLXv1.1.0 repo pristine and frozen
 
 ```bash
-cd /home/matt/helix-studio
+cd /home/matt/hlx-dev-studio
 
 # 1. Remove non-corpus files
 rm -rf release/ node_modules/ src/ public/
@@ -224,16 +224,16 @@ gh repo create latentcollapse/hlx-studio \
 
 cd hlx-studio
 
-# 2. Copy Studio files from helix-studio
-cp -r /home/matt/helix-studio/src .
-cp -r /home/matt/helix-studio/public .
-cp -r /home/matt/helix-studio/release .
-cp /home/matt/helix-studio/package.json .
-cp /home/matt/helix-studio/tsconfig.json .
-cp /home/matt/helix-studio/bun.lockb .
+# 2. Copy Studio files from hlx-dev-studio
+cp -r /home/matt/hlx-dev-studio/src .
+cp -r /home/matt/hlx-dev-studio/public .
+cp -r /home/matt/hlx-dev-studio/release .
+cp /home/matt/hlx-dev-studio/package.json .
+cp /home/matt/hlx-dev-studio/tsconfig.json .
+cp /home/matt/hlx-dev-studio/bun.lockb .
 
 # 3. Copy runtime (bundled with Studio)
-cp -r /home/matt/helix-studio/hlx_runtime .
+cp -r /home/matt/hlx-dev-studio/hlx_runtime .
 
 # 4. Create README
 cat > README.md << 'EOF'
@@ -315,17 +315,17 @@ mkdir -p docker
 mkdir -p docs
 mkdir -p .github/workflows
 
-# 3. Copy relevant files from helix-studio
+# 3. Copy relevant files from hlx-dev-studio
 # Copy runtime components
-cp /home/matt/helix-studio/hlx_runtime/{lc_codec,cas,ls_ops,pre_serialize,contracts,errors,__init__}.py hlx_runtime/
+cp /home/matt/hlx-dev-studio/hlx_runtime/{lc_codec,cas,ls_ops,pre_serialize,contracts,errors,__init__}.py hlx_runtime/
 
 # Copy existing Vulkan work (if any)
-cp /home/matt/helix-studio/hlx_runtime/tests/test_opus_audit.py hlx_runtime/tests/
+cp /home/matt/hlx-dev-studio/hlx_runtime/tests/test_opus_audit.py hlx_runtime/tests/
 
 # Copy roadmap documents
-cp /home/matt/helix-studio/VULKAN_ROADMAP.md docs/
-cp /home/matt/helix-studio/VULKAN_PHASE1_ASSESSMENT.md docs/
-cp /home/matt/helix-studio/PHASE1_KICKOFF.md docs/
+cp /home/matt/hlx-dev-studio/VULKAN_ROADMAP.md docs/
+cp /home/matt/hlx-dev-studio/VULKAN_PHASE1_ASSESSMENT.md docs/
+cp /home/matt/hlx-dev-studio/PHASE1_KICKOFF.md docs/
 
 # 4. Create README
 cat > README.md << 'EOF'
@@ -560,8 +560,8 @@ When you eventually share hlx-vulkan:
 ## What to Do Right Now
 
 ```bash
-# 1. Clean up current helix-studio repo (make it corpus-only)
-cd /home/matt/helix-studio
+# 1. Clean up current hlx-dev-studio repo (make it corpus-only)
+cd /home/matt/hlx-dev-studio
 
 # 2. List what needs to be removed
 ls -la
@@ -574,4 +574,4 @@ echo "Ready to create three clean repos"
 
 **Status:** Ready to execute
 **Estimated time:** 2-3 hours for full reorganization
-**Next action:** Clean up helix-studio → make it HLXv1.1.0 corpus-only
+**Next action:** Clean up hlx-dev-studio → make it HLXv1.1.0 corpus-only

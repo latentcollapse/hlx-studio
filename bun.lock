@@ -3,7 +3,7 @@
   "configVersion": 1,
   "workspaces": {
     "": {
-      "name": "helix-studio",
+      "name": "hlx-dev-studio",
       "dependencies": {
         "lucide-react": "^0.344.0",
         "react": "^18.3.1",

@@ -1,5 +1,5 @@
 {
-  "name": "helix-studio",
+  "name": "hlx-dev-studio",
   "version": "1.0.1",
   "private": true,
   "description": "LLM-native IDE with reversible HLX language pipeline.",
@@ -19,8 +19,8 @@
     "tauri:build": "tauri build"
   },
   "build": {
-    "appId": "com.helix.studio",
-    "productName": "Helix Studio",
+    "appId": "com.hlx.devstudio",
+    "productName": "HLX Dev Studio",
     "directories": {
       "output": "release"
     },

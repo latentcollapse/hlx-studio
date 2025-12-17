@@ -1,6 +1,6 @@
 
 export const BRAND = {
-  name: "Helix Studio",
+  name: "HLX Dev Studio",
   tagline: "The first LLM-native development environment.",
   codexVersion: "1.0.0 (FROZEN)",
   theme: "Cosmic Glass",

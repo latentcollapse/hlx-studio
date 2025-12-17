@@ -17,7 +17,7 @@ const Archive: React.FC = () => {
   ];
 
   const mockItems = [
-    { id: 1, type: 'PROJECT', name: 'helix-studio', hash: '0x8F2A...', date: 'Dec 14' },
+    { id: 1, type: 'PROJECT', name: 'hlx-dev-studio', hash: '0x8F2A...', date: 'Dec 14' },
     { id: 2, type: 'OS_PROFILE', name: 'Helinux Base', hash: '0x3B4C...', date: 'Dec 13' },
     { id: 3, type: 'KERNEL_PROFILE', name: 'Custom Kernel 6.8.9', hash: '0x7D1E...', date: 'Dec 12' },
     { id: 4, type: 'PLAN', name: 'HLX v2 Roadmap', hash: '0x9A2F...', date: 'Dec 11' },

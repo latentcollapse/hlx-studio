@@ -1,5 +1,5 @@
 [package]
-name = "helix-studio"
+name = "hlx-dev-studio"
 version = "1.0.1"
 description = "LLM-native IDE with reversible HLX language pipeline"
 authors = ["Architect"]

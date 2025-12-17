@@ -18,7 +18,7 @@ All notable changes to the HLX teaching corpus are documented here.
 - **Corpus Organization**: Structured as `corpus/` directory with canonical, raw, and watermark files
 
 ### Fixed
-- Removed IDE/studio dependencies from v1.1.0 release (kept in helix-studio repo)
+- Removed IDE/studio dependencies from v1.1.0 release (kept in hlx-dev-studio repo)
 - Eliminated file size bloat (removed Electron builds, node_modules references)
 
 ### Technical Details
