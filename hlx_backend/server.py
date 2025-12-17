@@ -14,12 +14,13 @@ from pathlib import Path
 # Add parent directory to path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from hlx_backend.routes import runtime, observer, hlxl
+from hlx_backend.routes import runtime, observer, hlxl, claude_control
+from hlx_backend.auth import auth_manager
 
 # Create FastAPI app
 app = FastAPI(
     title="HLX Dev Studio API",
-    description="Backend API for HLX Dev Studio - exposes HLX runtime operations",
+    description="Backend API for HLX Dev Studio - exposes HLX runtime operations and Claude control",
     version="0.1.0",
     docs_url="/docs",
     redoc_url="/redoc"
@@ -43,6 +44,7 @@ app.add_middleware(
 app.include_router(runtime.router)
 app.include_router(observer.router)
 app.include_router(hlxl.router)
+app.include_router(claude_control.router)
 
 
 @app.get("/")
@@ -56,7 +58,8 @@ async def root():
             "docs": "/docs",
             "runtime": "/hlx",
             "observer": "/observer/ws",
-            "hlxl": "/hlxl"
+            "hlxl": "/hlxl",
+            "claude": "/claude"
         }
     }
 
