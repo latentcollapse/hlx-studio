@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=HLX Dev Studio
+Comment=LLM-native IDE with reversible HLX language pipeline
+Exec=/home/matt/hlx-dev-studio/launch-studio.sh
+Icon=hlx-dev-studio
+Terminal=false
+Categories=Development;IDE;
+StartupNotify=true
+MimeType=text/plain;application/json;
