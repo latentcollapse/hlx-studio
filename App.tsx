@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Terminal, Command, Code, TerminalSquare, Archive as ArchiveIcon, Cpu, Download, Lock, Package, Triangle } from 'lucide-react';
+import { Terminal, Command, Code, TerminalSquare, Archive as ArchiveIcon, Cpu, Download, Lock, Package, Triangle, Eye } from 'lucide-react';
 import { ViewMode } from './types';
 import HelixCLI from './views/HelixCLI';
 import HLXEngine from './views/HLXEngine';
@@ -10,6 +10,7 @@ import Archive from './views/Archive';
 import JSONSpecViewer from './views/JSONSpecViewer';
 import NativeCodex from './views/NativeCodex';
 import HLXVisualizer from './views/HLXVisualizer';
+import ObserverView from './views/ObserverView';
 import { BRAND } from './config/branding';
 import { generateBootstrapCapsule } from './utils/bootstrapFactory';
 
@@ -27,6 +28,7 @@ function App() {
       case ViewMode.JSON_SPEC: return <JSONSpecViewer />;
       case ViewMode.NATIVE_CODEX: return <NativeCodex />;
       case ViewMode.HLX_NATIVE: return <HLXVisualizer />;
+      case ViewMode.OBSERVER: return <ObserverView />;
       default: return <HelixCLI />;
     }
   };
@@ -69,8 +71,8 @@ function App() {
            
            {/* Navigation Tabs */}
            <div className="flex items-center gap-1">
-              <NavTab 
-                 active={currentView === ViewMode.HELIX} 
+              <NavTab
+                 active={currentView === ViewMode.HELIX}
                  onClick={() => setCurrentView(ViewMode.HELIX)}
                  icon={<Terminal size={15} />}
                  label="HELIX"
@@ -81,23 +83,29 @@ function App() {
                  icon={<Triangle size={15} />}
                  label="PRISM"
               />
-              <NavTab 
-                 active={currentView === ViewMode.CRUCIBLE} 
+              <NavTab
+                 active={currentView === ViewMode.CRUCIBLE}
                  onClick={() => setCurrentView(ViewMode.CRUCIBLE)}
                  icon={<Code size={15} />}
                  label="CRUCIBLE"
               />
-              <NavTab 
-                 active={currentView === ViewMode.TTY1} 
+              <NavTab
+                 active={currentView === ViewMode.TTY1}
                  onClick={() => setCurrentView(ViewMode.TTY1)}
                  icon={<TerminalSquare size={15} />}
                  label="TTY1"
               />
-              <NavTab 
-                 active={currentView === ViewMode.ARCHIVE} 
+              <NavTab
+                 active={currentView === ViewMode.ARCHIVE}
                  onClick={() => setCurrentView(ViewMode.ARCHIVE)}
                  icon={<ArchiveIcon size={15} />}
                  label="ARCHIVE"
+              />
+              <NavTab
+                 active={currentView === ViewMode.OBSERVER}
+                 onClick={() => setCurrentView(ViewMode.OBSERVER)}
+                 icon={<Eye size={15} />}
+                 label="OBSERVER"
               />
            </div>
         </div>

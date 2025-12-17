@@ -38,7 +38,8 @@ export enum ViewMode {
   ARCHIVE = 'ARCHIVE',
   JSON_SPEC = 'JSON_SPEC',
   NATIVE_CODEX = 'NATIVE_CODEX',
-  HLX_NATIVE = 'HLX_NATIVE'
+  HLX_NATIVE = 'HLX_NATIVE',
+  OBSERVER = 'OBSERVER'
 }
 
 export interface HLXPacks {
