@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!--
+    Authentic Valknut (Hrungnir's Heart)
+    Three interlocked triangles with Borromean topology
+    Clean black stroke design for icon use
+  -->
+
+  <!--
+    Triangle positions calculated for proper interlocking:
+    T1: apex (100,25), base at y=103, pointing DOWN
+    T2: apex (62,155), base at y=75, pointing UP, offset left
+    T3: apex (138,155), base at y=75, pointing UP, offset right
+
+    Key intersections where weaving occurs:
+    - T1 right edge crosses T3 left edge around (130,70)
+    - T1 left edge crosses T2 right edge around (70,70)
+    - T1 base crosses T2/T3 tops around y=90-100
+  -->
+
+  <!-- Layer 1: Draw all three complete triangles -->
+  <g fill="none" stroke="#000" stroke-width="5" stroke-linejoin="round">
+    <polygon id="t1" points="100,25 145,103 55,103"/>
+    <polygon id="t2" points="62,155 102,75 22,75"/>
+    <polygon id="t3" points="138,155 178,75 98,75"/>
+  </g>
+
+  <!-- Layer 2: White breaks create UNDER illusion -->
+  <g fill="none" stroke="#fff" stroke-width="10">
+    <!-- T1 passes UNDER T3: break T1's right edge -->
+    <line x1="126" y1="58" x2="137" y2="77"/>
+
+    <!-- T1 passes UNDER T2: break T1's left edge -->
+    <line x1="74" y1="58" x2="63" y2="77"/>
+
+    <!-- T2 passes UNDER T1: break T2's right edge near T1's base -->
+    <line x1="80" y1="88" x2="92" y2="103"/>
+
+    <!-- T3 passes UNDER T2: break T3's left edge near T2's right -->
+    <line x1="108" y1="88" x2="120" y2="103"/>
+  </g>
+
+  <!-- Layer 3: Black redraws for OVER crossings -->
+  <g fill="none" stroke="#000" stroke-width="5">
+    <!-- T3 OVER T1: redraw T3's left edge segment -->
+    <line x1="123" y1="52" x2="140" y2="82"/>
+
+    <!-- T2 OVER T1: redraw T2's right edge segment -->
+    <line x1="77" y1="52" x2="60" y2="82"/>
+
+    <!-- T1 OVER T2: redraw T1's base segment over T2 -->
+    <line x1="76" y1="84" x2="96" y2="103"/>
+
+    <!-- T2 OVER T3: redraw T2's right edge over T3's left -->
+    <line x1="104" y1="84" x2="124" y2="103"/>
+  </g>
+
+</svg>

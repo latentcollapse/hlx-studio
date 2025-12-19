@@ -1,0 +1,43 @@
+{
+  "benchmark_id": "model_day2_verification",
+  "timestamp": "2025-12-18T11:07:55.060579Z",
+  "component": "HLXLTransformer Model",
+  "git_commit": "f0fe2c7d4bd0f0dd07488bb7b2e481e1436408f2",
+  "environment": {
+    "python_version": "3.13.11",
+    "pytorch_version": "2.9.1+cu128",
+    "platform": "linux",
+    "os": "Linux 6.17.9-zen1-1-zen"
+  },
+  "test_results": {
+    "total_tests": 18,
+    "passed": 18,
+    "failed": 0,
+    "test_time_seconds": 3.33
+  },
+  "model_architecture": {
+    "vocab_size": 115,
+    "d_model": 128,
+    "num_layers": 2,
+    "attention_heads": 4,
+    "dim_feedforward": 512,
+    "max_seq_length": 512,
+    "dropout": 0.1
+  },
+  "model_specifications": {
+    "total_parameters": 491635,
+    "size_mb": 1.88,
+    "target_parameters": 5000000,
+    "meets_compactness_target": true
+  },
+  "validation_tests": {
+    "forward_pass": "passed",
+    "generation": "passed",
+    "deterministic_generation": "passed",
+    "causal_masking": "passed",
+    "gradient_flow": "passed",
+    "save_load": "passed",
+    "eval_mode": "passed"
+  },
+  "notes": "All data represents actual test execution results. Model is ultra-compact at 491K params (10x smaller than 5M target). Ready for training phase."
+}

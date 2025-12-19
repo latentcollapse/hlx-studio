@@ -1,0 +1,63 @@
+/home/matt/hlx/hlxl_brain/train_qwen_distillation.py:299: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  "timestamp": datetime.utcnow().isoformat() + "Z",
+Using device: cuda
+Vocab size: 103
+Loaded 164 English examples from corpus
+
+================================================================================
+QWEN DISTILLATION TRAINING - FREE COMPUTE EXPERIMENT
+================================================================================
+Teacher: Qwen3:0.6b (local, free)
+Student: Helix100m (specialized)
+Epochs: 10
+Learning rate: 0.0001
+Batch size: 4
+================================================================================
+
+
+================================================================================
+ARCHITECTURE VERIFICATION
+================================================================================
+Total parameters: 101,242,983
+Expected: ~100M (target: 101,533,813)
+d_model: 1024
+Vocab size: 103
+✓ Architecture verified
+================================================================================
+
+Epoch 1/10 | Batch 0/37 | Loss: 4.6584
+Epoch 1/10 | Batch 10/37 | Loss: 0.3941
+Epoch 1/10 | Batch 20/37 | Loss: 0.2970
+Epoch 1/10 | Batch 30/37 | Loss: 0.2637
+
+================================================================================
+EPOCH 1/10 COMPLETE
+================================================================================
+Train Loss: 0.4632
+Val Loss: 0.2915
+================================================================================
+
+✓ Saved new best model (loss: 0.2915)
+
+============================================================
+QUALITY GATE: Epoch 1
+============================================================
+
+Prompt: Search for documents
+Output: eeaeeeeeeeeeeeeaeaea...
+
+Prompt: Filter active users
+Output: aeeeeeeaaeaaeeeeeee...
+
+Prompt: The quick brown fox
+Output: aaaaaaaaaaaaaaaaaaa...
+
+❌ QUALITY GATE FAILED:
+  - Character collapse detected
+  - Character collapse detected
+  - Character collapse detected
+============================================================
+
+❌ TRAINING ABORTED: Quality gate failed at epoch 1
+
+❌ Training failed. Check logs for details.

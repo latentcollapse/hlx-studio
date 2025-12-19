@@ -1,0 +1,160 @@
+/home/matt/.local/lib/python3.13/site-packages/torch/nn/modules/transformer.py:392: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(
+/home/matt/hlx/hlxl_brain/evaluate_model.py:297: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  "timestamp": datetime.utcnow().isoformat() + "Z",
+================================================================================
+HLXL BRAIN - COMPREHENSIVE MODEL EVALUATION
+================================================================================
+Checkpoint: checkpoints/phase4_final_epoch105.pt
+Max tokens: 100
+Temperature: 0.0
+
+Device: cuda
+GPU: NVIDIA GeForce RTX 5060
+
+Creating tokenizer...
+✓ Tokenizer created: 115 tokens
+
+Creating model...
+✓ Model created: 491,635 parameters (1.88 MB)
+
+Loading checkpoint: checkpoints/phase4_final_epoch105.pt
+✓ Checkpoint loaded
+  - Epoch: 80
+  - Train loss: unknown
+  - Val loss: unknown
+
+
+================================================================================
+PHASE 1 EVALUATION: SEMANTIC GROUNDING
+================================================================================
+
+Test 1: Navigate to home directory
+Expected: Expected: navigate operation
+Generated: <BOS>Navigate to home directory<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD
+
+Test 2: Search for documents
+Expected: Expected: search operation
+Generated: <BOS>Search for documents<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD>
+
+Test 3: Filter active users
+Expected: Expected: filter operation
+Generated: <BOS>Filter active users<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><
+
+Test 4: Transform text to uppercase
+Expected: Expected: transform operation
+Generated: <BOS>Transform text to uppercase<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PA
+
+Test 5: Aggregate sum of values
+Expected: Expected: aggregate operation with sum
+Generated: <BOS>Aggregate sum of values<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><P
+
+================================================================================
+PHASE 2 EVALUATION: DOMAIN KNOWLEDGE
+================================================================================
+
+Test 1: Read file /etc/config.json
+Expected: Expected: file system operation
+Generated: <BOS>Read file /etc/config.json<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD
+
+Test 2: List all files in directory
+Expected: Expected: directory operation
+Generated: <BOS>List all files in directory<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PA
+
+Test 3: Query database for users
+Expected: Expected: database operation
+Generated: <BOS>Query database for users<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><
+
+Test 4: Group records by category and sum
+Expected: Expected: data structure + aggregation
+Generated: <BOS>Group records by category and sum<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><P
+
+Test 5: If condition then action else other
+Expected: Expected: conditional logic
+Generated: <BOS>If condition then action else other<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD>
+
+================================================================================
+PHASE 3 EVALUATION: LONG-FORM REASONING
+================================================================================
+
+Test 1: Load data, validate, transform, and save
+Expected: Expected: multi-step pipeline
+Generated: <BOS>Load data, validate, transform, and save<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD>
+
+Test 2: For each item, if valid then process
+Expected: Expected: iteration with conditional
+Generated: <BOS>For each item, if valid then process<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD
+
+Test 3: Recursively traverse tree and collect values
+Expected: Expected: recursive pattern
+Generated: <BOS>Recursively traverse tree and collect values<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><
+
+Test 4: Initialize counter, increment for each match
+Expected: Expected: stateful operation
+Generated: <BOS>Initialize counter, increment for each match<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><
+
+Test 5: Filter users, sort by date, take top 10
+Expected: Expected: complex multi-operation
+Generated: <BOS>Filter users, sort by date, take top 10<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><
+
+================================================================================
+PHASE 4 EVALUATION: PERFECT HLX + QUALITY ENGLISH
+================================================================================
+
+--- Multiple Phrasings Test ---
+Search for documents → <BOS>Search for documents<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD>
+Find documents → <BOS>Find documents<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><
+Look up documents → <BOS>Look up documents<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PA
+Locate documents → <BOS>Locate documents<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD
+
+--- Conversational Style Test ---
+Let's search the database for users → <BOS>Let's search the database for users<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD>
+I need to filter out invalid records → <BOS>I need to filter out invalid records<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD
+Can you sort these by date? → <BOS>Can you sort these by date?<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PA
+Please aggregate the sales data → <BOS>Please aggregate the sales data<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD
+
+--- LC-R → English Test ---
+🜊1000🜁0 "search"🜁1 ⟁database🜂 → <BOS>🜊1000🜁0 "search"🜁1 ⟁database🜂<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><
+🜊1000🜁0 "filter"🜁1 ⟁items🜂 → <BOS>🜊1000🜁0 "filter"🜁1 ⟁items🜂<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD
+🜊1000🜁0 "aggregate"🜁1 ⟁sum🜁2 ⟁values🜂 → <BOS>🜊1000🜁0 "aggregate"🜁1 ⟁sum🜁2 ⟁values🜂<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PA
+
+================================================================================
+GENERATION QUALITY EVALUATION
+================================================================================
+
+Empty prompt (should generate valid LC-R)
+Prompt: ''
+Generated: <BOS><EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD>
+Valid structure: BOS=True, Glyphs=False, EOS=True
+
+Single word
+Prompt: 'Filter'
+Generated: <BOS>Filter<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD
+Valid structure: BOS=True, Glyphs=False, EOS=True
+
+Two words
+Prompt: 'Search database'
+Generated: <BOS>Search database<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD>
+Valid structure: BOS=True, Glyphs=False, EOS=True
+
+Complex multi-op
+Prompt: 'Filter active users and sort by date'
+Generated: <BOS>Filter active users and sort by date<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD
+Valid structure: BOS=True, Glyphs=False, EOS=True
+
+Question format
+Prompt: 'What is the sum of all values?'
+Generated: <BOS>What is the sum of all values?<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD>
+Valid structure: BOS=True, Glyphs=False, EOS=True
+
+================================================================================
+SAVING RESULTS
+================================================================================
+✓ Results saved to evaluation_results.json
+
+================================================================================
+EVALUATION COMPLETE
+================================================================================
+Model: 491,635 parameters (1.88 MB)
+Results saved: evaluation_results.json
+================================================================================

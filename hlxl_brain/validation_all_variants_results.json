@@ -1,0 +1,160 @@
+{
+  "test_cases": [
+    {
+      "english": "Search for documents",
+      "description": "Basic search operation",
+      "outputs": {
+        "HLXL": "",
+        "LC-R": "",
+        "LC-T": "",
+        "LC-B": ""
+      }
+    },
+    {
+      "english": "Filter active users",
+      "description": "Filter operation",
+      "outputs": {
+        "HLXL": "",
+        "LC-R": "",
+        "LC-T": "",
+        "LC-B": ""
+      }
+    },
+    {
+      "english": "Navigate to home",
+      "description": "Navigation command",
+      "outputs": {
+        "HLXL": "",
+        "LC-R": "",
+        "LC-T": "",
+        "LC-B": ""
+      }
+    },
+    {
+      "english": "Execute command",
+      "description": "Execute operation",
+      "outputs": {
+        "HLXL": "",
+        "LC-R": "",
+        "LC-T": "",
+        "LC-B": ""
+      }
+    },
+    {
+      "english": "Read from database",
+      "description": "Read operation",
+      "outputs": {
+        "HLXL": "",
+        "LC-R": "",
+        "LC-T": "",
+        "LC-B": ""
+      }
+    },
+    {
+      "english": "Empty list",
+      "description": "Empty array",
+      "outputs": {
+        "HLXL": "",
+        "LC-R": "",
+        "LC-T": "",
+        "LC-B": ""
+      }
+    },
+    {
+      "english": "List of numbers one two three",
+      "description": "Number array",
+      "outputs": {
+        "HLXL": "",
+        "LC-R": "",
+        "LC-T": "",
+        "LC-B": ""
+      }
+    },
+    {
+      "english": "User object with name",
+      "description": "Simple object",
+      "outputs": {
+        "HLXL": "",
+        "LC-R": "",
+        "LC-T": "",
+        "LC-B": ""
+      }
+    },
+    {
+      "english": "Point with x and y coordinates",
+      "description": "Coordinate object",
+      "outputs": {
+        "HLXL": "",
+        "LC-R": "",
+        "LC-T": "",
+        "LC-B": ""
+      }
+    },
+    {
+      "english": "Copy source to destination",
+      "description": "Two-argument operation",
+      "outputs": {
+        "HLXL": "",
+        "LC-R": "",
+        "LC-T": "",
+        "LC-B": ""
+      }
+    },
+    {
+      "english": "Train model on data",
+      "description": "ML operation",
+      "outputs": {
+        "HLXL": "",
+        "LC-R": "",
+        "LC-T": "",
+        "LC-B": ""
+      }
+    },
+    {
+      "english": "Create render pipeline",
+      "description": "GPU operation",
+      "outputs": {
+        "HLXL": "",
+        "LC-R": "",
+        "LC-T": "",
+        "LC-B": ""
+      }
+    },
+    {
+      "english": "Integer literal forty-two",
+      "description": "Literal contract",
+      "outputs": {
+        "HLXL": "",
+        "LC-R": "",
+        "LC-T": "",
+        "LC-B": ""
+      }
+    },
+    {
+      "english": "Assign forty-two to x",
+      "description": "Assignment",
+      "outputs": {
+        "HLXL": "",
+        "LC-R": "",
+        "LC-T": "",
+        "LC-B": ""
+      }
+    },
+    {
+      "english": "Call function add with one and two",
+      "description": "Function call",
+      "outputs": {
+        "HLXL": "",
+        "LC-R": "",
+        "LC-T": "",
+        "LC-B": ""
+      }
+    }
+  ],
+  "summary": {
+    "total_cases": 15,
+    "lcr_glyph_rate": 0.0,
+    "lct_correct_rate": 0.0,
+    "lcb_correct_rate": 0.0
+  }
+}

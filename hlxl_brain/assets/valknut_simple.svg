@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Simplified Valknut - Three Triangles in Borromean Link Pattern
+     Recognizable iconic design -->
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle for visual grounding (optional) -->
+  <circle cx="100" cy="100" r="80" fill="none" stroke="#cccccc" stroke-width="1" opacity="0.3"/>
+
+  <!-- Triangle 1: Top (12 o'clock position) -->
+  <polygon points="100,35 130,85 70,85"
+           fill="none"
+           stroke="#000000"
+           stroke-width="6"
+           stroke-linejoin="miter"
+           style="paint-order: stroke"/>
+
+  <!-- Triangle 2: Bottom-Right (4 o'clock position) -->
+  <polygon points="140,110 155,135 125,135"
+           fill="none"
+           stroke="#000000"
+           stroke-width="6"
+           stroke-linejoin="miter"
+           style="paint-order: stroke"/>
+
+  <!-- Triangle 3: Bottom-Left (8 o'clock position) -->
+  <polygon points="60,110 75,135 45,135"
+           fill="none"
+           stroke="#000000"
+           stroke-width="6"
+           stroke-linejoin="miter"
+           style="paint-order: stroke"/>
+
+  <!-- Interlocking connections (the "knot" part) -->
+  <!-- These create the visual weaving effect -->
+  <g>
+    <!-- Connection 1: Top to Bottom-Right -->
+    <path d="M 115,75 L 130,105"
+          stroke="#000000"
+          stroke-width="6"
+          fill="none"
+          stroke-linecap="round"/>
+
+    <!-- Connection 2: Bottom-Right to Bottom-Left -->
+    <path d="M 125,130 L 75,130"
+          stroke="#000000"
+          stroke-width="6"
+          fill="none"
+          stroke-linecap="round"/>
+
+    <!-- Connection 3: Bottom-Left to Top -->
+    <path d="M 70,105 L 85,75"
+          stroke="#000000"
+          stroke-width="6"
+          fill="none"
+          stroke-linecap="round"/>
+  </g>
+
+  <!-- Central intersection point (where all three meet) -->
+  <circle cx="100" cy="100" r="4" fill="#000000"/>
+</svg>

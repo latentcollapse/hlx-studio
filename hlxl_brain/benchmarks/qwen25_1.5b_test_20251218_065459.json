@@ -1,0 +1,68 @@
+{
+  "benchmark_id": "qwen25_1.5b_bigger_brain_test",
+  "timestamp": "2025-12-18T11:54:36.814233+00:00",
+  "model": "qwen2.5:1.5b",
+  "model_info": {
+    "#": "FROM qwen2.5:1.5b",
+    "FROM": "/usr/share/ollama/.ollama/models/blobs/sha256-183715c435899236895da3869489cc30ac241476b4971a20285b1a462818a5b4",
+    "\"Object\"": "form shall mean any form resulting from mechanical",
+    "form,": "that is based on (or derived from) the Work and for which the",
+    "separable": "from, or merely link (or bind by name) to the interfaces of,",
+    "attribution": "notices from the Source form of the Work,",
+    "or": "as an addendum to the NOTICE text from the Work, provided"
+  },
+  "comparison_target": {
+    "name": "HLXL Tiny Brain",
+    "parameters": 491635,
+    "size_mb": 1.88,
+    "tokens_per_second": 700.4,
+    "vocab_size": 115
+  },
+  "test_results": [
+    {
+      "test_name": "LC-R Simple",
+      "description": "LC-R formatted prompt",
+      "prompt": "\ud83d\udf0a\ud83d\udf01explain\ud83d\udf01model \u27c1transformer\ud83d\udf02",
+      "success": true,
+      "output": "A \"Transformer\" is a type of neural network architecture used in natural language processing (NLP), specifically within the field of sequence-to-sequence learning, which involves taking an input sequence and producing an output sequence. The Transformer model was introduced by Vaswani et al. in 2017 as part of their paper \"Attention is All You Need.\"\n\nIn a Transformer architecture:\n- **Self-attention** plays a central role: instead of using traditional recurrent or convolutional methods to attend over the input sequence, Transformers use self-attention mechanisms. This means that each token within the input (or output) can directly interact with any other token.\n  \n- **Sequence-to-sequence encoding**: The Transformer encodes an input sequence and then decodes it into a target sequence. Each element in the input sequence is attended over every element in the output sequence, allowing for inter-dependencies between elements.\n\n- **Spatial transformation** of information: Unlike traditional recurrent neural networks (RNNs), Transformers do not rely on keeping track of the position of each token across time steps or spaces within a grid/grid-cell representation. This makes them more efficient and faster to compute.\n\nKey features of Transformers:\n1. Efficiency: The architecture is significantly less computationally intensive compared to RNN-based models, especially for long sequences.\n2. Flexibility: It can handle sequences of any length and type (e.g., text, speech).\n3. Non-local interactions: Unlike traditional sequence-to-sequence approaches where attention has local scope, Transformers allow for global dependencies in the input-output pairs.\n\nTransformers have been highly influential in NLP, leading to significant improvements in models like:\n- Language Models\n- Pre-trained language models (e.g., BERT, GPT)\n- Machine Translation\n\nIn summary, while other architectures might use recurrent or convolutional methods to manage sequence information over time, Transformers fundamentally change the way sequences are processed by allowing them to interact directly and efficiently with any part of their input or output.",
+      "tokens_generated": 302,
+      "time_ms": 5270.47,
+      "tokens_per_second": 57.3,
+      "temperature": 0.0
+    },
+    {
+      "test_name": "Plain English",
+      "description": "Standard English prompt",
+      "prompt": "Explain what a transformer model is in one sentence.",
+      "success": true,
+      "output": "A Transformer model is a type of neural network architecture specifically designed for sequence-to-sequence tasks with attention mechanisms, optimized for performance and efficiency on large datasets.",
+      "tokens_generated": 26,
+      "time_ms": 15715.76,
+      "tokens_per_second": 1.65,
+      "temperature": 0.0
+    },
+    {
+      "test_name": "Code Generation",
+      "description": "Code generation test",
+      "prompt": "Write a Python function to calculate fibonacci numbers.",
+      "success": true,
+      "output": "Certainly! Below is a simple implementation of the Fibonacci sequence in Python:\n\n```python\ndef fibonacci(n):\n    \"\"\"\n    Calculate the n-th number in the Fibonacci sequence.\n\n    :param n: The position in the Fibonacci sequence (1-indexed).\n    :return: The n-th Fibonacci number.\n    \"\"\"\n    if n == 1:\n        return 0\n    elif n == 2:\n        return 1\n    \n    a, b = 0, 1\n    for _ in range(2, n):\n        a, b = b, a + b\n    return b\n\n# Example usage:\nn = 10\nprint(f\"The {n}-th Fibonacci number is: {fibonacci(n)}\")\n```\n\nThis function calculates the `n`-th number in the Fibonacci sequence using an iterative approach. The first two numbers in the sequence are predefined as 0 and 1, and each subsequent number is computed by summing the previous two.\n\nFor example:\n- The 6th Fibonacci number would be 5.\n- The 7th Fibonacci number would be 8.\n\nThe function `fibonacci(n)` can be called with any positive integer to get the corresponding Fibonacci number.",
+      "tokens_generated": 155,
+      "time_ms": 2028.93,
+      "tokens_per_second": 76.39,
+      "temperature": 0.0
+    }
+  ],
+  "aggregated_performance": {
+    "tests_run": 3,
+    "tests_successful": 3,
+    "avg_tokens_generated": 161.0,
+    "avg_time_ms": 7671.72,
+    "avg_tokens_per_second": 45.11
+  },
+  "comparison_analysis": {
+    "tiny_brain_faster_by": "15.53x",
+    "qwen_param_advantage": "3051x more parameters",
+    "note": "Tiny brain optimized for speed, Qwen optimized for capability"
+  }
+}

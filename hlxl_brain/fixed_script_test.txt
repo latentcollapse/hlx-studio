@@ -1,0 +1,63 @@
+/home/matt/hlx/hlxl_brain/train_qwen_distillation.py:313: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  "timestamp": datetime.utcnow().isoformat() + "Z",
+Using device: cuda
+Vocab size: 104
+Loaded 164 English examples from corpus
+
+================================================================================
+QWEN DISTILLATION TRAINING - FREE COMPUTE EXPERIMENT
+================================================================================
+Teacher: Qwen3:0.6b (local, free)
+Student: Helix100m (specialized)
+Epochs: 3
+Learning rate: 0.0001
+Batch size: 4
+================================================================================
+
+
+================================================================================
+ARCHITECTURE VERIFICATION
+================================================================================
+Total parameters: 101,245,032
+Expected: ~100M (target: 101,533,813)
+d_model: 1024
+Vocab size: 104
+✓ Architecture verified
+================================================================================
+
+Epoch 1/3 | Batch 0/37 | Loss: 4.9688
+Epoch 1/3 | Batch 10/37 | Loss: 3.0751
+Epoch 1/3 | Batch 20/37 | Loss: 3.1160
+Epoch 1/3 | Batch 30/37 | Loss: 2.8396
+
+================================================================================
+EPOCH 1/3 COMPLETE
+================================================================================
+Train Loss: 3.1684
+Val Loss: 3.0223
+================================================================================
+
+✓ Saved new best model (loss: 3.0223)
+
+============================================================
+QUALITY GATE: Epoch 1
+============================================================
+
+Prompt: Search for documents
+Output:                     ...
+
+Prompt: Filter active users
+Output:                    ...
+
+Prompt: The quick brown fox
+Output:                    ...
+
+❌ QUALITY GATE FAILED:
+  - Character collapse detected
+  - Character collapse detected
+  - Character collapse detected
+============================================================
+
+❌ TRAINING ABORTED: Quality gate failed at epoch 1
+
+❌ Training failed. Check logs for details.

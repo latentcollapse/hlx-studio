@@ -1,10 +1,11 @@
 
 import React, { useState } from 'react';
-import { Terminal, Code, TerminalSquare, Archive as ArchiveIcon, Cpu } from 'lucide-react';
+import { Terminal, Code, TerminalSquare, Archive as ArchiveIcon, Cpu, Brain } from 'lucide-react';
 import { ViewMode } from './types';
 import HelixCLI from './views/HelixCLI';
 import Crucible from './views/Crucible';
 import TTY1 from './views/TTY1';
+import TrainingCenter from './views/TrainingCenter';
 import Archive from './views/Archive';
 import { BRAND } from './config/branding';
 
@@ -16,6 +17,7 @@ function App() {
       case ViewMode.HELIX: return <HelixCLI />;
       case ViewMode.CRUCIBLE: return <Crucible />;
       case ViewMode.TTY1: return <TTY1 />;
+      case ViewMode.TRAINING_CENTER: return <TrainingCenter />;
       case ViewMode.ARCHIVE: return <Archive />;
       default: return <HelixCLI />;
     }
@@ -57,6 +59,12 @@ function App() {
                  onClick={() => setCurrentView(ViewMode.TTY1)}
                  icon={<TerminalSquare size={15} />}
                  label="TTY1"
+              />
+              <NavTab
+                 active={currentView === ViewMode.TRAINING_CENTER}
+                 onClick={() => setCurrentView(ViewMode.TRAINING_CENTER)}
+                 icon={<Brain size={15} />}
+                 label="TRAINING"
               />
               <NavTab
                  active={currentView === ViewMode.ARCHIVE}

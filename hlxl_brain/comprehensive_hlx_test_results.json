@@ -1,0 +1,406 @@
+{
+  "timestamp": "2025-12-18T13:15:35.179488Z",
+  "model_params": 491635,
+  "tests": {
+    "hlx_basic": {
+      "tests": [
+        {
+          "prompt": "HLX: search",
+          "description": "Basic search operation",
+          "output": "<BOS>HLX: search<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD",
+          "length": 271
+        },
+        {
+          "prompt": "HLX: filter",
+          "description": "Basic filter operation",
+          "output": "<BOS>HLX: filter<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD",
+          "length": 271
+        },
+        {
+          "prompt": "HLX: transform",
+          "description": "Basic transform operation",
+          "output": "<BOS>HLX: transform<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><",
+          "length": 274
+        },
+        {
+          "prompt": "HLX: aggregate",
+          "description": "Basic aggregate operation",
+          "output": "<BOS>HLX: aggregate<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><",
+          "length": 274
+        },
+        {
+          "prompt": "HLX: search documents",
+          "description": "Search with target",
+          "output": "<BOS>HLX: search documents<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD",
+          "length": 281
+        },
+        {
+          "prompt": "HLX: filter active users",
+          "description": "Filter with condition",
+          "output": "<BOS>HLX: filter active users<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><",
+          "length": 284
+        },
+        {
+          "prompt": "HLX: transform data to json",
+          "description": "Transform with types",
+          "output": "<BOS>HLX: transform data to json<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PA",
+          "length": 287
+        }
+      ],
+      "count": 7
+    },
+    "hlx_ls": {
+      "tests": [
+        {
+          "prompt": "HLX-LS:\\nsearch\\nfilter\\ntransform",
+          "description": "Multi-line operations",
+          "output": "<BOS>HLX-LS:\nsearch\nfilter\ntransform<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD"
+        },
+        {
+          "prompt": "HLX-LS:\\noperation: search\\ntarget: documents\\nfilter: active",
+          "description": "Structured format",
+          "output": "<BOS>HLX-LS:\noperation: search\ntarget: documents\nfilter: active<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><P"
+        }
+      ],
+      "count": 2
+    },
+    "hlxl": {
+      "tests": [
+        {
+          "prompt": "HLXL: SEARCH documents WHERE status = active",
+          "description": "HLXL query syntax",
+          "output": "<BOS>HLXL: SEARCH documents WHERE status = active<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><"
+        },
+        {
+          "prompt": "HLXL: FILTER users BY role",
+          "description": "HLXL filter with BY clause",
+          "output": "<BOS>HLXL: FILTER users BY role<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD"
+        },
+        {
+          "prompt": "HLXL: TRANSFORM data FROM json TO xml",
+          "description": "HLXL transform with types",
+          "output": "<BOS>HLXL: TRANSFORM data FROM json TO xml<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PA"
+        },
+        {
+          "prompt": "HLXL: AGGREGATE sales GROUP BY region",
+          "description": "HLXL aggregation",
+          "output": "<BOS>HLXL: AGGREGATE sales GROUP BY region<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PA"
+        }
+      ],
+      "count": 4
+    },
+    "hlxl_ls": {
+      "tests": [
+        {
+          "prompt": "HLXL-LS:\\nSEARCH documents\\nWHERE status = active\\nLIMIT 10",
+          "description": "Multi-line HLXL query",
+          "output": "<BOS>HLXL-LS:\nSEARCH documents\nWHERE status = active\nLIMIT 10<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD"
+        },
+        {
+          "prompt": "HLXL-LS:\\nFILTER users\\nBY role = admin\\nORDER BY created",
+          "description": "Complex HLXL-LS",
+          "output": "<BOS>HLXL-LS:\nFILTER users\nBY role = admin\nORDER BY created<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><"
+        }
+      ],
+      "count": 2
+    },
+    "lcr_glyphs": {
+      "tests": [
+        {
+          "prompt": "LC-R: 🜊1000🜁0",
+          "description": "LC-R request ID prefix",
+          "output": "<BOS>LC-R: 🜊1000🜁0<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><P",
+          "has_glyphs": true
+        },
+        {
+          "prompt": "LC-R: 🜊1000🜁0 \"search\"🜁1",
+          "description": "LC-R with operation",
+          "output": "<BOS>LC-R: 🜊1000🜁0 \"search\"🜁1<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><",
+          "has_glyphs": true
+        },
+        {
+          "prompt": "LC-R: 🜊1000🜁0 \"search\"🜁1 ⟁documents🜁2",
+          "description": "LC-R with entity reference",
+          "output": "<BOS>LC-R: 🜊1000🜁0 \"search\"🜁1 ⟁documents🜁2<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PA",
+          "has_glyphs": true
+        },
+        {
+          "prompt": "LC-R: 🜊1000🜁0 \"filter\"🜁1 ⟁users🜁2 \"active\"🜂",
+          "description": "Complete LC-R command",
+          "output": "<BOS>LC-R: 🜊1000🜁0 \"filter\"🜁1 ⟁users🜁2 \"active\"🜂<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><P",
+          "has_glyphs": true
+        },
+        {
+          "prompt": "LC-R: 🜊2000🜁0 \"transform\"🜁1",
+          "description": "LC-R transform",
+          "output": "<BOS>LC-R: 🜊2000🜁0 \"transform\"🜁1<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PA",
+          "has_glyphs": true
+        },
+        {
+          "prompt": "LC-R: 🜊3000🜁0 \"aggregate\"🜁1",
+          "description": "LC-R aggregate",
+          "output": "<BOS>LC-R: 🜊3000🜁0 \"aggregate\"🜁1<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PA",
+          "has_glyphs": true
+        }
+      ],
+      "count": 6
+    },
+    "english_to_hlx": {
+      "tests": [
+        {
+          "english": "Search for documents",
+          "description": "Simple search",
+          "output": "<BOS>Search for documents <UNK><EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD"
+        },
+        {
+          "english": "Filter active users",
+          "description": "Filter with condition",
+          "output": "<BOS>Filter active users <UNK><EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD>"
+        },
+        {
+          "english": "Transform data to JSON format",
+          "description": "Transform with type",
+          "output": "<BOS>Transform data to JSON format <UNK><EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD>"
+        },
+        {
+          "english": "Aggregate sales by region",
+          "description": "Aggregation query",
+          "output": "<BOS>Aggregate sales by region <UNK><EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD"
+        },
+        {
+          "english": "Navigate to home page",
+          "description": "Navigation command",
+          "output": "<BOS>Navigate to home page <UNK><EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PA"
+        },
+        {
+          "english": "Delete old records",
+          "description": "Delete operation",
+          "output": "<BOS>Delete old records <UNK><EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><"
+        }
+      ],
+      "count": 6
+    },
+    "english_to_lcr": {
+      "tests": [
+        {
+          "english": "Search for documents",
+          "description": "English to LC-R glyph format",
+          "output": "<BOS>Search for documents <UNK><EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD",
+          "has_lcr_glyphs": false
+        },
+        {
+          "english": "Filter active users",
+          "description": "English to LC-R with condition",
+          "output": "<BOS>Filter active users <UNK><EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD>",
+          "has_lcr_glyphs": false
+        },
+        {
+          "english": "Navigate to settings",
+          "description": "English to LC-R navigation",
+          "output": "<BOS>Navigate to settings <UNK><EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD",
+          "has_lcr_glyphs": false
+        }
+      ],
+      "count": 3
+    },
+    "hlx_to_lcr": {
+      "tests": [
+        {
+          "hlx": "HLX: search documents",
+          "description": "HLX search to LC-R",
+          "output": "<BOS>HLX: search documents <UNK> LC-R:<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><P",
+          "has_lcr_glyphs": false
+        },
+        {
+          "hlx": "HLX: filter users active",
+          "description": "HLX filter to LC-R",
+          "output": "<BOS>HLX: filter users active <UNK> LC-R:<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD",
+          "has_lcr_glyphs": false
+        }
+      ],
+      "count": 2
+    },
+    "lcr_to_hlxl": {
+      "tests": [
+        {
+          "prompt": "LC-R: 🜊1000🜁0 \"search\"🜁1 ⟁documents🜁2 → HLXL:",
+          "description": "LC-R to HLXL expansion",
+          "output": "<BOS>LC-R: 🜊1000🜁0 \"search\"🜁1 ⟁documents🜁2 <UNK> HLXL:<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><"
+        }
+      ],
+      "count": 1
+    },
+    "nested_ops": {
+      "tests": [
+        {
+          "prompt": "HLXL: SEARCH documents WHERE (status = active AND role = admin)",
+          "description": "Nested conditions",
+          "output": "<BOS>HLXL: SEARCH documents WHERE (status = active AND role = admin)<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><P"
+        },
+        {
+          "prompt": "HLX: filter(search(documents)) by active",
+          "description": "Chained operations",
+          "output": "<BOS>HLX: filter(search(documents)) by active<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD>"
+        },
+        {
+          "prompt": "LC-R: 🜊1000🜁0 \"search\"🜁1 ⟁documents🜁2 \"filter\"🜁3 ⟁active",
+          "description": "Multi-operation LC-R",
+          "output": "<BOS>LC-R: 🜊1000🜁0 \"search\"🜁1 ⟁documents🜁2 \"filter\"🜁3 ⟁active<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD"
+        }
+      ],
+      "count": 3
+    },
+    "multiline": {
+      "tests": [
+        {
+          "prompt": "HLXL-LS:\\nSEARCH documents\\nFILTER status = active\\nTRANSFORM to json\\nAGGREGATE by region",
+          "description": "4-step program",
+          "output": "<BOS>HLXL-LS:\nSEARCH documents\nFILTER status = active\nTRANSFORM to json\nAGGREGATE by region<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD"
+        }
+      ],
+      "count": 1
+    },
+    "parameterized": {
+      "tests": [
+        {
+          "prompt": "HLXL: SEARCH documents WHERE status = active AND created > 2024-01-01 LIMIT 10",
+          "description": "Multiple parameters",
+          "output": "<BOS>HLXL: SEARCH documents WHERE status = active AND created > 2024-01-01 LIMIT 10<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><P"
+        },
+        {
+          "prompt": "HLX: transform data {format: json, compression: gzip, encoding: utf8}",
+          "description": "Structured params",
+          "output": "<BOS>HLX: transform data {format: json, compression: gzip, encoding: utf8}<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><"
+        }
+      ],
+      "count": 2
+    },
+    "empty_minimal": {
+      "tests": [
+        {
+          "prompt": "HLX:",
+          "description": "Empty HLX",
+          "output": "<BOS>HLX:<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><"
+        },
+        {
+          "prompt": "HLXL:",
+          "description": "Empty HLXL",
+          "output": "<BOS>HLXL:<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD>"
+        },
+        {
+          "prompt": "LC-R:",
+          "description": "Empty LC-R",
+          "output": "<BOS>LC-R:<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD>"
+        },
+        {
+          "prompt": "LC-R: 🜊",
+          "description": "Minimal LC-R prefix",
+          "output": "<BOS>LC-R: 🜊<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PA"
+        },
+        {
+          "prompt": "HLXL: SEARCH",
+          "description": "Incomplete HLXL",
+          "output": "<BOS>HLXL: SEARCH<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PA"
+        }
+      ],
+      "count": 5
+    },
+    "special_chars": {
+      "tests": [
+        {
+          "prompt": "HLX: search \"documents with spaces\"",
+          "description": "Quoted strings",
+          "output": "<BOS>HLX: search \"documents with spaces\"<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD>"
+        },
+        {
+          "prompt": "HLXL: FILTER users WHERE email LIKE '%@example.com'",
+          "description": "SQL-like wildcards",
+          "output": "<BOS>HLXL: FILTER users WHERE email LIKE '%@example.com'<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD"
+        },
+        {
+          "prompt": "LC-R: 🜊1000🜁0 \"search\"🜁1 ⟁⟁nested",
+          "description": "Double entity reference",
+          "output": "<BOS>LC-R: 🜊1000🜁0 \"search\"🜁1 ⟁⟁nested<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><P"
+        }
+      ],
+      "count": 3
+    },
+    "large_sequences": {
+      "tests": [
+        {
+          "prompt": "HLXL: SEARCH documents WHERE status IN (active, pending, review) AND priority IN (high, critical) AND assigned_to IN (user1, user2, user3)",
+          "description": "Long condition list",
+          "output": "<BOS>HLXL: SEARCH documents WHERE status IN (active, pending, review) AND priority IN (high, critical) AND assigned_to IN (user1, user2, user3)<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><P"
+        }
+      ],
+      "count": 1
+    },
+    "operation_semantics": {
+      "tests": [
+        {
+          "prompt": "What does SEARCH do? →",
+          "description": "Explain SEARCH",
+          "output": "<BOS>What does SEARCH do? <UNK><EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD"
+        },
+        {
+          "prompt": "What is the difference between FILTER and SEARCH? →",
+          "description": "Compare operations",
+          "output": "<BOS>What is the difference between FILTER and SEARCH? <UNK><EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD>"
+        },
+        {
+          "prompt": "How does AGGREGATE work? →",
+          "description": "Explain AGGREGATE",
+          "output": "<BOS>How does AGGREGATE work? <UNK><EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD>"
+        }
+      ],
+      "count": 3
+    },
+    "format_awareness": {
+      "tests": [
+        {
+          "prompt": "When should I use LC-R vs HLXL? →",
+          "description": "Format selection",
+          "output": "<BOS>When should I use LC-R vs HLXL? <UNK><EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PA"
+        },
+        {
+          "prompt": "What is LC-R optimized for? →",
+          "description": "LC-R purpose",
+          "output": "<BOS>What is LC-R optimized for? <UNK><EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><P"
+        }
+      ],
+      "count": 2
+    },
+    "consistency": {
+      "prompt": "LC-R: 🜊1000🜁0 \"search\"🜁1",
+      "runs": [
+        "<BOS>LC-R: 🜊1000🜁0 \"search\"🜁1<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><",
+        "<BOS>LC-R: 🜊1000🜁0 \"search\"🜁1<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><",
+        "<BOS>LC-R: 🜊1000🜁0 \"search\"🜁1<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><",
+        "<BOS>LC-R: 🜊1000🜁0 \"search\"🜁1<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><",
+        "<BOS>LC-R: 🜊1000🜁0 \"search\"🜁1<EOS><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><PAD><"
+      ],
+      "deterministic": true,
+      "count": 5
+    },
+    "speed": {
+      "tests": [
+        {
+          "format": "HLX",
+          "time_ms": 87.38036698196083,
+          "output_length": 281
+        },
+        {
+          "format": "HLXL",
+          "time_ms": 85.0202209840063,
+          "output_length": 282
+        },
+        {
+          "format": "LC-R",
+          "time_ms": 86.83969199773856,
+          "output_length": 282
+        }
+      ],
+      "count": 3
+    }
+  }
+}

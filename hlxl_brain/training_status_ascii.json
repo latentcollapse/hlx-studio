@@ -1,0 +1,10 @@
+{
+  "timestamp": "2025-12-18T23:22:41.638786Z",
+  "specialist": "ascii",
+  "epoch": 20,
+  "total_epochs": 100,
+  "train_loss": NaN,
+  "val_loss": 0.052609863225370646,
+  "progress_pct": 20.0,
+  "status": "quality_failed"
+}

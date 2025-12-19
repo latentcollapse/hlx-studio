@@ -1,0 +1,89 @@
+/home/matt/.local/lib/python3.13/site-packages/torch/nn/modules/transformer.py:392: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(
+/home/matt/hlx/hlxl_brain/src/trainer.py:87: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  self.scaler = torch.cuda.amp.GradScaler() if use_amp else None
+/home/matt/hlx/hlxl_brain/src/trainer.py:140: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast():
+================================================================================
+DEEP REASONING TRAINING: 1B HLX BRAIN
+================================================================================
+Purpose: Create production-ready 1B HLX expert with deep reasoning
+Training: 200 epochs on English + all HLX formats
+Architecture: 1B params (2048d, 20L, 16H, 8192ffn)
+Corpus: corpus_all_variants.md
+Batch size: 1 (with 4x gradient accumulation)
+Mixed precision: True
+Gradient checkpointing: True
+================================================================================
+Device: cuda
+GPU: NVIDIA GeForce RTX 5060
+GPU Memory: 8.08 GB
+
+Initializing tokenizer...
+Vocabulary size: 117
+
+Loading deep reasoning corpus...
+Loaded 1312 deep reasoning examples
+Train: 1049 examples, Val: 263 examples
+
+Creating 1B parameter model...
+Enabling gradient checkpointing for memory efficiency...
+
+Total parameters: 1,007,906,933
+Trainable parameters: 1,007,906,933
+
+✓ Confirmed 1B parameter model (1,007,906,933 params)
+
+Estimated memory usage:
+  Parameters: 4.03 GB
+  Optimizer: 8.06 GB
+  Activations: ~2.00 GB
+  Total: ~14.09 GB
+  With FP16: ~7.05 GB
+
+================================================================================
+STARTING DEEP REASONING TRAINING
+================================================================================
+Training from epoch 1 to 30
+This will take a long time - 200 epochs on 1B model
+Estimated: ~600 minutes (10.0 hours)
+================================================================================
+
+
+================================================================================
+EPOCH 1/30
+================================================================================
+Traceback (most recent call last):
+  File "/home/matt/hlx/hlxl_brain/train_deep_reasoning_1b.py", line 417, in <module>
+    main()
+    ~~~~^^
+  File "/home/matt/hlx/hlxl_brain/train_deep_reasoning_1b.py", line 361, in main
+    train_loss = trainer.train_epoch()
+  File "/home/matt/hlx/hlxl_brain/src/trainer.py", line 149, in train_epoch
+    self.scaler.scale(loss).backward()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/matt/.local/lib/python3.13/site-packages/torch/_tensor.py", line 625, in backward
+    torch.autograd.backward(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        self, gradient, retain_graph, create_graph, inputs=inputs
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/matt/.local/lib/python3.13/site-packages/torch/autograd/__init__.py", line 354, in backward
+    _engine_run_backward(
+    ~~~~~~~~~~~~~~~~~~~~^
+        tensors,
+        ^^^^^^^^
+    ...<5 lines>...
+        accumulate_grad=True,
+        ^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/matt/.local/lib/python3.13/site-packages/torch/autograd/graph.py", line 841, in _engine_run_backward
+    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        t_outputs, *args, **kwargs
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )  # Calls into the C++ engine to run the backward pass
+    ^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 64.00 MiB. GPU 0 has a total capacity of 7.52 GiB of which 71.19 MiB is free. Process 74303 has 14.46 MiB memory in use. Including non-PyTorch memory, this process has 6.40 GiB memory in use. Of the allocated memory 6.22 GiB is allocated by PyTorch, and 36.21 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)

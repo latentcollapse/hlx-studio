@@ -1,0 +1,164 @@
+Represent nothing
+Empty value
+Represent true
+Represent false
+Enable flag
+Disable flag
+Number zero
+Number one
+Number forty-two
+Negative number
+Large number
+Pi constant
+Decimal half
+Greeting message
+User name Alice
+File path
+Reference to AST
+Reference to documents
+Reference to model
+Reference to query
+Search for documents
+Search files for pattern
+Search database for users
+Find error in logs
+Query the cache
+Filter active users
+Filter items where valid
+Filter records by status
+Keep only recent documents
+Select enabled features
+Transform text to uppercase
+Convert data to JSON
+Normalize the input
+Encode value as base64
+Parse string as integer
+Calculate sum of values
+Get average of scores
+Find maximum value
+Find minimum value
+Count all items
+Read from database
+Load config file
+Write results to file
+Save data to log
+Store in cache
+Execute command
+Run the operation
+Compute result
+Validate input against schema
+Process the request
+Navigate to home
+Go to settings page
+Open dashboard
+Go back to previous page
+Navigate forward
+Open file browser
+Open terminal
+Close current window
+Refresh the page
+Scroll to top
+Scroll down
+Zoom in
+Zoom out
+Focus on input field
+Select all text
+Copy selection
+Paste from clipboard
+Undo last action
+Redo action
+Show help menu
+Empty list
+List of numbers one two three
+List of names Alice Bob Carol
+List of handles a b c
+Mixed list with number string boolean
+Coordinate list x y z
+Float values for weights
+Single element list
+User object with name
+Point with x and y coordinates
+User profile with name and age
+Config with debug flag
+Color with RGB values
+Size with width and height
+Score record with player and points
+Status with enabled flag
+Empty object
+Integer literal forty-two
+Float literal pi
+Text literal hello
+Handle reference to model
+Null literal
+Boolean true literal
+Boolean false literal
+Copy source to destination
+Merge dataset A with dataset B
+Join tables users and orders
+Sort items by score descending
+Group records by category
+Limit results to ten
+Skip first five items
+Map function over array
+Reduce array with accumulator
+Flatten nested structure
+Reverse the list
+Unique values from collection
+Split string by delimiter
+Concatenate strings together
+Replace old with new in text
+Trim whitespace from string
+Check if value exists in collection
+Get length of array
+Get element at index five
+Set value at index three
+Append value to list
+Remove element from collection
+Clear all items
+Delete record by id
+Update field in object
+Load shader module
+Create vertex shader
+Create fragment shader
+Configure compute kernel map
+Configure compute kernel reduce
+Configure compute kernel scan
+Create render pipeline
+Create compute pipeline
+Dispatch compute workgroup
+Bind buffer to slot
+Upload data to GPU
+Download results from GPU
+Synchronize GPU operations
+Render frame to target
+Present swapchain image
+Train model on data
+Run inference on input
+Evaluate model accuracy
+Save model checkpoint
+Load pretrained weights
+Forward pass through network
+Backward pass compute gradients
+Optimize model parameters
+Embed text into vectors
+Tokenize input text
+Decode tokens to text
+Generate completion from prompt
+Sample from distribution
+Batch inputs together
+Collate batch samples
+Create code block named main
+Add expression one plus two
+Multiply five times ten
+Reference variable x
+Reference variable result
+Assign forty-two to x
+Assign Alice to name
+Set flag to true
+Define function add with parameters a and b
+Define function square with parameter x
+Call function print with hello
+Call function add with one and two
+Call function max with ten twenty thirty
+Conditional if true then a else b
+Loop while condition do body

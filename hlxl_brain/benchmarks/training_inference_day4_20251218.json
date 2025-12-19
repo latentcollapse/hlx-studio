@@ -1,0 +1,55 @@
+{
+  "benchmark_id": "training_inference_day4_verification",
+  "timestamp": "2025-12-18T11:20:45.776773Z",
+  "component": "End-to-End Training & Inference",
+  "git_commit": "f0fe2c7d4bd0f0dd07488bb7b2e481e1436408f2",
+  "environment": {
+    "python_version": "3.13.11",
+    "platform": "linux",
+    "os": "Linux 6.17.9-zen1-1-zen",
+    "device": "cpu"
+  },
+  "training_run": {
+    "epochs": 5,
+    "batch_size": 4,
+    "initial_train_loss": 0.7824,
+    "final_train_loss": 0.2134,
+    "initial_val_loss": 0.3799,
+    "final_val_loss": 0.2315,
+    "best_val_loss": 0.2315,
+    "total_steps": 165,
+    "learning_rate": 0.001,
+    "optimizer": "AdamW",
+    "scheduler": "CosineAnnealingWarmRestarts"
+  },
+  "inference_performance": {
+    "tokens_generated": 30,
+    "time_ms": 42.83,
+    "tokens_per_second": 700.4,
+    "temperature": 0.0,
+    "deterministic": true
+  },
+  "model_specifications": {
+    "parameters": 491635,
+    "size_mb": 1.88,
+    "vocab_size": 115,
+    "d_model": 128,
+    "num_layers": 2,
+    "attention_heads": 4
+  },
+  "success_criteria": {
+    "training_loss_decreased": true,
+    "validation_loss_decreased": true,
+    "checkpoints_saved": true,
+    "inference_working": true,
+    "generation_speed_fast": true
+  },
+  "files_created": [
+    "train.py (training script)",
+    "generate.py (inference CLI)",
+    "checkpoints/final_model.pt",
+    "checkpoints/best_model_epoch5.pt",
+    "training_history.json"
+  ],
+  "notes": "Complete end-to-end training pipeline verified. Model trains successfully and generates LC-R text at 700+ tokens/sec on CPU. Ready for production use."
+}

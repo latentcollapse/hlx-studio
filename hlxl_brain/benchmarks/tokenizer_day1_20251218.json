@@ -1,0 +1,59 @@
+{
+  "benchmark_id": "tokenizer_day1_verification",
+  "timestamp": "2025-12-18T00:00:00Z",
+  "component": "LC-R Tokenizer",
+  "git_commit": "pending",
+  "environment": {
+    "python_version": "3.13.11",
+    "platform": "linux",
+    "os": "Linux 6.17.9-zen1-1-zen"
+  },
+  "test_results": {
+    "total_tests": 18,
+    "passed": 18,
+    "failed": 0,
+    "test_time_seconds": 0.09
+  },
+  "vocabulary": {
+    "total_size": 115,
+    "special_tokens": 4,
+    "lc_r_glyphs": 14,
+    "digits": 10,
+    "letters": 52,
+    "punctuation": 35
+  },
+  "corpus_validation": {
+    "examples_tested": 164,
+    "round_trip_accuracy": 1.0,
+    "unknown_tokens": 0,
+    "failed_examples": 0
+  },
+  "performance_encoding": {
+    "iterations": 1000,
+    "warmup": 100,
+    "mean_ms": 0.0014,
+    "median_ms": 0.0012,
+    "stdev_ms": 0.0013,
+    "max_ms": 0.0139,
+    "target_ms": 1.0,
+    "meets_target": true
+  },
+  "performance_decoding": {
+    "iterations": 1000,
+    "warmup": 100,
+    "mean_ms": 0.0015,
+    "median_ms": 0.0013,
+    "stdev_ms": 0.0012,
+    "max_ms": 0.0132,
+    "target_ms": 1.0,
+    "meets_target": true
+  },
+  "success_criteria": {
+    "round_trip_accuracy_100_percent": true,
+    "latency_under_1ms": true,
+    "corpus_tested_150_plus": true,
+    "zero_unknown_tokens": true,
+    "all_tests_passing": true
+  },
+  "notes": "All data represents actual test execution results. No predictions or estimations. Raw immutable benchmark data per QUALITY_MANDATE.md principles."
+}

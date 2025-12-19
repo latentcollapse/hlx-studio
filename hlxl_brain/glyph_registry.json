@@ -1,0 +1,13 @@
+{
+  "version": "1.0",
+  "glyphs": {
+    "brain": {
+      "name": "brain",
+      "glyph": "🝰",
+      "unicode": "U+1F770",
+      "svg_path": "assets/brain_glyph.svg",
+      "description": "Valknut triple-triangle brain symbol - represents interconnected knowledge and reasoning",
+      "category": "system"
+    }
+  }
+}

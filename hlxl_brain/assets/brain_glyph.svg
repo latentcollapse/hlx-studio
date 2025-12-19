@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Valknut Brain Glyph - Interlocked Triple Triangle
+     Represents Helix Brain: Interconnected knowledge and reasoning
+     Extracted from Valknut variations (top-right design) -->
+<svg
+   width="320"
+   height="300"
+   version="1.1"
+   viewBox="400 40 330 300"
+   xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Core triple triangle structure (light gray fill) -->
+  <path
+     d="m 535.40152,191.38254 -63.738,110.39634 h 127.476 l -21.246,-36.79807 h -42.492 l 21.246,-36.79807 z"
+     style="fill:#b3b3b3;stroke:#000000;stroke-width:10.623;stroke-linecap:square;fill-opacity:1" />
+
+  <path
+     d="m 535.40152,265.10616 127.476,6.4e-4 -63.738,-110.39847 -21.24558,36.79807 21.246,36.79808 -42.492,-2.2e-4 z"
+     style="fill:#b3b3b3;stroke:#000000;stroke-width:10.623;stroke-linecap:square;fill-opacity:1" />
+
+  <path
+     d="m 599.13952,228.35058 -63.73588,-110.39634 -63.738,110.39846 42.492,-2.1e-4 21.246,-36.79807 21.24558,36.79807 z"
+     style="fill:#b3b3b3;stroke:#000000;stroke-width:10.623;stroke-linecap:square;fill-opacity:1" />
+
+  <!-- Interlocking structure (darker gray) -->
+  <path
+     d="m 577.89352,265.10616 21.246,36.79807 h -42.492 l -21.246,36.79807 h 127.476 l -42.492,-73.59826 z"
+     style="fill:#666666;stroke:#000000;stroke-width:10.623;stroke-linecap:square" />
+
+  <!-- Base interconnection structure -->
+  <path
+     d="m 450.41752,265.10616 -42.492,73.59827 h 254.952 l -42.492,-73.59827 h -42.492 l 21.246,36.79807 h -127.476 l 21.246,-36.79807 z"
+     style="fill:#b3b3b3;stroke:#000000;stroke-width:10.623;stroke-linecap:square;fill-opacity:1" />
+
+  <!-- Upper right interconnection -->
+  <path
+     d="m 641.63152,301.86174 84.984,4.2e-4 -127.476,-220.788427 -42.492,73.598267 21.246,36.79807 21.24558,-36.79807 63.738,110.39847 -42.492,-2.2e-4 z"
+     style="fill:#b3b3b3;stroke:#000000;stroke-width:10.623;stroke-linecap:square;fill-opacity:1" />
+
+  <!-- Upper left interconnection -->
+  <path
+     d="m 577.89352,117.87138 -42.492,-73.598269 -127.476,220.788429 84.984,-4.2e-4 21.246,-36.79807 -42.492,2.1e-4 63.738,-110.39847 21.24579,36.79808 z"
+     style="fill:#b3b3b3;stroke:#000000;stroke-width:10.623;stroke-linecap:square" />
+</svg>

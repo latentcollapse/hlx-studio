@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- True Valknut - Three Interlocked Triangles (Borromean style)
+     Each triangle weaves over one and under another -->
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Define clipping paths for the interlocking effect -->
+    <clipPath id="clip1">
+      <path d="M 100,40 L 151.96,130 L 48.04,130 Z"/>
+    </clipPath>
+    <clipPath id="clip2">
+      <path d="M 48.04,70 L 100,160 L -3.92,70 Z"/>
+    </clipPath>
+    <clipPath id="clip3">
+      <path d="M 151.96,70 L 203.92,70 L 100,160 Z"/>
+    </clipPath>
+  </defs>
+
+  <!-- Triangle 1 (Top) - with breaks for interlocking -->
+  <g>
+    <!-- Top triangle - full outline -->
+    <path d="M 100,40 L 151.96,130 L 48.04,130 Z"
+          fill="none"
+          stroke="#000000"
+          stroke-width="8"
+          stroke-linejoin="miter"/>
+
+    <!-- White gaps where it goes "under" other triangles -->
+    <path d="M 85,95 L 75,110"
+          stroke="#FFFFFF"
+          stroke-width="12"
+          stroke-linecap="butt"/>
+    <path d="M 115,95 L 125,110"
+          stroke="#FFFFFF"
+          stroke-width="12"
+          stroke-linecap="butt"/>
+  </g>
+
+  <!-- Triangle 2 (Bottom-left) -->
+  <g>
+    <path d="M 48.04,70 L 22.08,122.32 L 74,122.32 Z"
+          fill="none"
+          stroke="#000000"
+          stroke-width="8"
+          stroke-linejoin="miter"/>
+
+    <!-- White gaps -->
+    <path d="M 58,105 L 52,115"
+          stroke="#FFFFFF"
+          stroke-width="12"
+          stroke-linecap="butt"/>
+    <path d="M 48.04,70 L 55,82"
+          stroke="#FFFFFF"
+          stroke-width="12"
+          stroke-linecap="butt"/>
+  </g>
+
+  <!-- Triangle 3 (Bottom-right) -->
+  <g>
+    <path d="M 151.96,70 L 126,122.32 L 177.92,122.32 Z"
+          fill="none"
+          stroke="#000000"
+          stroke-width="8"
+          stroke-linejoin="miter"/>
+
+    <!-- White gaps -->
+    <path d="M 142,105 L 148,115"
+          stroke="#FFFFFF"
+          stroke-width="12"
+          stroke-linecap="butt"/>
+    <path d="M 151.96,70 L 145,82"
+          stroke="#FFFFFF"
+          stroke-width="12"
+          stroke-linecap="butt"/>
+  </g>
+
+  <!-- Optional: Add subtle gray fill to show center knot -->
+  <g opacity="0.2">
+    <path d="M 100,80 L 85,105 L 115,105 Z" fill="#666666"/>
+  </g>
+</svg>
