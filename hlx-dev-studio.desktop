@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=HLX Dev Studio
+Comment=LLM-native IDE with Helix 5.1B Brain
+Exec=/home/matt/hlx-dev-studio/start_studio.sh
+Icon=/home/matt/hlx-dev-studio/frontend/public/hlx-icon.svg
+Terminal=true
+Categories=Development;IDE;
+Keywords=hlx;helix;development;ai;llm;
+StartupNotify=true
+StartupWMClass=HLX Dev Studio

@@ -25,16 +25,16 @@ function App() {
 
 
   return (
-    <div className="min-h-screen bg-hlx-bg text-hlx-text font-sans selection:bg-hlx-accent/20 selection:text-white flex flex-col bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-violet-950/20 via-hlx-bg to-hlx-bg">
+    <div className="min-h-screen bg-hlx-bg text-hlx-text font-sans selection:bg-hlx-accent/20 selection:text-white flex flex-col bg-gradient-to-br from-violet-950/30 via-hlx-bg via-60% to-fuchsia-950/20">
       {/* Top Navigation Bar */}
-      <nav className="h-14 border-b border-hlx-border/40 bg-hlx-panel/90 backdrop-blur-xl flex items-center px-6 justify-between flex-shrink-0 z-50 sticky top-0">
+      <nav className="h-14 border-b border-hlx-border/40 bg-gradient-to-r from-hlx-panel/95 via-hlx-panel/90 to-hlx-panel/95 backdrop-blur-xl flex items-center px-6 justify-between flex-shrink-0 z-50 sticky top-0 shadow-lg shadow-violet-500/5">
         <div className="flex items-center gap-6">
            <div className="flex items-center gap-3">
-              <div className="p-1.5 bg-hlx-primary/10 rounded-lg border border-hlx-primary/20">
-                <Cpu className="text-hlx-primary w-5 h-5" />
+              <div className="p-1.5 bg-gradient-to-br from-hlx-primary/20 to-hlx-pink/20 rounded-lg border border-hlx-primary/30 shadow-lg shadow-hlx-primary/20">
+                <Cpu className="text-hlx-glow w-5 h-5" />
               </div>
               <span className="font-bold text-white tracking-tight text-lg">
-                Helix<span className="text-hlx-primary">Studio</span>
+                Helix<span className="bg-gradient-to-r from-hlx-primary via-hlx-pink to-hlx-cyan bg-clip-text text-transparent">Studio</span>
               </span>
            </div>
            
@@ -95,14 +95,19 @@ const NavTab: React.FC<{ active: boolean, onClick: () => void, icon: React.React
   <button
     onClick={onClick}
     className={`
-      flex items-center gap-2 px-3 py-1.5 rounded-md text-xs font-semibold tracking-wide transition-all duration-200
+      flex items-center gap-2 px-3 py-1.5 rounded-md text-xs font-semibold tracking-wide transition-all duration-200 relative overflow-hidden
       ${active
-        ? 'bg-hlx-accent/10 text-hlx-glow border border-hlx-accent/30 shadow-lg shadow-hlx-accent/10'
-        : 'text-hlx-muted hover:text-hlx-text hover:bg-hlx-surface/50 border border-transparent hover:border-hlx-border/30'}
+        ? 'bg-gradient-to-br from-hlx-accent/15 to-hlx-pink/10 text-hlx-glow border border-hlx-accent/40 shadow-lg shadow-hlx-accent/20'
+        : 'text-hlx-muted hover:text-hlx-text hover:bg-gradient-to-br hover:from-hlx-surface/50 hover:to-hlx-surface/30 border border-transparent hover:border-hlx-border/30'}
     `}
   >
-    {icon}
-    {label}
+    {active && (
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-hlx-glow/5 to-transparent animate-shimmer bg-200" />
+    )}
+    <span className="relative z-10 flex items-center gap-2">
+      {icon}
+      {label}
+    </span>
   </button>
 );
 

@@ -1,0 +1,100 @@
+{"input": "HLXL: null", "output": "LC-R: \u2205\nLC-T: NULL\nLC-B: [_]"}
+{"input": "HLXL: true", "output": "LC-R: \u22a4\nLC-T: TRUE\nLC-B: [T]"}
+{"input": "HLXL: false", "output": "LC-R: \u22a5\nLC-T: FALSE\nLC-B: [F]"}
+{"input": "HLXL: 0", "output": "LC-R: 0\nLC-T: 0\nLC-B: [0x00]"}
+{"input": "HLXL: 1", "output": "LC-R: 1\nLC-T: 1\nLC-B: [0x01]"}
+{"input": "HLXL: 42", "output": "LC-R: 42\nLC-T: 42\nLC-B: [0x2a]"}
+{"input": "HLXL: -100", "output": "LC-R: -100\nLC-T: -100\nLC-B: [0xff9c]"}
+{"input": "HLXL: 3.14159", "output": "LC-R: 3.14159\nLC-T: 3.14159\nLC-B: [3.14159]"}
+{"input": "HLXL: \"hello\"", "output": "LC-R: \"hello\"\nLC-T: \"hello\"\nLC-B: [\"hello\"]"}
+{"input": "HLXL: \"Alice\"", "output": "LC-R: \"Alice\"\nLC-T: \"Alice\"\nLC-B: [\"Alice\"]"}
+{"input": "HLXL: &h_ast", "output": "LC-R: \u27c1ast\nLC-T: @ast\nLC-B: [&ast]"}
+{"input": "HLXL: &h_documents", "output": "LC-R: \u27c1documents\nLC-T: @documents\nLC-B: [&documents]"}
+{"input": "HLXL: &h_model", "output": "LC-R: \u27c1model\nLC-T: @model\nLC-B: [&model]"}
+{"input": "HLXL: []", "output": "LC-R: \ud83d\udc03\ud83d\udc04\nLC-T: []\nLC-B: [[]]"}
+{"input": "HLXL: [1, 2, 3]", "output": "LC-R: \ud83d\udc031, 2, 3\ud83d\udc04\nLC-T: [1,2,3]\nLC-B: [[0x01,0x02,0x03]]"}
+{"input": "HLXL: [42]", "output": "LC-R: \ud83d\udc0342\ud83d\udc04\nLC-T: [42]\nLC-B: [[0x2a]]"}
+{"input": "HLXL: {name: \"Alice\"}", "output": "LC-R: \u25c7name: \"Alice\"\u25c6\nLC-T: {name:\"Alice\"}\nLC-B: [{name:\"Alice\"}]"}
+{"input": "HLXL: {x: 10, y: 20}", "output": "LC-R: \u25c7x: 10, y: 20\u25c6\nLC-T: {x:10,y:20}\nLC-B: [{x:0x0a,y:0x14}]"}
+{"input": "HLXL: {debug: true, verbose: false}", "output": "LC-R: \u25c7debug: \u22a4, verbose: \u22a5\u25c6\nLC-T: {debug:TRUE,verbose:FALSE}\nLC-B: [{debug:T,verbose:F}]"}
+{"input": "HLXL: {}", "output": "LC-R: \u25c7\u25c6\nLC-T: {}\nLC-B: [{}]"}
+{"input": "HLXL: {14: {@0: 42}}", "output": "LC-R: \ud83d\udc0a14\ud83d\udc010 42\ud83d\udc02\nLC-T: {C:14,0=42}\nLC-B: [14|0:0x2a]"}
+{"input": "HLXL: {16: {@0: \"hello\"}}", "output": "LC-R: \ud83d\udc0a16\ud83d\udc010 \"hello\"\ud83d\udc02\nLC-T: {C:16,0=\"hello\"}\nLC-B: [16|0:\"hello\"]"}
+{"input": "HLXL: {1000: {@0: \"search\", @1: &h_documents}}", "output": "LC-R: \ud83d\udc0a1000\ud83d\udc010 \"search\"\ud83d\udc011 \u27c1documents\ud83d\udc02\nLC-T: {C:1000,0=\"search\",1=@documents}\nLC-B: [1000|0:\"search\"|1:&documents]"}
+{"input": "HLXL: {1000: {@0: \"filter\", @1: &h_users, @2: &h_active}}", "output": "LC-R: \ud83d\udc0a1000\ud83d\udc010 \"filter\"\ud83d\udc011 \u27c1users\ud83d\udc012 \u27c1active\ud83d\udc02\nLC-T: {C:1000,0=\"filter\",1=@users,2=@active}\nLC-B: [1000|0:\"filter\"|1:&users|2:&active]"}
+{"input": "HLXL: {1000: {@0: \"transform\", @1: &h_text, @2: &h_uppercase}}", "output": "LC-R: \ud83d\udc0a1000\ud83d\udc010 \"transform\"\ud83d\udc011 \u27c1text\ud83d\udc012 \u27c1uppercase\ud83d\udc02\nLC-T: {C:1000,0=\"transform\",1=@text,2=@uppercase}\nLC-B: [1000|0:\"transform\"|1:&text|2:&uppercase]"}
+{"input": "HLXL: {1000: {@0: \"aggregate\", @1: &h_sum, @2: &h_values}}", "output": "LC-R: \ud83d\udc0a1000\ud83d\udc010 \"aggregate\"\ud83d\udc011 \u27c1sum\ud83d\udc012 \u27c1values\ud83d\udc02\nLC-T: {C:1000,0=\"aggregate\",1=@sum,2=@values}\nLC-B: [1000|0:\"aggregate\"|1:&sum|2:&values]"}
+{"input": "HLXL: {1000: {@0: \"read\", @1: \"database\"}}", "output": "LC-R: \ud83d\udc0a1000\ud83d\udc010 \"read\"\ud83d\udc011 \"database\"\ud83d\udc02\nLC-T: {C:1000,0=\"read\",1=\"database\"}\nLC-B: [1000|0:\"read\"|1:\"database\"]"}
+{"input": "HLXL: {1000: {@0: \"write\", @1: \"output.txt\", @2: &h_results}}", "output": "LC-R: \ud83d\udc0a1000\ud83d\udc010 \"write\"\ud83d\udc011 \"output.txt\"\ud83d\udc012 \u27c1results\ud83d\udc02\nLC-T: {C:1000,0=\"write\",1=\"output.txt\",2=@results}\nLC-B: [1000|0:\"write\"|1:\"output.txt\"|2:&results]"}
+{"input": "HLXL: {1000: {@0: \"execute\", @1: &h_command}}", "output": "LC-R: \ud83d\udc0a1000\ud83d\udc010 \"execute\"\ud83d\udc011 \u27c1command\ud83d\udc02\nLC-T: {C:1000,0=\"execute\",1=@command}\nLC-B: [1000|0:\"execute\"|1:&command]"}
+{"input": "HLXL: {1000: {@0: \"validate\", @1: &h_input, @2: &h_schema}}", "output": "LC-R: \ud83d\udc0a1000\ud83d\udc010 \"validate\"\ud83d\udc011 \u27c1input\ud83d\udc012 \u27c1schema\ud83d\udc02\nLC-T: {C:1000,0=\"validate\",1=@input,2=@schema}\nLC-B: [1000|0:\"validate\"|1:&input|2:&schema]"}
+{"input": "HLXL: {1000: {@0: \"navigate\", @1: &h_home}}", "output": "LC-R: \ud83d\udc0a1000\ud83d\udc010 \"navigate\"\ud83d\udc011 \u27c1home\ud83d\udc02\nLC-T: {C:1000,0=\"navigate\",1=@home}\nLC-B: [1000|0:\"navigate\"|1:&home]"}
+{"input": "HLXL: {1000: {@0: \"copy\", @1: &h_selection}}", "output": "LC-R: \ud83d\udc0a1000\ud83d\udc010 \"copy\"\ud83d\udc011 \u27c1selection\ud83d\udc02\nLC-T: {C:1000,0=\"copy\",1=@selection}\nLC-B: [1000|0:\"copy\"|1:&selection]"}
+{"input": "HLXL: {1000: {@0: \"paste\", @1: &h_clipboard}}", "output": "LC-R: \ud83d\udc0a1000\ud83d\udc010 \"paste\"\ud83d\udc011 \u27c1clipboard\ud83d\udc02\nLC-T: {C:1000,0=\"paste\",1=@clipboard}\nLC-B: [1000|0:\"paste\"|1:&clipboard]"}
+{"input": "HLXL: {900: {@0: &h_spirv, @1: \"main\", @2: \"compute\"}}", "output": "LC-R: \ud83d\udc0a900\ud83d\udc010 \u27c1spirv\ud83d\udc011 \"main\"\ud83d\udc012 \"compute\"\ud83d\udc02\nLC-T: {C:900,0=@spirv,1=\"main\",2=\"compute\"}\nLC-B: [900|0:&spirv|1:\"main\"|2:\"compute\"]"}
+{"input": "HLXL: {901: {@0: \"map\", @1: &h_shader}}", "output": "LC-R: \ud83d\udc0a901\ud83d\udc010 \"map\"\ud83d\udc011 \u27c1shader\ud83d\udc02\nLC-T: {C:901,0=\"map\",1=@shader}\nLC-B: [901|0:\"map\"|1:&shader]"}
+{"input": "HLXL: {902: {@0: \"render_pipeline\", @1: [&h_vs, &h_fs]}}", "output": "LC-R: \ud83d\udc0a902\ud83d\udc010 \"render_pipeline\"\ud83d\udc011 \ud83d\udc03\u27c1vs, \u27c1fs\ud83d\udc04\ud83d\udc02\nLC-T: {C:902,0=\"render_pipeline\",1=[@vs,@fs]}\nLC-B: [902|0:\"render_pipeline\"|1:[&vs,&fs]]"}
+{"input": "HLXL: {1000: {@0: \"train\", @1: &h_model, @2: &h_data}}", "output": "LC-R: \ud83d\udc0a1000\ud83d\udc010 \"train\"\ud83d\udc011 \u27c1model\ud83d\udc012 \u27c1data\ud83d\udc02\nLC-T: {C:1000,0=\"train\",1=@model,2=@data}\nLC-B: [1000|0:\"train\"|1:&model|2:&data]"}
+{"input": "HLXL: {1000: {@0: \"infer\", @1: &h_model, @2: &h_input}}", "output": "LC-R: \ud83d\udc0a1000\ud83d\udc010 \"infer\"\ud83d\udc011 \u27c1model\ud83d\udc012 \u27c1input\ud83d\udc02\nLC-T: {C:1000,0=\"infer\",1=@model,2=@input}\nLC-B: [1000|0:\"infer\"|1:&model|2:&input]"}
+{"input": "HLXL: {1000: {@0: \"forward\", @1: &h_network, @2: &h_batch}}", "output": "LC-R: \ud83d\udc0a1000\ud83d\udc010 \"forward\"\ud83d\udc011 \u27c1network\ud83d\udc012 \u27c1batch\ud83d\udc02\nLC-T: {C:1000,0=\"forward\",1=@network,2=@batch}\nLC-B: [1000|0:\"forward\"|1:&network|2:&batch]"}
+{"input": "HLXL: {1000: {@0: \"backward\", @1: &h_loss}}", "output": "LC-R: \ud83d\udc0a1000\ud83d\udc010 \"backward\"\ud83d\udc011 \u27c1loss\ud83d\udc02\nLC-T: {C:1000,0=\"backward\",1=@loss}\nLC-B: [1000|0:\"backward\"|1:&loss]"}
+{"input": "HLXL: {1000: {@0: \"tokenize\", @1: &h_text, @2: &h_tokenizer}}", "output": "LC-R: \ud83d\udc0a1000\ud83d\udc010 \"tokenize\"\ud83d\udc011 \u27c1text\ud83d\udc012 \u27c1tokenizer\ud83d\udc02\nLC-T: {C:1000,0=\"tokenize\",1=@text,2=@tokenizer}\nLC-B: [1000|0:\"tokenize\"|1:&text|2:&tokenizer]"}
+{"input": "HLXL: {1000: {@0: \"generate\", @1: &h_model, @2: &h_prompt}}", "output": "LC-R: \ud83d\udc0a1000\ud83d\udc010 \"generate\"\ud83d\udc011 \u27c1model\ud83d\udc012 \u27c1prompt\ud83d\udc02\nLC-T: {C:1000,0=\"generate\",1=@model,2=@prompt}\nLC-B: [1000|0:\"generate\"|1:&model|2:&prompt]"}
+{"input": "LC-R: \u2205", "output": "HLXL: null\nLC-T: NULL\nLC-B: [_]"}
+{"input": "LC-R: \u22a4", "output": "HLXL: true\nLC-T: TRUE\nLC-B: [T]"}
+{"input": "LC-R: \u22a5", "output": "HLXL: false\nLC-T: FALSE\nLC-B: [F]"}
+{"input": "LC-R: \u27c1model", "output": "HLXL: &h_model\nLC-T: @model\nLC-B: [&model]"}
+{"input": "LC-R: \ud83d\udc03\ud83d\udc04", "output": "HLXL: []\nLC-T: []\nLC-B: [[]]"}
+{"input": "LC-R: \u25c7\u25c6", "output": "HLXL: {}\nLC-T: {}\nLC-B: [{}]"}
+{"input": "LC-R: \ud83d\udc0a14\ud83d\udc010 42\ud83d\udc02", "output": "HLXL: {14: {@0: 42}}\nLC-T: {C:14,0=42}\nLC-B: [14|0:0x2a]"}
+{"input": "LC-R: \ud83d\udc0a1000\ud83d\udc010 \"search\"\ud83d\udc011 \u27c1documents\ud83d\udc02", "output": "HLXL: {1000: {@0: \"search\", @1: &h_documents}}\nLC-T: {C:1000,0=\"search\",1=@documents}\nLC-B: [1000|0:\"search\"|1:&documents]"}
+{"input": "LC-T: NULL", "output": "HLXL: null\nLC-R: \u2205\nLC-B: [_]"}
+{"input": "LC-T: TRUE", "output": "HLXL: true\nLC-R: \u22a4\nLC-B: [T]"}
+{"input": "LC-T: FALSE", "output": "HLXL: false\nLC-R: \u22a5\nLC-B: [F]"}
+{"input": "LC-T: @model", "output": "HLXL: &h_model\nLC-R: \u27c1model\nLC-B: [&model]"}
+{"input": "LC-T: []", "output": "HLXL: []\nLC-R: \ud83d\udc03\ud83d\udc04\nLC-B: [[]]"}
+{"input": "LC-T: {}", "output": "HLXL: {}\nLC-R: \u25c7\u25c6\nLC-B: [{}]"}
+{"input": "LC-T: {C:14,0=42}", "output": "HLXL: {14: {@0: 42}}\nLC-R: \ud83d\udc0a14\ud83d\udc010 42\ud83d\udc02\nLC-B: [14|0:0x2a]"}
+{"input": "LC-T: {C:1000,0=\"search\",1=@documents}", "output": "HLXL: {1000: {@0: \"search\", @1: &h_documents}}\nLC-R: \ud83d\udc0a1000\ud83d\udc010 \"search\"\ud83d\udc011 \u27c1documents\ud83d\udc02\nLC-B: [1000|0:\"search\"|1:&documents]"}
+{"input": "LC-B: [_]", "output": "HLXL: null\nLC-R: \u2205\nLC-T: NULL"}
+{"input": "LC-B: [T]", "output": "HLXL: true\nLC-R: \u22a4\nLC-T: TRUE"}
+{"input": "LC-B: [F]", "output": "HLXL: false\nLC-R: \u22a5\nLC-T: FALSE"}
+{"input": "LC-B: [&model]", "output": "HLXL: &h_model\nLC-R: \u27c1model\nLC-T: @model"}
+{"input": "LC-B: [[]]", "output": "HLXL: []\nLC-R: \ud83d\udc03\ud83d\udc04\nLC-T: []"}
+{"input": "LC-B: [{}]", "output": "HLXL: {}\nLC-R: \u25c7\u25c6\nLC-T: {}"}
+{"input": "LC-B: [14|0:0x2a]", "output": "HLXL: {14: {@0: 42}}\nLC-R: \ud83d\udc0a14\ud83d\udc010 42\ud83d\udc02\nLC-T: {C:14,0=42}"}
+{"input": "LC-B: [1000|0:\"search\"|1:&documents]", "output": "HLXL: {1000: {@0: \"search\", @1: &h_documents}}\nLC-R: \ud83d\udc0a1000\ud83d\udc010 \"search\"\ud83d\udc011 \u27c1documents\ud83d\udc02\nLC-T: {C:1000,0=\"search\",1=@documents}"}
+{"input": "Translate to LC-R: null", "output": "\u2205"}
+{"input": "Translate to LC-R: true", "output": "\u22a4"}
+{"input": "Translate to LC-R: false", "output": "\u22a5"}
+{"input": "Translate to LC-R: [1, 2, 3]", "output": "\ud83d\udc031, 2, 3\ud83d\udc04"}
+{"input": "Translate to LC-R: {name: \"Alice\"}", "output": "\u25c7name: \"Alice\"\u25c6"}
+{"input": "Translate to LC-R: {1000: {@0: \"search\", @1: &h_docs}}", "output": "\ud83d\udc0a1000\ud83d\udc010 \"search\"\ud83d\udc011 \u27c1docs\ud83d\udc02"}
+{"input": "Translate to LC-T: null", "output": "NULL"}
+{"input": "Translate to LC-T: true", "output": "TRUE"}
+{"input": "Translate to LC-T: false", "output": "FALSE"}
+{"input": "Translate to LC-T: [1, 2, 3]", "output": "[1,2,3]"}
+{"input": "Translate to LC-T: {name: \"Alice\"}", "output": "{name:\"Alice\"}"}
+{"input": "Translate to LC-T: {1000: {@0: \"search\", @1: &h_docs}}", "output": "{C:1000,0=\"search\",1=@docs}"}
+{"input": "Translate to HLXL: \u2205", "output": "null"}
+{"input": "Translate to HLXL: \u22a4", "output": "true"}
+{"input": "Translate to HLXL: \u22a5", "output": "false"}
+{"input": "Translate to HLXL: \ud83d\udc031, 2, 3\ud83d\udc04", "output": "[1, 2, 3]"}
+{"input": "Translate to HLXL: \u25c7name: \"Alice\"\u25c6", "output": "{name: \"Alice\"}"}
+{"input": "Translate to HLXL: \ud83d\udc0a1000\ud83d\udc010 \"search\"\ud83d\udc011 \u27c1docs\ud83d\udc02", "output": "{1000: {@0: \"search\", @1: &h_docs}}"}
+{"input": "What is the LC-R glyph for null?", "output": "\u2205"}
+{"input": "What is the LC-R glyph for true?", "output": "\u22a4"}
+{"input": "What is the LC-R glyph for false?", "output": "\u22a5"}
+{"input": "What is the LC-R glyph for a handle reference?", "output": "\u27c1"}
+{"input": "What is the LC-R glyph for contract start?", "output": "\ud83d\udc0a"}
+{"input": "What is the LC-R glyph for contract end?", "output": "\ud83d\udc02"}
+{"input": "What is the LC-R glyph for field separator?", "output": "\ud83d\udc01"}
+{"input": "What is the LC-R glyph for array start?", "output": "\ud83d\udc03"}
+{"input": "What is the LC-R glyph for array end?", "output": "\ud83d\udc04"}
+{"input": "What is the LC-R glyph for object start?", "output": "\u25c7"}
+{"input": "What is the LC-R glyph for object end?", "output": "\u25c6"}
+{"input": "Complete the HLX contract: {1000: {@0: \"search\", @1:", "output": "&h_documents}}"}
+{"input": "Complete the HLX contract: {1000: {@0: \"filter\", @1: &h_users, @2:", "output": "&h_active}}"}
+{"input": "Complete the HLX contract: {902: {@0: \"render_pipeline\", @1:", "output": "[&h_vs, &h_fs]}}"}
+{"input": "Complete the LC-R: \ud83d\udc0a1000\ud83d\udc010 \"search\"\ud83d\udc011", "output": "\u27c1documents\ud83d\udc02"}
+{"input": "Complete the LC-R: \ud83d\udc0a1000\ud83d\udc010 \"filter\"\ud83d\udc011 \u27c1users\ud83d\udc012", "output": "\u27c1active\ud83d\udc02"}

@@ -1,0 +1,72 @@
+{"input": "Translate HLXL to all formats: null", "output": "HLXL: null\nLC-R: ∅\nLC-T: NULL\nLC-B: [_]"}
+{"input": "Translate HLXL to all formats: true", "output": "HLXL: true\nLC-R: ⊤\nLC-T: TRUE\nLC-B: [T]"}
+{"input": "Translate HLXL to all formats: false", "output": "HLXL: false\nLC-R: ⊥\nLC-T: FALSE\nLC-B: [F]"}
+{"input": "Show me null in all HLX formats", "output": "HLXL: null\nLC-R: ∅\nLC-T: NULL\nLC-B: [_]"}
+{"input": "Convert true to HLX family", "output": "HLXL: true\nLC-R: ⊤\nLC-T: TRUE\nLC-B: [T]"}
+{"input": "What is false in LC-R format?", "output": "LC-R: ⊥"}
+{"input": "What is false in LC-T format?", "output": "LC-T: FALSE"}
+{"input": "Give me the LC-R representation of null", "output": "∅"}
+{"input": "Give me the LC-T representation of true", "output": "TRUE"}
+{"input": "Translate to Runic: null", "output": "∅"}
+{"input": "Translate to Runic: true", "output": "⊤"}
+{"input": "Translate to Runic: false", "output": "⊥"}
+{"input": "Translate to ASCII format: null", "output": "NULL"}
+{"input": "Translate to ASCII format: true", "output": "TRUE"}
+{"input": "Translate to ASCII format: false", "output": "FALSE"}
+{"input": "Convert to LC-R: [1, 2, 3]", "output": "🐃1, 2, 3🐄"}
+{"input": "Convert to LC-T: [1, 2, 3]", "output": "[1,2,3]"}
+{"input": "Show array [1, 2, 3] in Runic", "output": "🐃1, 2, 3🐄"}
+{"input": "Show array [42] in ASCII format", "output": "[42]"}
+{"input": "HLXL: []", "output": "LC-R: 🐃🐄\nLC-T: []\nLC-B: [[]]"}
+{"input": "Empty array in all formats", "output": "HLXL: []\nLC-R: 🐃🐄\nLC-T: []\nLC-B: [[]]"}
+{"input": "Convert object {name: \"Alice\"} to LC-R", "output": "◇name: \"Alice\"◆"}
+{"input": "Convert object {name: \"Alice\"} to LC-T", "output": "{name:\"Alice\"}"}
+{"input": "Show {x: 10, y: 20} in Runic format", "output": "◇x: 10, y: 20◆"}
+{"input": "Show {debug: true} in ASCII format", "output": "{debug:TRUE}"}
+{"input": "Empty object in LC-R", "output": "◇◆"}
+{"input": "Empty object in LC-T", "output": "{}"}
+{"input": "Translate handle &h_model to LC-R", "output": "⟁model"}
+{"input": "Translate handle &h_model to LC-T", "output": "@model"}
+{"input": "Show &h_documents in Runic", "output": "⟁documents"}
+{"input": "Show &h_query in ASCII", "output": "@query"}
+{"input": "Convert contract {14: {@0: 42}} to LC-R", "output": "🐊14🐁0 42🐂"}
+{"input": "Convert contract {14: {@0: 42}} to LC-T", "output": "{C:14,0=42}"}
+{"input": "Contract {16: {@0: \"hello\"}} in Runic", "output": "🐊16🐁0 \"hello\"🐂"}
+{"input": "Contract {16: {@0: \"hello\"}} in ASCII", "output": "{C:16,0=\"hello\"}"}
+{"input": "Translate {1000: {@0: \"search\", @1: &h_documents}} to LC-R", "output": "🐊1000🐁0 \"search\"🐁1 ⟁documents🐂"}
+{"input": "Translate {1000: {@0: \"search\", @1: &h_documents}} to LC-T", "output": "{C:1000,0=\"search\",1=@documents}"}
+{"input": "Search contract in Runic format", "output": "🐊1000🐁0 \"search\"🐁1 ⟁documents🐂"}
+{"input": "Filter contract {1000: {@0: \"filter\", @1: &h_users, @2: &h_active}}", "output": "LC-R: 🐊1000🐁0 \"filter\"🐁1 ⟁users🐁2 ⟁active🐂\nLC-T: {C:1000,0=\"filter\",1=@users,2=@active}"}
+{"input": "Transform operation to LC-R", "output": "🐊1000🐁0 \"transform\"🐁1 ⟁text🐁2 ⟁uppercase🐂"}
+{"input": "Aggregate operation in ASCII", "output": "{C:1000,0=\"aggregate\",1=@sum,2=@values}"}
+{"input": "Execute contract in Runic", "output": "🐊1000🐁0 \"execute\"🐁1 ⟁command🐂"}
+{"input": "Navigate to home in LC-T", "output": "{C:1000,0=\"navigate\",1=@home}"}
+{"input": "Shader contract {900: {@0: &h_spirv, @1: \"main\", @2: \"compute\"}}", "output": "LC-R: 🐊900🐁0 ⟁spirv🐁1 \"main\"🐁2 \"compute\"🐂\nLC-T: {C:900,0=@spirv,1=\"main\",2=\"compute\"}"}
+{"input": "Pipeline contract {902: {@0: \"render_pipeline\", @1: [&h_vs, &h_fs]}}", "output": "LC-R: 🐊902🐁0 \"render_pipeline\"🐁1 🐃⟁vs, ⟁fs🐄🐂\nLC-T: {C:902,0=\"render_pipeline\",1=[@vs,@fs]}"}
+{"input": "For ASCII/LC-T operations, use the ASCII specialist", "output": "Understood. LC-T format operations require ASCII specialist for precise text-safe encoding."}
+{"input": "For Runic/LC-R operations, use the Runic specialist", "output": "Understood. LC-R format operations require Runic specialist for precise glyph encoding."}
+{"input": "When should I use the ASCII specialist?", "output": "Use ASCII specialist for: LC-T format, text-safe encoding, cross-platform compatibility, logging, and operations requiring {C:...} notation."}
+{"input": "When should I use the Runic specialist?", "output": "Use Runic specialist for: LC-R format, Unicode glyph notation, visual representation, compact storage, and operations using glyphs like ⊤, ⊥, ∅, 🐊, 🐂, ⟁."}
+{"input": "What's the difference between LC-T and LC-R?", "output": "LC-T (ASCII-safe text): Uses {C:N,...} notation, @handles, TRUE/FALSE/NULL\nLC-R (Runic glyphs): Uses 🐊N🐁...🐂 notation, ⟁handles, ⊤/⊥/∅"}
+{"input": "Explain HLX format hierarchy", "output": "HLXL: High-level syntax (human-friendly)\nLC-R: Latent Collapse Runic (Unicode glyphs, visual)\nLC-T: Latent Collapse Text (ASCII-safe, portable)\nLC-B: Latent Collapse Binary (hex/binary, wire format)"}
+{"input": "I need to encode a search operation in ASCII", "output": "Use LC-T format: {C:1000,0=\"search\",1=@target}"}
+{"input": "I need to encode a filter operation in Runic", "output": "Use LC-R format: 🐊1000🐁0 \"filter\"🐁1 ⟁items🐁2 ⟁predicate🐂"}
+{"input": "Convert this to text-safe format: 🐊14🐁0 42🐂", "output": "{C:14,0=42}"}
+{"input": "Convert this to Runic glyphs: {C:14,0=42}", "output": "🐊14🐁0 42🐂"}
+{"input": "Parse LC-R: ⊤", "output": "HLXL: true\nLC-T: TRUE\nLC-B: [T]"}
+{"input": "Parse LC-T: NULL", "output": "HLXL: null\nLC-R: ∅\nLC-B: [_]"}
+{"input": "Parse LC-R: 🐃1, 2, 3🐄", "output": "HLXL: [1, 2, 3]\nLC-T: [1,2,3]\nLC-B: [[0x01,0x02,0x03]]"}
+{"input": "Parse LC-T: {C:1000,0=\"search\",1=@docs}", "output": "HLXL: {1000: {@0: \"search\", @1: &h_docs}}\nLC-R: 🐊1000🐁0 \"search\"🐁1 ⟁docs🐂"}
+{"input": "What contract number is used for general operations?", "output": "Contract 1000 is used for general operations like search, filter, transform, aggregate, execute, etc."}
+{"input": "What contract numbers are for GPU operations?", "output": "Contract 900: VulkanShader\nContract 901: ComputeKernel\nContract 902: PipelineConfig"}
+{"input": "Describe contract 1000", "output": "Contract 1000: General operations. Field @0: operation name (string), Field @1+: operation-specific arguments (handles, values, etc.)"}
+{"input": "Describe contract 902", "output": "Contract 902: PipelineConfig. Field @0: pipeline_id (string), Field @1: stages (array of shader handles), Field @2: sync_barriers, Field @3: output_image handle"}
+{"input": "Show me a complete translation: {1000: {@0: \"train\", @1: &h_model, @2: &h_data}}", "output": "HLXL: {1000: {@0: \"train\", @1: &h_model, @2: &h_data}}\nLC-R: 🐊1000🐁0 \"train\"🐁1 ⟁model🐁2 ⟁data🐂\nLC-T: {C:1000,0=\"train\",1=@model,2=@data}\nLC-B: [1000|0:\"train\"|1:&model|2:&data]"}
+{"input": "Bidirectional translation: ∅", "output": "LC-R: ∅\nHLXL: null\nLC-T: NULL\nLC-B: [_]"}
+{"input": "Bidirectional translation: TRUE", "output": "LC-T: TRUE\nHLXL: true\nLC-R: ⊤\nLC-B: [T]"}
+{"input": "Route this to the right specialist: Convert to LC-R", "output": "This requires the Runic specialist for LC-R glyph encoding."}
+{"input": "Route this to the right specialist: Convert to LC-T", "output": "This requires the ASCII specialist for LC-T text-safe encoding."}
+{"input": "Which specialist handles Unicode glyphs?", "output": "The Runic specialist handles all Unicode glyphs: ⊤, ⊥, ∅, ⟁, 🐊, 🐁, 🐂, 🐃, 🐄, ◇, ◆"}
+{"input": "Which specialist handles text-safe encoding?", "output": "The ASCII specialist handles text-safe LC-T encoding: {C:...}, @handles, TRUE/FALSE/NULL"}
+{"input": "I need precise Runic encoding", "output": "Routing to Runic specialist for precise LC-R glyph encoding."}
+{"input": "I need precise ASCII encoding", "output": "Routing to ASCII specialist for precise LC-T text-safe encoding."}

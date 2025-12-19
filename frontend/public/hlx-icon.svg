@@ -1,0 +1,52 @@
+<svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="256" height="256" fill="#0a0e27" rx="32"/>
+
+  <!-- Gradient Definition -->
+  <defs>
+    <linearGradient id="helixGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ec4899;stop-opacity:1" />
+    </linearGradient>
+
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Helix DNA-like double helix structure -->
+  <!-- Left strand -->
+  <path d="M 80 50 Q 60 80, 80 110 T 80 170 Q 60 200, 80 230"
+        stroke="url(#helixGrad)"
+        stroke-width="8"
+        fill="none"
+        stroke-linecap="round"
+        filter="url(#glow)"/>
+
+  <!-- Right strand -->
+  <path d="M 176 50 Q 196 80, 176 110 T 176 170 Q 196 200, 176 230"
+        stroke="url(#helixGrad)"
+        stroke-width="8"
+        fill="none"
+        stroke-linecap="round"
+        filter="url(#glow)"/>
+
+  <!-- Connecting bars (like DNA base pairs) -->
+  <line x1="80" y1="70" x2="176" y2="70" stroke="#8b5cf6" stroke-width="3" opacity="0.6"/>
+  <line x1="80" y1="110" x2="176" y2="110" stroke="#a855f7" stroke-width="3" opacity="0.6"/>
+  <line x1="80" y1="150" x2="176" y2="150" stroke="#c026d3" stroke-width="3" opacity="0.6"/>
+  <line x1="80" y1="190" x2="176" y2="190" stroke="#db2777" stroke-width="3" opacity="0.6"/>
+
+  <!-- Central HLX text -->
+  <text x="128" y="140"
+        font-family="monospace"
+        font-size="36"
+        font-weight="bold"
+        fill="#ffffff"
+        text-anchor="middle"
+        filter="url(#glow)">HLX</text>
+</svg>

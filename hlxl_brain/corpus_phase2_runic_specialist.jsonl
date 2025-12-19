@@ -1,0 +1,150 @@
+{"input": "### Instruction:\nConvert {1000: {@0: \"op0\", @1: 0}} to LC-R\n\n### Response:\n", "output": "\ud83d\udc0a1000\ud83d\udc010 \"op0\"\ud83d\udc011 0\ud83d\udc02"}
+{"input": "### Instruction:\nConvert {1000: {@0: \"op1\", @1: 1}} to LC-R\n\n### Response:\n", "output": "\ud83d\udc0a1000\ud83d\udc010 \"op1\"\ud83d\udc011 1\ud83d\udc02"}
+{"input": "### Instruction:\nConvert {1000: {@0: \"op2\", @1: 2}} to LC-R\n\n### Response:\n", "output": "\ud83d\udc0a1000\ud83d\udc010 \"op2\"\ud83d\udc011 2\ud83d\udc02"}
+{"input": "### Instruction:\nConvert {1000: {@0: \"op3\", @1: 3}} to LC-R\n\n### Response:\n", "output": "\ud83d\udc0a1000\ud83d\udc010 \"op3\"\ud83d\udc011 3\ud83d\udc02"}
+{"input": "### Instruction:\nConvert {1000: {@0: \"op4\", @1: 4}} to LC-R\n\n### Response:\n", "output": "\ud83d\udc0a1000\ud83d\udc010 \"op4\"\ud83d\udc011 4\ud83d\udc02"}
+{"input": "### Instruction:\nConvert {1000: {@0: \"op5\", @1: 5}} to LC-R\n\n### Response:\n", "output": "\ud83d\udc0a1000\ud83d\udc010 \"op5\"\ud83d\udc011 5\ud83d\udc02"}
+{"input": "### Instruction:\nConvert {1000: {@0: \"op6\", @1: 6}} to LC-R\n\n### Response:\n", "output": "\ud83d\udc0a1000\ud83d\udc010 \"op6\"\ud83d\udc011 6\ud83d\udc02"}
+{"input": "### Instruction:\nConvert {1000: {@0: \"op7\", @1: 7}} to LC-R\n\n### Response:\n", "output": "\ud83d\udc0a1000\ud83d\udc010 \"op7\"\ud83d\udc011 7\ud83d\udc02"}
+{"input": "### Instruction:\nConvert {1000: {@0: \"op8\", @1: 8}} to LC-R\n\n### Response:\n", "output": "\ud83d\udc0a1000\ud83d\udc010 \"op8\"\ud83d\udc011 8\ud83d\udc02"}
+{"input": "### Instruction:\nConvert {1000: {@0: \"op9\", @1: 9}} to LC-R\n\n### Response:\n", "output": "\ud83d\udc0a1000\ud83d\udc010 \"op9\"\ud83d\udc011 9\ud83d\udc02"}
+{"input": "### Instruction:\nConvert {1000: {@0: \"op0\", @1: 10}} to LC-R\n\n### Response:\n", "output": "\ud83d\udc0a1000\ud83d\udc010 \"op0\"\ud83d\udc011 10\ud83d\udc02"}
+{"input": "### Instruction:\nConvert {1000: {@0: \"op1\", @1: 11}} to LC-R\n\n### Response:\n", "output": "\ud83d\udc0a1000\ud83d\udc010 \"op1\"\ud83d\udc011 11\ud83d\udc02"}
+{"input": "### Instruction:\nConvert {1000: {@0: \"op2\", @1: 12}} to LC-R\n\n### Response:\n", "output": "\ud83d\udc0a1000\ud83d\udc010 \"op2\"\ud83d\udc011 12\ud83d\udc02"}
+{"input": "### Instruction:\nConvert {1000: {@0: \"op3\", @1: 13}} to LC-R\n\n### Response:\n", "output": "\ud83d\udc0a1000\ud83d\udc010 \"op3\"\ud83d\udc011 13\ud83d\udc02"}
+{"input": "### Instruction:\nConvert {1000: {@0: \"op4\", @1: 14}} to LC-R\n\n### Response:\n", "output": "\ud83d\udc0a1000\ud83d\udc010 \"op4\"\ud83d\udc011 14\ud83d\udc02"}
+{"input": "### Instruction:\nConvert {1000: {@0: \"op5\", @1: 15}} to LC-R\n\n### Response:\n", "output": "\ud83d\udc0a1000\ud83d\udc010 \"op5\"\ud83d\udc011 15\ud83d\udc02"}
+{"input": "### Instruction:\nConvert {1000: {@0: \"op6\", @1: 16}} to LC-R\n\n### Response:\n", "output": "\ud83d\udc0a1000\ud83d\udc010 \"op6\"\ud83d\udc011 16\ud83d\udc02"}
+{"input": "### Instruction:\nConvert {1000: {@0: \"op7\", @1: 17}} to LC-R\n\n### Response:\n", "output": "\ud83d\udc0a1000\ud83d\udc010 \"op7\"\ud83d\udc011 17\ud83d\udc02"}
+{"input": "### Instruction:\nConvert {1000: {@0: \"op8\", @1: 18}} to LC-R\n\n### Response:\n", "output": "\ud83d\udc0a1000\ud83d\udc010 \"op8\"\ud83d\udc011 18\ud83d\udc02"}
+{"input": "### Instruction:\nConvert {1000: {@0: \"op9\", @1: 19}} to LC-R\n\n### Response:\n", "output": "\ud83d\udc0a1000\ud83d\udc010 \"op9\"\ud83d\udc011 19\ud83d\udc02"}
+{"input": "### Instruction:\nConvert {1000: {@0: \"op0\", @1: 20}} to LC-R\n\n### Response:\n", "output": "\ud83d\udc0a1000\ud83d\udc010 \"op0\"\ud83d\udc011 20\ud83d\udc02"}
+{"input": "### Instruction:\nConvert {1000: {@0: \"op1\", @1: 21}} to LC-R\n\n### Response:\n", "output": "\ud83d\udc0a1000\ud83d\udc010 \"op1\"\ud83d\udc011 21\ud83d\udc02"}
+{"input": "### Instruction:\nConvert {1000: {@0: \"op2\", @1: 22}} to LC-R\n\n### Response:\n", "output": "\ud83d\udc0a1000\ud83d\udc010 \"op2\"\ud83d\udc011 22\ud83d\udc02"}
+{"input": "### Instruction:\nConvert {1000: {@0: \"op3\", @1: 23}} to LC-R\n\n### Response:\n", "output": "\ud83d\udc0a1000\ud83d\udc010 \"op3\"\ud83d\udc011 23\ud83d\udc02"}
+{"input": "### Instruction:\nConvert {1000: {@0: \"op4\", @1: 24}} to LC-R\n\n### Response:\n", "output": "\ud83d\udc0a1000\ud83d\udc010 \"op4\"\ud83d\udc011 24\ud83d\udc02"}
+{"input": "### Instruction:\nConvert {1000: {@0: \"op5\", @1: 25}} to LC-R\n\n### Response:\n", "output": "\ud83d\udc0a1000\ud83d\udc010 \"op5\"\ud83d\udc011 25\ud83d\udc02"}
+{"input": "### Instruction:\nConvert {1000: {@0: \"op6\", @1: 26}} to LC-R\n\n### Response:\n", "output": "\ud83d\udc0a1000\ud83d\udc010 \"op6\"\ud83d\udc011 26\ud83d\udc02"}
+{"input": "### Instruction:\nConvert {1000: {@0: \"op7\", @1: 27}} to LC-R\n\n### Response:\n", "output": "\ud83d\udc0a1000\ud83d\udc010 \"op7\"\ud83d\udc011 27\ud83d\udc02"}
+{"input": "### Instruction:\nConvert {1000: {@0: \"op8\", @1: 28}} to LC-R\n\n### Response:\n", "output": "\ud83d\udc0a1000\ud83d\udc010 \"op8\"\ud83d\udc011 28\ud83d\udc02"}
+{"input": "### Instruction:\nConvert {1000: {@0: \"op9\", @1: 29}} to LC-R\n\n### Response:\n", "output": "\ud83d\udc0a1000\ud83d\udc010 \"op9\"\ud83d\udc011 29\ud83d\udc02"}
+{"input": "### Instruction:\nConvert {1000: {@0: \"op0\", @1: 30}} to LC-R\n\n### Response:\n", "output": "\ud83d\udc0a1000\ud83d\udc010 \"op0\"\ud83d\udc011 30\ud83d\udc02"}
+{"input": "### Instruction:\nConvert {1000: {@0: \"op1\", @1: 31}} to LC-R\n\n### Response:\n", "output": "\ud83d\udc0a1000\ud83d\udc010 \"op1\"\ud83d\udc011 31\ud83d\udc02"}
+{"input": "### Instruction:\nConvert {1000: {@0: \"op2\", @1: 32}} to LC-R\n\n### Response:\n", "output": "\ud83d\udc0a1000\ud83d\udc010 \"op2\"\ud83d\udc011 32\ud83d\udc02"}
+{"input": "### Instruction:\nConvert {1000: {@0: \"op3\", @1: 33}} to LC-R\n\n### Response:\n", "output": "\ud83d\udc0a1000\ud83d\udc010 \"op3\"\ud83d\udc011 33\ud83d\udc02"}
+{"input": "### Instruction:\nConvert {1000: {@0: \"op4\", @1: 34}} to LC-R\n\n### Response:\n", "output": "\ud83d\udc0a1000\ud83d\udc010 \"op4\"\ud83d\udc011 34\ud83d\udc02"}
+{"input": "### Instruction:\nConvert {1000: {@0: \"op5\", @1: 35}} to LC-R\n\n### Response:\n", "output": "\ud83d\udc0a1000\ud83d\udc010 \"op5\"\ud83d\udc011 35\ud83d\udc02"}
+{"input": "### Instruction:\nConvert {1000: {@0: \"op6\", @1: 36}} to LC-R\n\n### Response:\n", "output": "\ud83d\udc0a1000\ud83d\udc010 \"op6\"\ud83d\udc011 36\ud83d\udc02"}
+{"input": "### Instruction:\nConvert {1000: {@0: \"op7\", @1: 37}} to LC-R\n\n### Response:\n", "output": "\ud83d\udc0a1000\ud83d\udc010 \"op7\"\ud83d\udc011 37\ud83d\udc02"}
+{"input": "### Instruction:\nConvert {1000: {@0: \"op8\", @1: 38}} to LC-R\n\n### Response:\n", "output": "\ud83d\udc0a1000\ud83d\udc010 \"op8\"\ud83d\udc011 38\ud83d\udc02"}
+{"input": "### Instruction:\nConvert {1000: {@0: \"op9\", @1: 39}} to LC-R\n\n### Response:\n", "output": "\ud83d\udc0a1000\ud83d\udc010 \"op9\"\ud83d\udc011 39\ud83d\udc02"}
+{"input": "### Instruction:\nConvert {1000: {@0: \"op0\", @1: 40}} to LC-R\n\n### Response:\n", "output": "\ud83d\udc0a1000\ud83d\udc010 \"op0\"\ud83d\udc011 40\ud83d\udc02"}
+{"input": "### Instruction:\nConvert {1000: {@0: \"op1\", @1: 41}} to LC-R\n\n### Response:\n", "output": "\ud83d\udc0a1000\ud83d\udc010 \"op1\"\ud83d\udc011 41\ud83d\udc02"}
+{"input": "### Instruction:\nConvert {1000: {@0: \"op2\", @1: 42}} to LC-R\n\n### Response:\n", "output": "\ud83d\udc0a1000\ud83d\udc010 \"op2\"\ud83d\udc011 42\ud83d\udc02"}
+{"input": "### Instruction:\nConvert {1000: {@0: \"op3\", @1: 43}} to LC-R\n\n### Response:\n", "output": "\ud83d\udc0a1000\ud83d\udc010 \"op3\"\ud83d\udc011 43\ud83d\udc02"}
+{"input": "### Instruction:\nConvert {1000: {@0: \"op4\", @1: 44}} to LC-R\n\n### Response:\n", "output": "\ud83d\udc0a1000\ud83d\udc010 \"op4\"\ud83d\udc011 44\ud83d\udc02"}
+{"input": "### Instruction:\nConvert {1000: {@0: \"op5\", @1: 45}} to LC-R\n\n### Response:\n", "output": "\ud83d\udc0a1000\ud83d\udc010 \"op5\"\ud83d\udc011 45\ud83d\udc02"}
+{"input": "### Instruction:\nConvert {1000: {@0: \"op6\", @1: 46}} to LC-R\n\n### Response:\n", "output": "\ud83d\udc0a1000\ud83d\udc010 \"op6\"\ud83d\udc011 46\ud83d\udc02"}
+{"input": "### Instruction:\nConvert {1000: {@0: \"op7\", @1: 47}} to LC-R\n\n### Response:\n", "output": "\ud83d\udc0a1000\ud83d\udc010 \"op7\"\ud83d\udc011 47\ud83d\udc02"}
+{"input": "### Instruction:\nConvert {1000: {@0: \"op8\", @1: 48}} to LC-R\n\n### Response:\n", "output": "\ud83d\udc0a1000\ud83d\udc010 \"op8\"\ud83d\udc011 48\ud83d\udc02"}
+{"input": "### Instruction:\nConvert {1000: {@0: \"op9\", @1: 49}} to LC-R\n\n### Response:\n", "output": "\ud83d\udc0a1000\ud83d\udc010 \"op9\"\ud83d\udc011 49\ud83d\udc02"}
+{"input": "### Instruction:\nConvert [1, 2, 0] to LC-R\n\n### Response:\n", "output": "\ud83d\udc031, 2, 0\ud83d\udc04"}
+{"input": "### Instruction:\nConvert [1, 2, 1] to LC-R\n\n### Response:\n", "output": "\ud83d\udc031, 2, 1\ud83d\udc04"}
+{"input": "### Instruction:\nConvert [1, 2, 2] to LC-R\n\n### Response:\n", "output": "\ud83d\udc031, 2, 2\ud83d\udc04"}
+{"input": "### Instruction:\nConvert [1, 2, 3] to LC-R\n\n### Response:\n", "output": "\ud83d\udc031, 2, 3\ud83d\udc04"}
+{"input": "### Instruction:\nConvert [1, 2, 4] to LC-R\n\n### Response:\n", "output": "\ud83d\udc031, 2, 4\ud83d\udc04"}
+{"input": "### Instruction:\nConvert [1, 2, 5] to LC-R\n\n### Response:\n", "output": "\ud83d\udc031, 2, 5\ud83d\udc04"}
+{"input": "### Instruction:\nConvert [1, 2, 6] to LC-R\n\n### Response:\n", "output": "\ud83d\udc031, 2, 6\ud83d\udc04"}
+{"input": "### Instruction:\nConvert [1, 2, 7] to LC-R\n\n### Response:\n", "output": "\ud83d\udc031, 2, 7\ud83d\udc04"}
+{"input": "### Instruction:\nConvert [1, 2, 8] to LC-R\n\n### Response:\n", "output": "\ud83d\udc031, 2, 8\ud83d\udc04"}
+{"input": "### Instruction:\nConvert [1, 2, 9] to LC-R\n\n### Response:\n", "output": "\ud83d\udc031, 2, 9\ud83d\udc04"}
+{"input": "### Instruction:\nConvert [1, 2, 0] to LC-R\n\n### Response:\n", "output": "\ud83d\udc031, 2, 0\ud83d\udc04"}
+{"input": "### Instruction:\nConvert [1, 2, 1] to LC-R\n\n### Response:\n", "output": "\ud83d\udc031, 2, 1\ud83d\udc04"}
+{"input": "### Instruction:\nConvert [1, 2, 2] to LC-R\n\n### Response:\n", "output": "\ud83d\udc031, 2, 2\ud83d\udc04"}
+{"input": "### Instruction:\nConvert [1, 2, 3] to LC-R\n\n### Response:\n", "output": "\ud83d\udc031, 2, 3\ud83d\udc04"}
+{"input": "### Instruction:\nConvert [1, 2, 4] to LC-R\n\n### Response:\n", "output": "\ud83d\udc031, 2, 4\ud83d\udc04"}
+{"input": "### Instruction:\nConvert [1, 2, 5] to LC-R\n\n### Response:\n", "output": "\ud83d\udc031, 2, 5\ud83d\udc04"}
+{"input": "### Instruction:\nConvert [1, 2, 6] to LC-R\n\n### Response:\n", "output": "\ud83d\udc031, 2, 6\ud83d\udc04"}
+{"input": "### Instruction:\nConvert [1, 2, 7] to LC-R\n\n### Response:\n", "output": "\ud83d\udc031, 2, 7\ud83d\udc04"}
+{"input": "### Instruction:\nConvert [1, 2, 8] to LC-R\n\n### Response:\n", "output": "\ud83d\udc031, 2, 8\ud83d\udc04"}
+{"input": "### Instruction:\nConvert [1, 2, 9] to LC-R\n\n### Response:\n", "output": "\ud83d\udc031, 2, 9\ud83d\udc04"}
+{"input": "### Instruction:\nConvert [1, 2, 0] to LC-R\n\n### Response:\n", "output": "\ud83d\udc031, 2, 0\ud83d\udc04"}
+{"input": "### Instruction:\nConvert [1, 2, 1] to LC-R\n\n### Response:\n", "output": "\ud83d\udc031, 2, 1\ud83d\udc04"}
+{"input": "### Instruction:\nConvert [1, 2, 2] to LC-R\n\n### Response:\n", "output": "\ud83d\udc031, 2, 2\ud83d\udc04"}
+{"input": "### Instruction:\nConvert [1, 2, 3] to LC-R\n\n### Response:\n", "output": "\ud83d\udc031, 2, 3\ud83d\udc04"}
+{"input": "### Instruction:\nConvert [1, 2, 4] to LC-R\n\n### Response:\n", "output": "\ud83d\udc031, 2, 4\ud83d\udc04"}
+{"input": "### Instruction:\nConvert [1, 2, 5] to LC-R\n\n### Response:\n", "output": "\ud83d\udc031, 2, 5\ud83d\udc04"}
+{"input": "### Instruction:\nConvert [1, 2, 6] to LC-R\n\n### Response:\n", "output": "\ud83d\udc031, 2, 6\ud83d\udc04"}
+{"input": "### Instruction:\nConvert [1, 2, 7] to LC-R\n\n### Response:\n", "output": "\ud83d\udc031, 2, 7\ud83d\udc04"}
+{"input": "### Instruction:\nConvert [1, 2, 8] to LC-R\n\n### Response:\n", "output": "\ud83d\udc031, 2, 8\ud83d\udc04"}
+{"input": "### Instruction:\nConvert [1, 2, 9] to LC-R\n\n### Response:\n", "output": "\ud83d\udc031, 2, 9\ud83d\udc04"}
+{"input": "### Instruction:\nConvert [1, 2, 0] to LC-R\n\n### Response:\n", "output": "\ud83d\udc031, 2, 0\ud83d\udc04"}
+{"input": "### Instruction:\nConvert [1, 2, 1] to LC-R\n\n### Response:\n", "output": "\ud83d\udc031, 2, 1\ud83d\udc04"}
+{"input": "### Instruction:\nConvert [1, 2, 2] to LC-R\n\n### Response:\n", "output": "\ud83d\udc031, 2, 2\ud83d\udc04"}
+{"input": "### Instruction:\nConvert [1, 2, 3] to LC-R\n\n### Response:\n", "output": "\ud83d\udc031, 2, 3\ud83d\udc04"}
+{"input": "### Instruction:\nConvert [1, 2, 4] to LC-R\n\n### Response:\n", "output": "\ud83d\udc031, 2, 4\ud83d\udc04"}
+{"input": "### Instruction:\nConvert [1, 2, 5] to LC-R\n\n### Response:\n", "output": "\ud83d\udc031, 2, 5\ud83d\udc04"}
+{"input": "### Instruction:\nConvert [1, 2, 6] to LC-R\n\n### Response:\n", "output": "\ud83d\udc031, 2, 6\ud83d\udc04"}
+{"input": "### Instruction:\nConvert [1, 2, 7] to LC-R\n\n### Response:\n", "output": "\ud83d\udc031, 2, 7\ud83d\udc04"}
+{"input": "### Instruction:\nConvert [1, 2, 8] to LC-R\n\n### Response:\n", "output": "\ud83d\udc031, 2, 8\ud83d\udc04"}
+{"input": "### Instruction:\nConvert [1, 2, 9] to LC-R\n\n### Response:\n", "output": "\ud83d\udc031, 2, 9\ud83d\udc04"}
+{"input": "### Instruction:\nConvert [1, 2, 0] to LC-R\n\n### Response:\n", "output": "\ud83d\udc031, 2, 0\ud83d\udc04"}
+{"input": "### Instruction:\nConvert [1, 2, 1] to LC-R\n\n### Response:\n", "output": "\ud83d\udc031, 2, 1\ud83d\udc04"}
+{"input": "### Instruction:\nConvert [1, 2, 2] to LC-R\n\n### Response:\n", "output": "\ud83d\udc031, 2, 2\ud83d\udc04"}
+{"input": "### Instruction:\nConvert [1, 2, 3] to LC-R\n\n### Response:\n", "output": "\ud83d\udc031, 2, 3\ud83d\udc04"}
+{"input": "### Instruction:\nConvert [1, 2, 4] to LC-R\n\n### Response:\n", "output": "\ud83d\udc031, 2, 4\ud83d\udc04"}
+{"input": "### Instruction:\nConvert [1, 2, 5] to LC-R\n\n### Response:\n", "output": "\ud83d\udc031, 2, 5\ud83d\udc04"}
+{"input": "### Instruction:\nConvert [1, 2, 6] to LC-R\n\n### Response:\n", "output": "\ud83d\udc031, 2, 6\ud83d\udc04"}
+{"input": "### Instruction:\nConvert [1, 2, 7] to LC-R\n\n### Response:\n", "output": "\ud83d\udc031, 2, 7\ud83d\udc04"}
+{"input": "### Instruction:\nConvert [1, 2, 8] to LC-R\n\n### Response:\n", "output": "\ud83d\udc031, 2, 8\ud83d\udc04"}
+{"input": "### Instruction:\nConvert [1, 2, 9] to LC-R\n\n### Response:\n", "output": "\ud83d\udc031, 2, 9\ud83d\udc04"}
+{"input": "### Instruction:\nParse LC-R: \ud83d\udc0a900\ud83d\udc010 \u27c1shader0\ud83d\udc011 \"main\"\ud83d\udc012 \"compute\"\ud83d\udc02\n\n### Response:\n", "output": "HLXL: {900: {@0: &h_shader0, @1: \"main\", @2: \"compute\"}}"}
+{"input": "### Instruction:\nParse LC-R: \ud83d\udc0a900\ud83d\udc010 \u27c1shader1\ud83d\udc011 \"main\"\ud83d\udc012 \"compute\"\ud83d\udc02\n\n### Response:\n", "output": "HLXL: {900: {@0: &h_shader1, @1: \"main\", @2: \"compute\"}}"}
+{"input": "### Instruction:\nParse LC-R: \ud83d\udc0a900\ud83d\udc010 \u27c1shader2\ud83d\udc011 \"main\"\ud83d\udc012 \"compute\"\ud83d\udc02\n\n### Response:\n", "output": "HLXL: {900: {@0: &h_shader2, @1: \"main\", @2: \"compute\"}}"}
+{"input": "### Instruction:\nParse LC-R: \ud83d\udc0a900\ud83d\udc010 \u27c1shader3\ud83d\udc011 \"main\"\ud83d\udc012 \"compute\"\ud83d\udc02\n\n### Response:\n", "output": "HLXL: {900: {@0: &h_shader3, @1: \"main\", @2: \"compute\"}}"}
+{"input": "### Instruction:\nParse LC-R: \ud83d\udc0a900\ud83d\udc010 \u27c1shader4\ud83d\udc011 \"main\"\ud83d\udc012 \"compute\"\ud83d\udc02\n\n### Response:\n", "output": "HLXL: {900: {@0: &h_shader4, @1: \"main\", @2: \"compute\"}}"}
+{"input": "### Instruction:\nParse LC-R: \ud83d\udc0a900\ud83d\udc010 \u27c1shader5\ud83d\udc011 \"main\"\ud83d\udc012 \"compute\"\ud83d\udc02\n\n### Response:\n", "output": "HLXL: {900: {@0: &h_shader5, @1: \"main\", @2: \"compute\"}}"}
+{"input": "### Instruction:\nParse LC-R: \ud83d\udc0a900\ud83d\udc010 \u27c1shader6\ud83d\udc011 \"main\"\ud83d\udc012 \"compute\"\ud83d\udc02\n\n### Response:\n", "output": "HLXL: {900: {@0: &h_shader6, @1: \"main\", @2: \"compute\"}}"}
+{"input": "### Instruction:\nParse LC-R: \ud83d\udc0a900\ud83d\udc010 \u27c1shader7\ud83d\udc011 \"main\"\ud83d\udc012 \"compute\"\ud83d\udc02\n\n### Response:\n", "output": "HLXL: {900: {@0: &h_shader7, @1: \"main\", @2: \"compute\"}}"}
+{"input": "### Instruction:\nParse LC-R: \ud83d\udc0a900\ud83d\udc010 \u27c1shader8\ud83d\udc011 \"main\"\ud83d\udc012 \"compute\"\ud83d\udc02\n\n### Response:\n", "output": "HLXL: {900: {@0: &h_shader8, @1: \"main\", @2: \"compute\"}}"}
+{"input": "### Instruction:\nParse LC-R: \ud83d\udc0a900\ud83d\udc010 \u27c1shader9\ud83d\udc011 \"main\"\ud83d\udc012 \"compute\"\ud83d\udc02\n\n### Response:\n", "output": "HLXL: {900: {@0: &h_shader9, @1: \"main\", @2: \"compute\"}}"}
+{"input": "### Instruction:\nParse LC-R: \ud83d\udc0a900\ud83d\udc010 \u27c1shader10\ud83d\udc011 \"main\"\ud83d\udc012 \"compute\"\ud83d\udc02\n\n### Response:\n", "output": "HLXL: {900: {@0: &h_shader10, @1: \"main\", @2: \"compute\"}}"}
+{"input": "### Instruction:\nParse LC-R: \ud83d\udc0a900\ud83d\udc010 \u27c1shader11\ud83d\udc011 \"main\"\ud83d\udc012 \"compute\"\ud83d\udc02\n\n### Response:\n", "output": "HLXL: {900: {@0: &h_shader11, @1: \"main\", @2: \"compute\"}}"}
+{"input": "### Instruction:\nParse LC-R: \ud83d\udc0a900\ud83d\udc010 \u27c1shader12\ud83d\udc011 \"main\"\ud83d\udc012 \"compute\"\ud83d\udc02\n\n### Response:\n", "output": "HLXL: {900: {@0: &h_shader12, @1: \"main\", @2: \"compute\"}}"}
+{"input": "### Instruction:\nParse LC-R: \ud83d\udc0a900\ud83d\udc010 \u27c1shader13\ud83d\udc011 \"main\"\ud83d\udc012 \"compute\"\ud83d\udc02\n\n### Response:\n", "output": "HLXL: {900: {@0: &h_shader13, @1: \"main\", @2: \"compute\"}}"}
+{"input": "### Instruction:\nParse LC-R: \ud83d\udc0a900\ud83d\udc010 \u27c1shader14\ud83d\udc011 \"main\"\ud83d\udc012 \"compute\"\ud83d\udc02\n\n### Response:\n", "output": "HLXL: {900: {@0: &h_shader14, @1: \"main\", @2: \"compute\"}}"}
+{"input": "### Instruction:\nParse LC-R: \ud83d\udc0a900\ud83d\udc010 \u27c1shader15\ud83d\udc011 \"main\"\ud83d\udc012 \"compute\"\ud83d\udc02\n\n### Response:\n", "output": "HLXL: {900: {@0: &h_shader15, @1: \"main\", @2: \"compute\"}}"}
+{"input": "### Instruction:\nParse LC-R: \ud83d\udc0a900\ud83d\udc010 \u27c1shader16\ud83d\udc011 \"main\"\ud83d\udc012 \"compute\"\ud83d\udc02\n\n### Response:\n", "output": "HLXL: {900: {@0: &h_shader16, @1: \"main\", @2: \"compute\"}}"}
+{"input": "### Instruction:\nParse LC-R: \ud83d\udc0a900\ud83d\udc010 \u27c1shader17\ud83d\udc011 \"main\"\ud83d\udc012 \"compute\"\ud83d\udc02\n\n### Response:\n", "output": "HLXL: {900: {@0: &h_shader17, @1: \"main\", @2: \"compute\"}}"}
+{"input": "### Instruction:\nParse LC-R: \ud83d\udc0a900\ud83d\udc010 \u27c1shader18\ud83d\udc011 \"main\"\ud83d\udc012 \"compute\"\ud83d\udc02\n\n### Response:\n", "output": "HLXL: {900: {@0: &h_shader18, @1: \"main\", @2: \"compute\"}}"}
+{"input": "### Instruction:\nParse LC-R: \ud83d\udc0a900\ud83d\udc010 \u27c1shader19\ud83d\udc011 \"main\"\ud83d\udc012 \"compute\"\ud83d\udc02\n\n### Response:\n", "output": "HLXL: {900: {@0: &h_shader19, @1: \"main\", @2: \"compute\"}}"}
+{"input": "### Instruction:\nParse LC-R: \ud83d\udc0a900\ud83d\udc010 \u27c1shader0\ud83d\udc011 \"main\"\ud83d\udc012 \"compute\"\ud83d\udc02\n\n### Response:\n", "output": "HLXL: {900: {@0: &h_shader0, @1: \"main\", @2: \"compute\"}}"}
+{"input": "### Instruction:\nParse LC-R: \ud83d\udc0a900\ud83d\udc010 \u27c1shader1\ud83d\udc011 \"main\"\ud83d\udc012 \"compute\"\ud83d\udc02\n\n### Response:\n", "output": "HLXL: {900: {@0: &h_shader1, @1: \"main\", @2: \"compute\"}}"}
+{"input": "### Instruction:\nParse LC-R: \ud83d\udc0a900\ud83d\udc010 \u27c1shader2\ud83d\udc011 \"main\"\ud83d\udc012 \"compute\"\ud83d\udc02\n\n### Response:\n", "output": "HLXL: {900: {@0: &h_shader2, @1: \"main\", @2: \"compute\"}}"}
+{"input": "### Instruction:\nParse LC-R: \ud83d\udc0a900\ud83d\udc010 \u27c1shader3\ud83d\udc011 \"main\"\ud83d\udc012 \"compute\"\ud83d\udc02\n\n### Response:\n", "output": "HLXL: {900: {@0: &h_shader3, @1: \"main\", @2: \"compute\"}}"}
+{"input": "### Instruction:\nParse LC-R: \ud83d\udc0a900\ud83d\udc010 \u27c1shader4\ud83d\udc011 \"main\"\ud83d\udc012 \"compute\"\ud83d\udc02\n\n### Response:\n", "output": "HLXL: {900: {@0: &h_shader4, @1: \"main\", @2: \"compute\"}}"}
+{"input": "### Instruction:\nParse LC-R: \ud83d\udc0a900\ud83d\udc010 \u27c1shader5\ud83d\udc011 \"main\"\ud83d\udc012 \"compute\"\ud83d\udc02\n\n### Response:\n", "output": "HLXL: {900: {@0: &h_shader5, @1: \"main\", @2: \"compute\"}}"}
+{"input": "### Instruction:\nParse LC-R: \ud83d\udc0a900\ud83d\udc010 \u27c1shader6\ud83d\udc011 \"main\"\ud83d\udc012 \"compute\"\ud83d\udc02\n\n### Response:\n", "output": "HLXL: {900: {@0: &h_shader6, @1: \"main\", @2: \"compute\"}}"}
+{"input": "### Instruction:\nParse LC-R: \ud83d\udc0a900\ud83d\udc010 \u27c1shader7\ud83d\udc011 \"main\"\ud83d\udc012 \"compute\"\ud83d\udc02\n\n### Response:\n", "output": "HLXL: {900: {@0: &h_shader7, @1: \"main\", @2: \"compute\"}}"}
+{"input": "### Instruction:\nParse LC-R: \ud83d\udc0a900\ud83d\udc010 \u27c1shader8\ud83d\udc011 \"main\"\ud83d\udc012 \"compute\"\ud83d\udc02\n\n### Response:\n", "output": "HLXL: {900: {@0: &h_shader8, @1: \"main\", @2: \"compute\"}}"}
+{"input": "### Instruction:\nParse LC-R: \ud83d\udc0a900\ud83d\udc010 \u27c1shader9\ud83d\udc011 \"main\"\ud83d\udc012 \"compute\"\ud83d\udc02\n\n### Response:\n", "output": "HLXL: {900: {@0: &h_shader9, @1: \"main\", @2: \"compute\"}}"}
+{"input": "### Instruction:\nParse LC-R: \ud83d\udc0a900\ud83d\udc010 \u27c1shader10\ud83d\udc011 \"main\"\ud83d\udc012 \"compute\"\ud83d\udc02\n\n### Response:\n", "output": "HLXL: {900: {@0: &h_shader10, @1: \"main\", @2: \"compute\"}}"}
+{"input": "### Instruction:\nParse LC-R: \ud83d\udc0a900\ud83d\udc010 \u27c1shader11\ud83d\udc011 \"main\"\ud83d\udc012 \"compute\"\ud83d\udc02\n\n### Response:\n", "output": "HLXL: {900: {@0: &h_shader11, @1: \"main\", @2: \"compute\"}}"}
+{"input": "### Instruction:\nParse LC-R: \ud83d\udc0a900\ud83d\udc010 \u27c1shader12\ud83d\udc011 \"main\"\ud83d\udc012 \"compute\"\ud83d\udc02\n\n### Response:\n", "output": "HLXL: {900: {@0: &h_shader12, @1: \"main\", @2: \"compute\"}}"}
+{"input": "### Instruction:\nParse LC-R: \ud83d\udc0a900\ud83d\udc010 \u27c1shader13\ud83d\udc011 \"main\"\ud83d\udc012 \"compute\"\ud83d\udc02\n\n### Response:\n", "output": "HLXL: {900: {@0: &h_shader13, @1: \"main\", @2: \"compute\"}}"}
+{"input": "### Instruction:\nParse LC-R: \ud83d\udc0a900\ud83d\udc010 \u27c1shader14\ud83d\udc011 \"main\"\ud83d\udc012 \"compute\"\ud83d\udc02\n\n### Response:\n", "output": "HLXL: {900: {@0: &h_shader14, @1: \"main\", @2: \"compute\"}}"}
+{"input": "### Instruction:\nParse LC-R: \ud83d\udc0a900\ud83d\udc010 \u27c1shader15\ud83d\udc011 \"main\"\ud83d\udc012 \"compute\"\ud83d\udc02\n\n### Response:\n", "output": "HLXL: {900: {@0: &h_shader15, @1: \"main\", @2: \"compute\"}}"}
+{"input": "### Instruction:\nParse LC-R: \ud83d\udc0a900\ud83d\udc010 \u27c1shader16\ud83d\udc011 \"main\"\ud83d\udc012 \"compute\"\ud83d\udc02\n\n### Response:\n", "output": "HLXL: {900: {@0: &h_shader16, @1: \"main\", @2: \"compute\"}}"}
+{"input": "### Instruction:\nParse LC-R: \ud83d\udc0a900\ud83d\udc010 \u27c1shader17\ud83d\udc011 \"main\"\ud83d\udc012 \"compute\"\ud83d\udc02\n\n### Response:\n", "output": "HLXL: {900: {@0: &h_shader17, @1: \"main\", @2: \"compute\"}}"}
+{"input": "### Instruction:\nParse LC-R: \ud83d\udc0a900\ud83d\udc010 \u27c1shader18\ud83d\udc011 \"main\"\ud83d\udc012 \"compute\"\ud83d\udc02\n\n### Response:\n", "output": "HLXL: {900: {@0: &h_shader18, @1: \"main\", @2: \"compute\"}}"}
+{"input": "### Instruction:\nParse LC-R: \ud83d\udc0a900\ud83d\udc010 \u27c1shader19\ud83d\udc011 \"main\"\ud83d\udc012 \"compute\"\ud83d\udc02\n\n### Response:\n", "output": "HLXL: {900: {@0: &h_shader19, @1: \"main\", @2: \"compute\"}}"}
+{"input": "### Instruction:\nParse LC-R: \ud83d\udc0a900\ud83d\udc010 \u27c1shader0\ud83d\udc011 \"main\"\ud83d\udc012 \"compute\"\ud83d\udc02\n\n### Response:\n", "output": "HLXL: {900: {@0: &h_shader0, @1: \"main\", @2: \"compute\"}}"}
+{"input": "### Instruction:\nParse LC-R: \ud83d\udc0a900\ud83d\udc010 \u27c1shader1\ud83d\udc011 \"main\"\ud83d\udc012 \"compute\"\ud83d\udc02\n\n### Response:\n", "output": "HLXL: {900: {@0: &h_shader1, @1: \"main\", @2: \"compute\"}}"}
+{"input": "### Instruction:\nParse LC-R: \ud83d\udc0a900\ud83d\udc010 \u27c1shader2\ud83d\udc011 \"main\"\ud83d\udc012 \"compute\"\ud83d\udc02\n\n### Response:\n", "output": "HLXL: {900: {@0: &h_shader2, @1: \"main\", @2: \"compute\"}}"}
+{"input": "### Instruction:\nParse LC-R: \ud83d\udc0a900\ud83d\udc010 \u27c1shader3\ud83d\udc011 \"main\"\ud83d\udc012 \"compute\"\ud83d\udc02\n\n### Response:\n", "output": "HLXL: {900: {@0: &h_shader3, @1: \"main\", @2: \"compute\"}}"}
+{"input": "### Instruction:\nParse LC-R: \ud83d\udc0a900\ud83d\udc010 \u27c1shader4\ud83d\udc011 \"main\"\ud83d\udc012 \"compute\"\ud83d\udc02\n\n### Response:\n", "output": "HLXL: {900: {@0: &h_shader4, @1: \"main\", @2: \"compute\"}}"}
+{"input": "### Instruction:\nParse LC-R: \ud83d\udc0a900\ud83d\udc010 \u27c1shader5\ud83d\udc011 \"main\"\ud83d\udc012 \"compute\"\ud83d\udc02\n\n### Response:\n", "output": "HLXL: {900: {@0: &h_shader5, @1: \"main\", @2: \"compute\"}}"}
+{"input": "### Instruction:\nParse LC-R: \ud83d\udc0a900\ud83d\udc010 \u27c1shader6\ud83d\udc011 \"main\"\ud83d\udc012 \"compute\"\ud83d\udc02\n\n### Response:\n", "output": "HLXL: {900: {@0: &h_shader6, @1: \"main\", @2: \"compute\"}}"}
+{"input": "### Instruction:\nParse LC-R: \ud83d\udc0a900\ud83d\udc010 \u27c1shader7\ud83d\udc011 \"main\"\ud83d\udc012 \"compute\"\ud83d\udc02\n\n### Response:\n", "output": "HLXL: {900: {@0: &h_shader7, @1: \"main\", @2: \"compute\"}}"}
+{"input": "### Instruction:\nParse LC-R: \ud83d\udc0a900\ud83d\udc010 \u27c1shader8\ud83d\udc011 \"main\"\ud83d\udc012 \"compute\"\ud83d\udc02\n\n### Response:\n", "output": "HLXL: {900: {@0: &h_shader8, @1: \"main\", @2: \"compute\"}}"}
+{"input": "### Instruction:\nParse LC-R: \ud83d\udc0a900\ud83d\udc010 \u27c1shader9\ud83d\udc011 \"main\"\ud83d\udc012 \"compute\"\ud83d\udc02\n\n### Response:\n", "output": "HLXL: {900: {@0: &h_shader9, @1: \"main\", @2: \"compute\"}}"}

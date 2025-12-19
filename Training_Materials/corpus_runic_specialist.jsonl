@@ -1,0 +1,73 @@
+{"input": "### Instruction:\nConvert to LC-R: null\n\n### Response:\n", "output": "∅"}
+{"input": "### Instruction:\nConvert to LC-R: true\n\n### Response:\n", "output": "⊤"}
+{"input": "### Instruction:\nConvert to LC-R: false\n\n### Response:\n", "output": "⊥"}
+{"input": "### Instruction:\nConvert to LC-R: [1, 2, 3]\n\n### Response:\n", "output": "🐃1, 2, 3🐄"}
+{"input": "### Instruction:\nConvert to LC-R: []\n\n### Response:\n", "output": "🐃🐄"}
+{"input": "### Instruction:\nConvert to LC-R: {name: \"Alice\"}\n\n### Response:\n", "output": "◇name: \"Alice\"◆"}
+{"input": "### Instruction:\nConvert to LC-R: {}\n\n### Response:\n", "output": "◇◆"}
+{"input": "### Instruction:\nConvert to LC-R: &h_model\n\n### Response:\n", "output": "⟁model"}
+{"input": "### Instruction:\nConvert to LC-R: &h_documents\n\n### Response:\n", "output": "⟁documents"}
+{"input": "### Instruction:\nConvert to LC-R: &h_query\n\n### Response:\n", "output": "⟁query"}
+{"input": "### Instruction:\nConvert to LC-R: {14: {@0: 42}}\n\n### Response:\n", "output": "🐊14🐁0 42🐂"}
+{"input": "### Instruction:\nConvert to LC-R: {16: {@0: \"hello\"}}\n\n### Response:\n", "output": "🐊16🐁0 \"hello\"🐂"}
+{"input": "### Instruction:\nConvert to LC-R: {1000: {@0: \"search\", @1: &h_documents}}\n\n### Response:\n", "output": "🐊1000🐁0 \"search\"🐁1 ⟁documents🐂"}
+{"input": "### Instruction:\nConvert to LC-R: {1000: {@0: \"filter\", @1: &h_users, @2: &h_active}}\n\n### Response:\n", "output": "🐊1000🐁0 \"filter\"🐁1 ⟁users🐁2 ⟁active🐂"}
+{"input": "### Instruction:\nConvert to LC-R: {1000: {@0: \"transform\", @1: &h_text, @2: &h_uppercase}}\n\n### Response:\n", "output": "🐊1000🐁0 \"transform\"🐁1 ⟁text🐁2 ⟁uppercase🐂"}
+{"input": "### Instruction:\nConvert to LC-R: {1000: {@0: \"aggregate\", @1: &h_sum, @2: &h_values}}\n\n### Response:\n", "output": "🐊1000🐁0 \"aggregate\"🐁1 ⟁sum🐁2 ⟁values🐂"}
+{"input": "### Instruction:\nConvert to LC-R: {1000: {@0: \"execute\", @1: &h_command}}\n\n### Response:\n", "output": "🐊1000🐁0 \"execute\"🐁1 ⟁command🐂"}
+{"input": "### Instruction:\nConvert to LC-R: {1000: {@0: \"navigate\", @1: &h_home}}\n\n### Response:\n", "output": "🐊1000🐁0 \"navigate\"🐁1 ⟁home🐂"}
+{"input": "### Instruction:\nConvert to LC-R: {900: {@0: &h_spirv, @1: \"main\", @2: \"compute\"}}\n\n### Response:\n", "output": "🐊900🐁0 ⟁spirv🐁1 \"main\"🐁2 \"compute\"🐂"}
+{"input": "### Instruction:\nConvert to LC-R: {902: {@0: \"render_pipeline\", @1: [&h_vs, &h_fs]}}\n\n### Response:\n", "output": "🐊902🐁0 \"render_pipeline\"🐁1 🐃⟁vs, ⟁fs🐄🐂"}
+{"input": "### Instruction:\nConvert to LC-R: {1000: {@0: \"train\", @1: &h_model, @2: &h_data}}\n\n### Response:\n", "output": "🐊1000🐁0 \"train\"🐁1 ⟁model🐁2 ⟁data🐂"}
+{"input": "### Instruction:\nParse LC-R: ∅\n\n### Response:\n", "output": "HLXL: null"}
+{"input": "### Instruction:\nParse LC-R: ⊤\n\n### Response:\n", "output": "HLXL: true"}
+{"input": "### Instruction:\nParse LC-R: ⊥\n\n### Response:\n", "output": "HLXL: false"}
+{"input": "### Instruction:\nParse LC-R: 🐃1, 2, 3🐄\n\n### Response:\n", "output": "HLXL: [1, 2, 3]"}
+{"input": "### Instruction:\nParse LC-R: ◇name: \"Alice\"◆\n\n### Response:\n", "output": "HLXL: {name: \"Alice\"}"}
+{"input": "### Instruction:\nParse LC-R: ⟁documents\n\n### Response:\n", "output": "HLXL: &h_documents"}
+{"input": "### Instruction:\nParse LC-R: 🐊14🐁0 42🐂\n\n### Response:\n", "output": "HLXL: {14: {@0: 42}}"}
+{"input": "### Instruction:\nParse LC-R: 🐊1000🐁0 \"search\"🐁1 ⟁docs🐂\n\n### Response:\n", "output": "HLXL: {1000: {@0: \"search\", @1: &h_docs}}"}
+{"input": "### Instruction:\nParse LC-R: 🐊900🐁0 ⟁spirv🐁1 \"main\"🐁2 \"compute\"🐂\n\n### Response:\n", "output": "HLXL: {900: {@0: &h_spirv, @1: \"main\", @2: \"compute\"}}"}
+{"input": "### Instruction:\nParse LC-R: 🐊1000🐁0 \"filter\"🐁1 ⟁items🐁2 ⟁predicate🐂\n\n### Response:\n", "output": "HLXL: {1000: {@0: \"filter\", @1: &h_items, @2: &h_predicate}}"}
+{"input": "### Instruction:\nTranslate HLXL to LC-R: null\n\n### Response:\n", "output": "∅"}
+{"input": "### Instruction:\nTranslate HLXL to LC-R: true\n\n### Response:\n", "output": "⊤"}
+{"input": "### Instruction:\nTranslate HLXL to LC-R: false\n\n### Response:\n", "output": "⊥"}
+{"input": "### Instruction:\nTranslate HLXL to LC-R: [42, 100]\n\n### Response:\n", "output": "🐃42, 100🐄"}
+{"input": "### Instruction:\nTranslate HLXL to LC-R: {status: \"active\"}\n\n### Response:\n", "output": "◇status: \"active\"◆"}
+{"input": "### Instruction:\nTranslate HLXL to LC-R: &h_buffer\n\n### Response:\n", "output": "⟁buffer"}
+{"input": "### Instruction:\nTranslate HLXL to LC-R: {14: {@0: 99}}\n\n### Response:\n", "output": "🐊14🐁0 99🐂"}
+{"input": "### Instruction:\nTranslate HLXL to LC-R: {1000: {@0: \"query\", @1: &h_db}}\n\n### Response:\n", "output": "🐊1000🐁0 \"query\"🐁1 ⟁db🐂"}
+{"input": "### Instruction:\nWhat are the LC-R contract glyphs?\n\n### Response:\n", "output": "LC-R contract glyphs: 🐊 (start), 🐁 (field separator), 🐂 (end). Format: 🐊N🐁field value🐁field value🐂"}
+{"input": "### Instruction:\nHow do you encode handles in LC-R?\n\n### Response:\n", "output": "Handles in LC-R use ⟁ glyph: &h_model becomes ⟁model, &h_data becomes ⟁data."}
+{"input": "### Instruction:\nWhat are LC-R primitives?\n\n### Response:\n", "output": "LC-R primitives: ∅ (null), ⊤ (true), ⊥ (false). Mathematical set theory glyphs for visual clarity."}
+{"input": "### Instruction:\nDescribe LC-R arrays\n\n### Response:\n", "output": "LC-R arrays use ox glyphs: 🐃elements🐄. Example: 🐃1, 2, 3🐄"}
+{"input": "### Instruction:\nDescribe LC-R objects\n\n### Response:\n", "output": "LC-R objects use lozenge glyphs: ◇key: value◆. Example: ◇name: \"Alice\"◆"}
+{"input": "### Instruction:\nWhat is contract 1000 in LC-R?\n\n### Response:\n", "output": "Contract 1000 in LC-R: 🐊1000🐁0 \"operation\"🐁1 ⟁arg1🐁2 ⟁arg2🐂"}
+{"input": "### Instruction:\nWhat are GPU contracts in LC-R?\n\n### Response:\n", "output": "GPU contracts in LC-R: 🐊900...🐂 VulkanShader, 🐊901...🐂 ComputeKernel, 🐊902...🐂 PipelineConfig"}
+{"input": "### Instruction:\nEncode a search operation in LC-R\n\n### Response:\n", "output": "🐊1000🐁0 \"search\"🐁1 ⟁target🐂"}
+{"input": "### Instruction:\nEncode a filter operation in LC-R\n\n### Response:\n", "output": "🐊1000🐁0 \"filter\"🐁1 ⟁collection🐁2 ⟁predicate🐂"}
+{"input": "### Instruction:\nEncode a transform operation in LC-R\n\n### Response:\n", "output": "🐊1000🐁0 \"transform\"🐁1 ⟁input🐁2 ⟁function🐂"}
+{"input": "### Instruction:\nEncode an execute operation in LC-R\n\n### Response:\n", "output": "🐊1000🐁0 \"execute\"🐁1 ⟁command🐂"}
+{"input": "### Instruction:\nEncode a shader contract in LC-R\n\n### Response:\n", "output": "🐊900🐁0 ⟁spirv🐁1 \"main\"🐁2 \"compute\"🐂"}
+{"input": "### Instruction:\nEncode a pipeline contract in LC-R\n\n### Response:\n", "output": "🐊902🐁0 \"pipeline_name\"🐁1 🐃⟁stage1, ⟁stage2🐄🐂"}
+{"input": "### Instruction:\nConvert complex contract to LC-R: {1000: {@0: \"process\", @1: &h_input, @2: &h_output, @3: &h_config}}\n\n### Response:\n", "output": "🐊1000🐁0 \"process\"🐁1 ⟁input🐁2 ⟁output🐁3 ⟁config🐂"}
+{"input": "### Instruction:\nConvert nested array to LC-R: [[1, 2], [3, 4]]\n\n### Response:\n", "output": "🐃🐃1, 2🐄, 🐃3, 4🐄🐄"}
+{"input": "### Instruction:\nConvert nested object to LC-R: {user: {name: \"Bob\", age: 30}}\n\n### Response:\n", "output": "◇user: ◇name: \"Bob\", age: 30◆◆"}
+{"input": "### Instruction:\nConvert mixed types to LC-R: [true, 42, \"hello\", null]\n\n### Response:\n", "output": "🐃⊤, 42, \"hello\", ∅🐄"}
+{"input": "### Instruction:\nWhy use LC-R format?\n\n### Response:\n", "output": "LC-R is visually distinct, compact for display, uses mathematical notation, ideal for debugging and visual representation."}
+{"input": "### Instruction:\nWhen should I use LC-R?\n\n### Response:\n", "output": "Use LC-R for: visual representation, debugging, compact storage, Unicode-capable environments, and when glyph notation enhances clarity."}
+{"input": "### Instruction:\nWhat's the difference between LC-R and LC-T?\n\n### Response:\n", "output": "LC-R uses Unicode glyphs (🐊N🐁...🐂, ⟁handles, ⊤/⊥/∅). LC-T is ASCII-safe ({C:N,...}, @handles, TRUE/FALSE/NULL)."}
+{"input": "### Instruction:\nAdvantages of LC-R encoding?\n\n### Response:\n", "output": "LC-R advantages: Visual clarity, compact notation, mathematically elegant, excellent for debugging, beautiful in terminals with Unicode support."}
+{"input": "### Instruction:\nLC-R contract field syntax\n\n### Response:\n", "output": "LC-R contracts: 🐊N🐁field value🐁field value🐂 where N is contract number, 🐁 separates fields, values can be primitives, strings, handles (⟁name), or nested structures."}
+{"input": "### Instruction:\nBatch operation in LC-R\n\n### Response:\n", "output": "🐊1000🐁0 \"batch\"🐁1 🐃⟁op1, ⟁op2, ⟁op3🐄🐂"}
+{"input": "### Instruction:\nSequential pipeline in LC-R\n\n### Response:\n", "output": "🐊1000🐁0 \"pipeline\"🐁1 🐃⟁stage1, ⟁stage2, ⟁stage3🐄🐂"}
+{"input": "### Instruction:\nConditional operation in LC-R\n\n### Response:\n", "output": "🐊1000🐁0 \"if\"🐁1 ⟁condition🐁2 ⟁then_branch🐁3 ⟁else_branch🐂"}
+{"input": "### Instruction:\nLoop operation in LC-R\n\n### Response:\n", "output": "🐊1000🐁0 \"loop\"🐁1 ⟁collection🐁2 ⟁body🐂"}
+{"input": "### Instruction:\nMap operation in LC-R\n\n### Response:\n", "output": "🐊1000🐁0 \"map\"🐁1 ⟁collection🐁2 ⟁mapper🐂"}
+{"input": "### Instruction:\nReduce operation in LC-R\n\n### Response:\n", "output": "🐊1000🐁0 \"reduce\"🐁1 ⟁collection🐁2 ⟁reducer🐁3 ⟁initial🐂"}
+{"input": "### Instruction:\nParse and explain: 🐊14🐁0 42🐂\n\n### Response:\n", "output": "Contract 14, field 0 = 42. 🐊 starts contract, 🐁 separates fields, 🐂 ends contract."}
+{"input": "### Instruction:\nParse and explain: 🐊1000🐁0 \"search\"🐁1 ⟁docs🐂\n\n### Response:\n", "output": "Contract 1000, operation=\"search\", target=⟁docs handle. Searches documents referenced by ⟁docs handle."}
+{"input": "### Instruction:\nParse and explain: 🐊900🐁0 ⟁spirv🐁1 \"main\"🐁2 \"compute\"🐂\n\n### Response:\n", "output": "Contract 900 (VulkanShader), shader_binary=⟁spirv, entry=\"main\", stage=\"compute\". Defines compute shader with Runic glyphs."}
+{"input": "### Instruction:\nOptimize this LC-R: 🐊1000 🐁0 \"test\" 🐁1 ⟁x🐂\n\n### Response:\n", "output": "🐊1000🐁0 \"test\"🐁1 ⟁x🐂"}
+{"input": "### Instruction:\nValidate this LC-R: 🐊1000🐁0 \"query\"🐂\n\n### Response:\n", "output": "Valid LC-R contract. Contract 1000 with operation=\"query\" and no additional arguments."}
+{"input": "### Instruction:\nConvert to compact LC-R: {status: \"ok\", count: 100, active: true}\n\n### Response:\n", "output": "◇status: \"ok\", count: 100, active: ⊤◆"}

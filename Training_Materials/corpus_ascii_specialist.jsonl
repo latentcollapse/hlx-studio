@@ -1,0 +1,73 @@
+{"input": "### Instruction:\nConvert to LC-T: null\n\n### Response:\n", "output": "NULL"}
+{"input": "### Instruction:\nConvert to LC-T: true\n\n### Response:\n", "output": "TRUE"}
+{"input": "### Instruction:\nConvert to LC-T: false\n\n### Response:\n", "output": "FALSE"}
+{"input": "### Instruction:\nConvert to LC-T: [1, 2, 3]\n\n### Response:\n", "output": "[1,2,3]"}
+{"input": "### Instruction:\nConvert to LC-T: []\n\n### Response:\n", "output": "[]"}
+{"input": "### Instruction:\nConvert to LC-T: {name: \"Alice\"}\n\n### Response:\n", "output": "{name:\"Alice\"}"}
+{"input": "### Instruction:\nConvert to LC-T: {}\n\n### Response:\n", "output": "{}"}
+{"input": "### Instruction:\nConvert to LC-T: &h_model\n\n### Response:\n", "output": "@model"}
+{"input": "### Instruction:\nConvert to LC-T: &h_documents\n\n### Response:\n", "output": "@documents"}
+{"input": "### Instruction:\nConvert to LC-T: &h_query\n\n### Response:\n", "output": "@query"}
+{"input": "### Instruction:\nConvert to LC-T: {14: {@0: 42}}\n\n### Response:\n", "output": "{C:14,0=42}"}
+{"input": "### Instruction:\nConvert to LC-T: {16: {@0: \"hello\"}}\n\n### Response:\n", "output": "{C:16,0=\"hello\"}"}
+{"input": "### Instruction:\nConvert to LC-T: {1000: {@0: \"search\", @1: &h_documents}}\n\n### Response:\n", "output": "{C:1000,0=\"search\",1=@documents}"}
+{"input": "### Instruction:\nConvert to LC-T: {1000: {@0: \"filter\", @1: &h_users, @2: &h_active}}\n\n### Response:\n", "output": "{C:1000,0=\"filter\",1=@users,2=@active}"}
+{"input": "### Instruction:\nConvert to LC-T: {1000: {@0: \"transform\", @1: &h_text, @2: &h_uppercase}}\n\n### Response:\n", "output": "{C:1000,0=\"transform\",1=@text,2=@uppercase}"}
+{"input": "### Instruction:\nConvert to LC-T: {1000: {@0: \"aggregate\", @1: &h_sum, @2: &h_values}}\n\n### Response:\n", "output": "{C:1000,0=\"aggregate\",1=@sum,2=@values}"}
+{"input": "### Instruction:\nConvert to LC-T: {1000: {@0: \"execute\", @1: &h_command}}\n\n### Response:\n", "output": "{C:1000,0=\"execute\",1=@command}"}
+{"input": "### Instruction:\nConvert to LC-T: {1000: {@0: \"navigate\", @1: &h_home}}\n\n### Response:\n", "output": "{C:1000,0=\"navigate\",1=@home}"}
+{"input": "### Instruction:\nConvert to LC-T: {900: {@0: &h_spirv, @1: \"main\", @2: \"compute\"}}\n\n### Response:\n", "output": "{C:900,0=@spirv,1=\"main\",2=\"compute\"}"}
+{"input": "### Instruction:\nConvert to LC-T: {902: {@0: \"render_pipeline\", @1: [&h_vs, &h_fs]}}\n\n### Response:\n", "output": "{C:902,0=\"render_pipeline\",1=[@vs,@fs]}"}
+{"input": "### Instruction:\nConvert to LC-T: {1000: {@0: \"train\", @1: &h_model, @2: &h_data}}\n\n### Response:\n", "output": "{C:1000,0=\"train\",1=@model,2=@data}"}
+{"input": "### Instruction:\nParse LC-T: NULL\n\n### Response:\n", "output": "HLXL: null"}
+{"input": "### Instruction:\nParse LC-T: TRUE\n\n### Response:\n", "output": "HLXL: true"}
+{"input": "### Instruction:\nParse LC-T: FALSE\n\n### Response:\n", "output": "HLXL: false"}
+{"input": "### Instruction:\nParse LC-T: [1,2,3]\n\n### Response:\n", "output": "HLXL: [1, 2, 3]"}
+{"input": "### Instruction:\nParse LC-T: {name:\"Alice\"}\n\n### Response:\n", "output": "HLXL: {name: \"Alice\"}"}
+{"input": "### Instruction:\nParse LC-T: @documents\n\n### Response:\n", "output": "HLXL: &h_documents"}
+{"input": "### Instruction:\nParse LC-T: {C:14,0=42}\n\n### Response:\n", "output": "HLXL: {14: {@0: 42}}"}
+{"input": "### Instruction:\nParse LC-T: {C:1000,0=\"search\",1=@docs}\n\n### Response:\n", "output": "HLXL: {1000: {@0: \"search\", @1: &h_docs}}"}
+{"input": "### Instruction:\nParse LC-T: {C:900,0=@spirv,1=\"main\",2=\"compute\"}\n\n### Response:\n", "output": "HLXL: {900: {@0: &h_spirv, @1: \"main\", @2: \"compute\"}}"}
+{"input": "### Instruction:\nParse LC-T: {C:1000,0=\"filter\",1=@items,2=@predicate}\n\n### Response:\n", "output": "HLXL: {1000: {@0: \"filter\", @1: &h_items, @2: &h_predicate}}"}
+{"input": "### Instruction:\nTranslate HLXL to LC-T: null\n\n### Response:\n", "output": "NULL"}
+{"input": "### Instruction:\nTranslate HLXL to LC-T: true\n\n### Response:\n", "output": "TRUE"}
+{"input": "### Instruction:\nTranslate HLXL to LC-T: false\n\n### Response:\n", "output": "FALSE"}
+{"input": "### Instruction:\nTranslate HLXL to LC-T: [42, 100]\n\n### Response:\n", "output": "[42,100]"}
+{"input": "### Instruction:\nTranslate HLXL to LC-T: {status: \"active\"}\n\n### Response:\n", "output": "{status:\"active\"}"}
+{"input": "### Instruction:\nTranslate HLXL to LC-T: &h_buffer\n\n### Response:\n", "output": "@buffer"}
+{"input": "### Instruction:\nTranslate HLXL to LC-T: {14: {@0: 99}}\n\n### Response:\n", "output": "{C:14,0=99}"}
+{"input": "### Instruction:\nTranslate HLXL to LC-T: {1000: {@0: \"query\", @1: &h_db}}\n\n### Response:\n", "output": "{C:1000,0=\"query\",1=@db}"}
+{"input": "### Instruction:\nWhat is the LC-T contract notation?\n\n### Response:\n", "output": "LC-T contracts use {C:N,field=value} notation. N is the contract number, followed by field-value pairs using @handles for references."}
+{"input": "### Instruction:\nHow do you encode handles in LC-T?\n\n### Response:\n", "output": "Handles in LC-T use @ prefix: &h_model becomes @model, &h_data becomes @data."}
+{"input": "### Instruction:\nWhat are LC-T primitives?\n\n### Response:\n", "output": "LC-T primitives: NULL (null), TRUE (true), FALSE (false). All uppercase for text-safe encoding."}
+{"input": "### Instruction:\nDescribe LC-T arrays\n\n### Response:\n", "output": "LC-T arrays use standard JSON notation: [1,2,3]. Compact, no spaces, ASCII-safe."}
+{"input": "### Instruction:\nDescribe LC-T objects\n\n### Response:\n", "output": "LC-T objects use JSON-like notation: {key:value}. Compact, no spaces, text-safe."}
+{"input": "### Instruction:\nWhat is contract 1000 in LC-T?\n\n### Response:\n", "output": "Contract 1000: General operations. Format: {C:1000,0=\"operation\",1=@arg1,2=@arg2}"}
+{"input": "### Instruction:\nWhat are GPU contracts in LC-T?\n\n### Response:\n", "output": "GPU contracts: {C:900,...} VulkanShader, {C:901,...} ComputeKernel, {C:902,...} PipelineConfig"}
+{"input": "### Instruction:\nEncode a search operation in LC-T\n\n### Response:\n", "output": "{C:1000,0=\"search\",1=@target}"}
+{"input": "### Instruction:\nEncode a filter operation in LC-T\n\n### Response:\n", "output": "{C:1000,0=\"filter\",1=@collection,2=@predicate}"}
+{"input": "### Instruction:\nEncode a transform operation in LC-T\n\n### Response:\n", "output": "{C:1000,0=\"transform\",1=@input,2=@function}"}
+{"input": "### Instruction:\nEncode an execute operation in LC-T\n\n### Response:\n", "output": "{C:1000,0=\"execute\",1=@command}"}
+{"input": "### Instruction:\nEncode a shader contract in LC-T\n\n### Response:\n", "output": "{C:900,0=@spirv,1=\"main\",2=\"compute\"}"}
+{"input": "### Instruction:\nEncode a pipeline contract in LC-T\n\n### Response:\n", "output": "{C:902,0=\"pipeline_name\",1=[@stage1,@stage2]}"}
+{"input": "### Instruction:\nConvert complex contract to LC-T: {1000: {@0: \"process\", @1: &h_input, @2: &h_output, @3: &h_config}}\n\n### Response:\n", "output": "{C:1000,0=\"process\",1=@input,2=@output,3=@config}"}
+{"input": "### Instruction:\nConvert nested array to LC-T: [[1, 2], [3, 4]]\n\n### Response:\n", "output": "[[1,2],[3,4]]"}
+{"input": "### Instruction:\nConvert nested object to LC-T: {user: {name: \"Bob\", age: 30}}\n\n### Response:\n", "output": "{user:{name:\"Bob\",age:30}}"}
+{"input": "### Instruction:\nConvert mixed types to LC-T: [true, 42, \"hello\", null]\n\n### Response:\n", "output": "[TRUE,42,\"hello\",NULL]"}
+{"input": "### Instruction:\nWhy use LC-T format?\n\n### Response:\n", "output": "LC-T is ASCII-safe, text-portable, human-readable, and works in any environment (logs, terminals, web)."}
+{"input": "### Instruction:\nWhen should I use LC-T?\n\n### Response:\n", "output": "Use LC-T for: logging, cross-platform data exchange, text-based protocols, debugging, and environments without Unicode support."}
+{"input": "### Instruction:\nWhat's the difference between LC-T and LC-R?\n\n### Response:\n", "output": "LC-T is ASCII-safe text ({C:N,...}, @handles, TRUE/FALSE/NULL). LC-R uses Unicode glyphs (🐊N🐁...🐂, ⟁handles, ⊤/⊥/∅)."}
+{"input": "### Instruction:\nAdvantages of LC-T encoding?\n\n### Response:\n", "output": "LC-T advantages: ASCII-only (universal compatibility), no Unicode issues, safe for logging, works in limited environments, human-readable."}
+{"input": "### Instruction:\nLC-T contract field syntax\n\n### Response:\n", "output": "LC-T contract fields: {C:N,field=value,...} where N is contract number, fields are 0-indexed, values can be primitives, strings, handles (@name), or nested structures."}
+{"input": "### Instruction:\nBatch operation in LC-T\n\n### Response:\n", "output": "{C:1000,0=\"batch\",1=[@op1,@op2,@op3]}"}
+{"input": "### Instruction:\nSequential pipeline in LC-T\n\n### Response:\n", "output": "{C:1000,0=\"pipeline\",1=[@stage1,@stage2,@stage3]}"}
+{"input": "### Instruction:\nConditional operation in LC-T\n\n### Response:\n", "output": "{C:1000,0=\"if\",1=@condition,2=@then_branch,3=@else_branch}"}
+{"input": "### Instruction:\nLoop operation in LC-T\n\n### Response:\n", "output": "{C:1000,0=\"loop\",1=@collection,2=@body}"}
+{"input": "### Instruction:\nMap operation in LC-T\n\n### Response:\n", "output": "{C:1000,0=\"map\",1=@collection,2=@mapper}"}
+{"input": "### Instruction:\nReduce operation in LC-T\n\n### Response:\n", "output": "{C:1000,0=\"reduce\",1=@collection,2=@reducer,3=@initial}"}
+{"input": "### Instruction:\nParse and explain: {C:14,0=42}\n\n### Response:\n", "output": "Contract 14, field 0 = 42. This is a basic contract invocation with a single integer argument."}
+{"input": "### Instruction:\nParse and explain: {C:1000,0=\"search\",1=@docs}\n\n### Response:\n", "output": "Contract 1000 (general operation), operation=\"search\", target=@docs handle. Searches the documents referenced by @docs."}
+{"input": "### Instruction:\nParse and explain: {C:900,0=@spirv,1=\"main\",2=\"compute\"}\n\n### Response:\n", "output": "Contract 900 (VulkanShader), shader_binary=@spirv handle, entry_point=\"main\", stage=\"compute\". Defines a compute shader."}
+{"input": "### Instruction:\nOptimize this LC-T: {C:1000, 0=\"test\", 1=@x}\n\n### Response:\n", "output": "{C:1000,0=\"test\",1=@x}"}
+{"input": "### Instruction:\nValidate this LC-T: {C:1000,0=\"query\"}\n\n### Response:\n", "output": "Valid LC-T contract. Contract 1000 with operation=\"query\" and no additional arguments."}
+{"input": "### Instruction:\nConvert to compact LC-T: {status: \"ok\", count: 100, active: true}\n\n### Response:\n", "output": "{status:\"ok\",count:100,active:TRUE}"}

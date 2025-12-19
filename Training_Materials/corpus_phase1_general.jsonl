@@ -1,0 +1,188 @@
+{"input": "### Instruction:\nConvert null to all HLX formats\n\n### Response:\n", "output": "HLXL: null\nLC-T: NULL\nLC-R: \u2205\nLC-B: [_]"}
+{"input": "### Instruction:\nConvert to LC-T: null\n\n### Response:\n", "output": "NULL"}
+{"input": "### Instruction:\nConvert to LC-R: null\n\n### Response:\n", "output": "\u2205"}
+{"input": "### Instruction:\nParse LC-T: NULL\n\n### Response:\n", "output": "HLXL: null"}
+{"input": "### Instruction:\nParse LC-R: \u2205\n\n### Response:\n", "output": "HLXL: null"}
+{"input": "### Instruction:\nConvert true to all HLX formats\n\n### Response:\n", "output": "HLXL: true\nLC-T: TRUE\nLC-R: \u22a4\nLC-B: [T]"}
+{"input": "### Instruction:\nConvert false to all HLX formats\n\n### Response:\n", "output": "HLXL: false\nLC-T: FALSE\nLC-R: \u22a5\nLC-B: [F]"}
+{"input": "### Instruction:\nConvert to LC-T: true\n\n### Response:\n", "output": "TRUE"}
+{"input": "### Instruction:\nConvert to LC-T: false\n\n### Response:\n", "output": "FALSE"}
+{"input": "### Instruction:\nConvert to LC-R: true\n\n### Response:\n", "output": "\u22a4"}
+{"input": "### Instruction:\nConvert to LC-R: false\n\n### Response:\n", "output": "\u22a5"}
+{"input": "### Instruction:\nConvert 42 to all HLX formats\n\n### Response:\n", "output": "HLXL: 42\nLC-T: 42\nLC-R: 42\nLC-B: [0x2A]"}
+{"input": "### Instruction:\nConvert 3.14159 to all HLX formats\n\n### Response:\n", "output": "HLXL: 3.14159\nLC-T: 3.14159\nLC-R: 3.14159\nLC-B: [float64:0x400921FB54442D18]"}
+{"input": "### Instruction:\nConvert \"hello\" to all HLX formats\n\n### Response:\n", "output": "HLXL: \"hello\"\nLC-T: \"hello\"\nLC-R: \"hello\"\nLC-B: [str:68656C6C6F]"}
+{"input": "### Instruction:\nConvert [1, 2, 3] to all HLX formats\n\n### Response:\n", "output": "HLXL: [1, 2, 3]\nLC-T: [1,2,3]\nLC-R: \ud83d\udc031, 2, 3\ud83d\udc04\nLC-B: [arr:3:01,02,03]"}
+{"input": "### Instruction:\nConvert to LC-T: [1, 2, 3]\n\n### Response:\n", "output": "[1,2,3]"}
+{"input": "### Instruction:\nConvert to LC-R: [1, 2, 3]\n\n### Response:\n", "output": "\ud83d\udc031, 2, 3\ud83d\udc04"}
+{"input": "### Instruction:\nConvert empty array to all HLX formats\n\n### Response:\n", "output": "HLXL: []\nLC-T: []\nLC-R: \ud83d\udc03\ud83d\udc04\nLC-B: [arr:0]"}
+{"input": "### Instruction:\nConvert [true, false, null] to all HLX formats\n\n### Response:\n", "output": "HLXL: [true, false, null]\nLC-T: [TRUE,FALSE,NULL]\nLC-R: \ud83d\udc03\u22a4, \u22a5, \u2205\ud83d\udc04\nLC-B: [arr:3:T,F,_]"}
+{"input": "### Instruction:\nConvert [\"a\", \"b\", \"c\"] to all HLX formats\n\n### Response:\n", "output": "HLXL: [\"a\", \"b\", \"c\"]\nLC-T: [\"a\",\"b\",\"c\"]\nLC-R: \ud83d\udc03\"a\", \"b\", \"c\"\ud83d\udc04\nLC-B: [arr:3:str...]"}
+{"input": "### Instruction:\nParse LC-T: [1,2,3]\n\n### Response:\n", "output": "HLXL: [1, 2, 3]"}
+{"input": "### Instruction:\nParse LC-R: \ud83d\udc031, 2, 3\ud83d\udc04\n\n### Response:\n", "output": "HLXL: [1, 2, 3]"}
+{"input": "### Instruction:\nConvert {name: \"Alice\", age: 30} to all HLX formats\n\n### Response:\n", "output": "HLXL: {name: \"Alice\", age: 30}\nLC-T: {name:\"Alice\",age:30}\nLC-R: {name: \"Alice\", age: 30}\nLC-B: [obj:2:...]"}
+{"input": "### Instruction:\nConvert to LC-T: {x: 10, y: 20}\n\n### Response:\n", "output": "{x:10,y:20}"}
+{"input": "### Instruction:\nConvert to LC-R: {x: 10, y: 20}\n\n### Response:\n", "output": "{x: 10, y: 20}"}
+{"input": "### Instruction:\nConvert {} to all HLX formats\n\n### Response:\n", "output": "HLXL: {}\nLC-T: {}\nLC-R: {}\nLC-B: [obj:0]"}
+{"input": "### Instruction:\nConvert &h_model handle to all HLX formats\n\n### Response:\n", "output": "HLXL: &h_model\nLC-T: @model\nLC-R: \u27c1model\nLC-B: [ref:model]"}
+{"input": "### Instruction:\nConvert LC-T handle @docs to HLXL\n\n### Response:\n", "output": "&h_docs"}
+{"input": "### Instruction:\nConvert LC-R handle \u27c1tensor to HLXL\n\n### Response:\n", "output": "&h_tensor"}
+{"input": "### Instruction:\nExplain handle semantics across formats\n\n### Response:\n", "output": "HLXL uses &h_ prefix for handles. LC-T uses @ prefix. LC-R uses \u27c1 glyph. All reference the same underlying object."}
+{"input": "### Instruction:\nConvert {@0: \"value\", @1: &h_ref} to all formats\n\n### Response:\n", "output": "HLXL: {@0: \"value\", @1: &h_ref}\nLC-T: {0=\"value\",1=@ref}\nLC-R: {\ud83d\udc010 \"value\"\ud83d\udc011 \u27c1ref}\nLC-B: [obj:2:...]"}
+{"input": "### Instruction:\nConvert {1000: {@0: \"search\", @1: &h_docs}} to all formats\n\n### Response:\n", "output": "HLXL: {1000: {@0: \"search\", @1: &h_docs}}\nLC-T: {C:1000,0=\"search\",1=@docs}\nLC-R: \ud83d\udc0a1000\ud83d\udc010 \"search\"\ud83d\udc011 \u27c1docs\ud83d\udc02\nLC-B: [c:1000:...]"}
+{"input": "### Instruction:\nParse LC-T: {C:1000,0=\"query\",1=@db}\n\n### Response:\n", "output": "HLXL: {1000: {@0: \"query\", @1: &h_db}}\nContract 1000 (general operation) with operation=\"query\" and target=@db."}
+{"input": "### Instruction:\nParse LC-R: \ud83d\udc0a1000\ud83d\udc010 \"filter\"\ud83d\udc011 \u27c1items\ud83d\udc02\n\n### Response:\n", "output": "HLXL: {1000: {@0: \"filter\", @1: &h_items}}\nContract 1000 with filter operation on items handle."}
+{"input": "### Instruction:\nConvert {900: {@0: &h_spirv, @1: \"main\", @2: \"compute\"}} to all formats\n\n### Response:\n", "output": "HLXL: {900: {@0: &h_spirv, @1: \"main\", @2: \"compute\"}}\nLC-T: {C:900,0=@spirv,1=\"main\",2=\"compute\"}\nLC-R: \ud83d\udc0a900\ud83d\udc010 \u27c1spirv\ud83d\udc011 \"main\"\ud83d\udc012 \"compute\"\ud83d\udc02\nLC-B: [c:900:...]"}
+{"input": "### Instruction:\nExplain contract 900\n\n### Response:\n", "output": "Contract 900 (VulkanShader) defines a Vulkan compute shader. @0=shader binary, @1=entry point, @2=stage (vertex/fragment/compute)."}
+{"input": "### Instruction:\nConvert {901: {@0: &h_shader, @1: &h_layout}} to all formats\n\n### Response:\n", "output": "HLXL: {901: {@0: &h_shader, @1: &h_layout}}\nLC-T: {C:901,0=@shader,1=@layout}\nLC-R: \ud83d\udc0a901\ud83d\udc010 \u27c1shader\ud83d\udc011 \u27c1layout\ud83d\udc02\nLC-B: [c:901:...]"}
+{"input": "### Instruction:\nExplain contract 901\n\n### Response:\n", "output": "Contract 901 (VulkanPipeline) defines a Vulkan pipeline. @0=shader handle, @1=pipeline layout handle."}
+{"input": "### Instruction:\nConvert {902: {@0: &h_pipeline, @1: 64, @2: 64, @3: 1}} to all formats\n\n### Response:\n", "output": "HLXL: {902: {@0: &h_pipeline, @1: 64, @2: 64, @3: 1}}\nLC-T: {C:902,0=@pipeline,1=64,2=64,3=1}\nLC-R: \ud83d\udc0a902\ud83d\udc010 \u27c1pipeline\ud83d\udc011 64\ud83d\udc012 64\ud83d\udc013 1\ud83d\udc02\nLC-B: [c:902:...]"}
+{"input": "### Instruction:\nExplain contract 902\n\n### Response:\n", "output": "Contract 902 (VulkanDispatch) dispatches compute work. @0=pipeline, @1=groupCountX, @2=groupCountY, @3=groupCountZ."}
+{"input": "### Instruction:\nTranslate from LC-T to LC-R: {C:1000,0=\"test\"}\n\n### Response:\n", "output": "\ud83d\udc0a1000\ud83d\udc010 \"test\"\ud83d\udc02"}
+{"input": "### Instruction:\nTranslate from LC-R to LC-T: \ud83d\udc0a900\ud83d\udc010 \u27c1shader\ud83d\udc02\n\n### Response:\n", "output": "{C:900,0=@shader}"}
+{"input": "### Instruction:\nTranslate from HLXL to LC-T: {1000: {@0: \"op\", @1: &h_data}}\n\n### Response:\n", "output": "{C:1000,0=\"op\",1=@data}"}
+{"input": "### Instruction:\nTranslate from HLXL to LC-R: {900: {@0: &h_spv}}\n\n### Response:\n", "output": "\ud83d\udc0a900\ud83d\udc010 \u27c1spv\ud83d\udc02"}
+{"input": "### Instruction:\nOptimize for size: {1000: {@0: \"operation\", @1: &h_target}}\n\n### Response:\n", "output": "LC-T: {C:1000,0=\"operation\",1=@target}\nLC-R: \ud83d\udc0a1000\ud83d\udc010 \"operation\"\ud83d\udc011 \u27c1target\ud83d\udc02\nLC-B: [c:1000:...] (smallest)"}
+{"input": "### Instruction:\nConvert [[1, 2], [3, 4]] to all formats\n\n### Response:\n", "output": "HLXL: [[1, 2], [3, 4]]\nLC-T: [[1,2],[3,4]]\nLC-R: \ud83d\udc03\ud83d\udc031, 2\ud83d\udc04, \ud83d\udc033, 4\ud83d\udc04\ud83d\udc04\nLC-B: [arr:2:[arr:2:...]]"}
+{"input": "### Instruction:\nConvert {outer: {inner: 42}} to all formats\n\n### Response:\n", "output": "HLXL: {outer: {inner: 42}}\nLC-T: {outer:{inner:42}}\nLC-R: {outer: {inner: 42}}\nLC-B: [obj:1:[obj:1:...]]"}
+{"input": "### Instruction:\nConvert [1, {x: 2}, [3]] to all formats\n\n### Response:\n", "output": "HLXL: [1, {x: 2}, [3]]\nLC-T: [1,{x:2},[3]]\nLC-R: \ud83d\udc031, {x: 2}, \ud83d\udc033\ud83d\udc04\ud83d\udc04\nLC-B: [arr:3:...]"}
+{"input": "### Instruction:\nExplain LC-B binary encoding\n\n### Response:\n", "output": "LC-B is the binary encoding stage for HLX. It compresses LC-T or LC-R output into compact binary format for storage/transmission."}
+{"input": "### Instruction:\nWhen should I use LC-B?\n\n### Response:\n", "output": "Use LC-B for: 1) Network transmission (smallest size), 2) Disk storage (compression), 3) Embedding in binaries. Use LC-T/LC-R for human-readable needs."}
+{"input": "### Instruction:\nConvert LC-T to LC-B: {C:900,0=@shader}\n\n### Response:\n", "output": "[c:900:0:ref:shader] (binary encoded contract)"}
+{"input": "### Instruction:\nConvert LC-R to LC-B: \ud83d\udc0a1000\ud83d\udc010 \"op\"\ud83d\udc02\n\n### Response:\n", "output": "[c:1000:0:str:op] (binary encoded)"}
+{"input": "### Instruction:\nWhat are the HLX primitive types?\n\n### Response:\n", "output": "HLX primitives: null, boolean (true/false), number (int/float), string. All formats support these with different notations."}
+{"input": "### Instruction:\nWhat are the HLX container types?\n\n### Response:\n", "output": "HLX containers: arrays ([...]), objects ({...}), handles (&h_/\u27c1/@), contracts ({N: {...}})."}
+{"input": "### Instruction:\nExplain HLX type coercion\n\n### Response:\n", "output": "HLX preserves types across formats. LC-T uses explicit TRUE/FALSE/NULL. LC-R uses glyphs \u22a4/\u22a5/\u2205. No implicit coercion."}
+{"input": "### Instruction:\nValidate LC-T: {C:1000,0=\"valid\"}\n\n### Response:\n", "output": "Valid. Contract 1000 with operation=\"valid\". Correct LC-T syntax."}
+{"input": "### Instruction:\nValidate LC-T: {C:1000 0=\"invalid\"}\n\n### Response:\n", "output": "Invalid. Missing comma after contract number. Correct: {C:1000,0=\"invalid\"}"}
+{"input": "### Instruction:\nValidate LC-R: \ud83d\udc0a900\ud83d\udc010 \u27c1ref\ud83d\udc02\n\n### Response:\n", "output": "Valid. Contract 900 with handle reference. Correct LC-R syntax with proper glyphs."}
+{"input": "### Instruction:\nWhat happens if I mix LC-T and LC-R?\n\n### Response:\n", "output": "Don't mix formats in same expression. Choose one: LC-T for ASCII-safe, LC-R for Unicode/glyphs. Use translator to convert between them."}
+{"input": "### Instruction:\nConvert {1000: {@0: \"create\", @1: &h_model, @2: \"gpt\", @3: 1024}} to LC-T\n\n### Response:\n", "output": "{C:1000,0=\"create\",1=@model,2=\"gpt\",3=1024}"}
+{"input": "### Instruction:\nConvert {1000: {@0: \"update\", @1: &h_db, @2: {id: 5}, @3: {name: \"new\"}}} to LC-R\n\n### Response:\n", "output": "\ud83d\udc0a1000\ud83d\udc010 \"update\"\ud83d\udc011 \u27c1db\ud83d\udc012 {id: 5}\ud83d\udc013 {name: \"new\"}\ud83d\udc02"}
+{"input": "### Instruction:\nConvert [{900: {@0: &h_shader1}}, {900: {@0: &h_shader2}}] to LC-T\n\n### Response:\n", "output": "[{C:900,0=@shader1},{C:900,0=@shader2}]"}
+{"input": "### Instruction:\nExplain contract chaining\n\n### Response:\n", "output": "Multiple contracts can be chained in arrays or nested structures. Each contract executes independently. Use arrays for sequences, objects for dependencies."}
+{"input": "### Instruction:\nConvert {1000: {@0: 42, @1: \"text\", @2: true, @3: null, @4: 3.14}} to all formats\n\n### Response:\n", "output": "LC-T: {C:1000,0=42,1=\"text\",2=TRUE,3=NULL,4=3.14}\nLC-R: \ud83d\udc0a1000\ud83d\udc010 42\ud83d\udc011 \"text\"\ud83d\udc012 \u22a4\ud83d\udc013 \u2205\ud83d\udc014 3.14\ud83d\udc02"}
+{"input": "### Instruction:\nCreate a vertex shader in LC-T\n\n### Response:\n", "output": "{C:900,0=@spirv_vert,1=\"main\",2=\"vertex\"}"}
+{"input": "### Instruction:\nCreate a fragment shader in LC-R\n\n### Response:\n", "output": "\ud83d\udc0a900\ud83d\udc010 \u27c1spirv_frag\ud83d\udc011 \"main\"\ud83d\udc012 \"fragment\"\ud83d\udc02"}
+{"input": "### Instruction:\nExplain the three shader stages\n\n### Response:\n", "output": "Vulkan shader stages: 'vertex' (processes vertices), 'fragment' (processes pixels), 'compute' (general computation). Specify in @2 field of contract 900."}
+{"input": "### Instruction:\nCreate a graphics pipeline with shader and layout in LC-T\n\n### Response:\n", "output": "{C:901,0=@vertex_shader,1=@pipeline_layout}"}
+{"input": "### Instruction:\nCreate a compute pipeline in LC-R\n\n### Response:\n", "output": "\ud83d\udc0a901\ud83d\udc010 \u27c1compute_shader\ud83d\udc011 \u27c1compute_layout\ud83d\udc02"}
+{"input": "### Instruction:\nDispatch compute with 128x128x1 workgroups in LC-T\n\n### Response:\n", "output": "{C:902,0=@compute_pipeline,1=128,2=128,3=1}"}
+{"input": "### Instruction:\nDispatch compute with 64x64x64 workgroups in LC-R\n\n### Response:\n", "output": "\ud83d\udc0a902\ud83d\udc010 \u27c1pipeline\ud83d\udc011 64\ud83d\udc012 64\ud83d\udc013 64\ud83d\udc02"}
+{"input": "### Instruction:\nExplain workgroup dimensions in contract 902\n\n### Response:\n", "output": "Contract 902 @1/@2/@3 specify X/Y/Z workgroup counts. For 2D work use (X,Y,1). For 3D use (X,Y,Z). Single dimension use (X,1,1)."}
+{"input": "### Instruction:\nShow a complete GPU compute workflow in LC-T\n\n### Response:\n", "output": "1. Define shader: {C:900,0=@spirv,1=\"main\",2=\"compute\"}\n2. Create pipeline: {C:901,0=@shader,1=@layout}\n3. Dispatch: {C:902,0=@pipeline,1=64,2=64,3=1}"}
+{"input": "### Instruction:\nExplain handle lifetime semantics\n\n### Response:\n", "output": "Handles reference GPU resources (buffers, textures, shaders). Lifetime managed by runtime. Use &h_ in HLXL, @ in LC-T, \u27c1 in LC-R."}
+{"input": "### Instruction:\nConvert multiple handles: [&h_buffer1, &h_buffer2, &h_texture] to LC-T\n\n### Response:\n", "output": "[@buffer1,@buffer2,@texture]"}
+{"input": "### Instruction:\nConvert multiple handles: [&h_a, &h_b, &h_c] to LC-R\n\n### Response:\n", "output": "\ud83d\udc03\u27c1a, \u27c1b, \u27c1c\ud83d\udc04"}
+{"input": "### Instruction:\nCan handles be null?\n\n### Response:\n", "output": "Yes. Null handle in HLXL: &h_null or null. LC-T: @null or NULL. LC-R: \u27c1null or \u2205. Indicates uninitialized or freed resource."}
+{"input": "### Instruction:\nConvert {1000: {@0: \"bind\", @1: [&h_buf1, &h_buf2]}} to LC-T\n\n### Response:\n", "output": "{C:1000,0=\"bind\",1=[@buf1,@buf2]}"}
+{"input": "### Instruction:\nConvert {1000: {@0: \"map\", @1: &h_buffer, @2: \"read\"}} to LC-R\n\n### Response:\n", "output": "\ud83d\udc0a1000\ud83d\udc010 \"map\"\ud83d\udc011 \u27c1buffer\ud83d\udc012 \"read\"\ud83d\udc02"}
+{"input": "### Instruction:\nConvert {outer: {middle: {inner: 42}}} to LC-T\n\n### Response:\n", "output": "{outer:{middle:{inner:42}}}"}
+{"input": "### Instruction:\nConvert [[[1, 2], [3, 4]], [[5, 6], [7, 8]]] to LC-R\n\n### Response:\n", "output": "\ud83d\udc03\ud83d\udc03\ud83d\udc031, 2\ud83d\udc04, \ud83d\udc033, 4\ud83d\udc04\ud83d\udc04, \ud83d\udc03\ud83d\udc035, 6\ud83d\udc04, \ud83d\udc037, 8\ud83d\udc04\ud83d\udc04\ud83d\udc04"}
+{"input": "### Instruction:\nConvert {data: [1, 2, 3], meta: {count: 3, valid: true}} to LC-T\n\n### Response:\n", "output": "{data:[1,2,3],meta:{count:3,valid:TRUE}}"}
+{"input": "### Instruction:\nConvert [\"item\", {id: 1}, [\"sub\", {id: 2}]] to LC-R\n\n### Response:\n", "output": "\ud83d\udc03\"item\", {id: 1}, \ud83d\udc03\"sub\", {id: 2}\ud83d\udc04\ud83d\udc04"}
+{"input": "### Instruction:\nConvert {1000: {@0: \"create\", @1: {type: \"buffer\", size: 1024, usage: [\"vertex\", \"index\"]}}} to LC-T\n\n### Response:\n", "output": "{C:1000,0=\"create\",1={type:\"buffer\",size:1024,usage:[\"vertex\",\"index\"]}}"}
+{"input": "### Instruction:\nOptimize for ASCII-safety: {1000: {@0: \"test\"}}\n\n### Response:\n", "output": "Use LC-T: {C:1000,0=\"test\"} - fully ASCII, no Unicode characters."}
+{"input": "### Instruction:\nOptimize for human readability: {900: {@0: &h_shader}}\n\n### Response:\n", "output": "Use HLXL: {900: {@0: &h_shader}} - most readable with clear syntax."}
+{"input": "### Instruction:\nOptimize for compact size: [1, 2, 3, 4, 5]\n\n### Response:\n", "output": "LC-T: [1,2,3,4,5] (no spaces)\nLC-R: \ud83d\udc031, 2, 3, 4, 5\ud83d\udc04 (glyphs compact)\nLC-B: [arr:5:...] (smallest)"}
+{"input": "### Instruction:\nOptimize for network transmission: {1000: {@0: \"data\", @1: &h_large}}\n\n### Response:\n", "output": "Use LC-B: [c:1000:0:str:data,1:ref:large] - binary encoding is smallest for network."}
+{"input": "### Instruction:\nTranslate LC-T to HLXL: {C:900,0=@shader,1=\"main\",2=\"compute\"}\n\n### Response:\n", "output": "{900: {@0: &h_shader, @1: \"main\", @2: \"compute\"}}"}
+{"input": "### Instruction:\nTranslate LC-R to HLXL: \ud83d\udc0a902\ud83d\udc010 \u27c1pipeline\ud83d\udc011 64\ud83d\udc012 64\ud83d\udc013 1\ud83d\udc02\n\n### Response:\n", "output": "{902: {@0: &h_pipeline, @1: 64, @2: 64, @3: 1}}"}
+{"input": "### Instruction:\nTranslate HLXL to LC-T and LC-R: {1000: {@0: \"op\"}}\n\n### Response:\n", "output": "LC-T: {C:1000,0=\"op\"}\nLC-R: \ud83d\udc0a1000\ud83d\udc010 \"op\"\ud83d\udc02"}
+{"input": "### Instruction:\nRound-trip: LC-T \u2192 HLXL \u2192 LC-R: {C:900,0=@shader}\n\n### Response:\n", "output": "LC-T: {C:900,0=@shader}\nHLXL: {900: {@0: &h_shader}}\nLC-R: \ud83d\udc0a900\ud83d\udc010 \u27c1shader\ud83d\udc02"}
+{"input": "### Instruction:\nValidate: {C:1000,0=\"valid\",1=@ref}\n\n### Response:\n", "output": "\u2713 Valid LC-T. Contract 1000, operation field, handle reference. Correct syntax."}
+{"input": "### Instruction:\nValidate: {C:1000 0=\"missing_comma\"}\n\n### Response:\n", "output": "\u2717 Invalid. Missing comma after contract number. Should be: {C:1000,0=\"missing_comma\"}"}
+{"input": "### Instruction:\nValidate: \ud83d\udc0a900\ud83d\udc010 \u27c1shader\ud83d\udc011 \"main\"\ud83d\udc02\n\n### Response:\n", "output": "\u2713 Valid LC-R. Contract 900 with proper glyphs, handle, and string. Correct syntax."}
+{"input": "### Instruction:\nValidate: \ud83d\udc0a900 0 shader\ud83d\udc02\n\n### Response:\n", "output": "\u2717 Invalid. Missing \ud83d\udc01 separators between fields. Should be: \ud83d\udc0a900\ud83d\udc010 \u27c1shader\ud83d\udc02"}
+{"input": "### Instruction:\nWhat's wrong with: [@buffer1 @buffer2]\n\n### Response:\n", "output": "Missing comma between array elements. Correct: [@buffer1,@buffer2]"}
+{"input": "### Instruction:\nWhat's wrong with: {C:1000,0=invalid}\n\n### Response:\n", "output": "Unquoted string value. LC-T requires quotes for strings. Correct: {C:1000,0=\"invalid\"}"}
+{"input": "### Instruction:\nCreate a matrix multiply shader call in LC-T\n\n### Response:\n", "output": "Shader: {C:900,0=@matmul_spirv,1=\"main\",2=\"compute\"}\nPipeline: {C:901,0=@shader,1=@layout}\nDispatch: {C:902,0=@pipeline,1=64,2=64,3=1}"}
+{"input": "### Instruction:\nBind buffers for compute in LC-R\n\n### Response:\n", "output": "\ud83d\udc0a1000\ud83d\udc010 \"bind\"\ud83d\udc011 \ud83d\udc03\u27c1buffer_a, \u27c1buffer_b, \u27c1buffer_out\ud83d\udc04\ud83d\udc02"}
+{"input": "### Instruction:\nDefine a 2D texture operation in LC-T\n\n### Response:\n", "output": "{C:1000,0=\"sample\",1=@texture2d,2=[0.5,0.5]}"}
+{"input": "### Instruction:\nQueue multiple GPU operations in LC-R\n\n### Response:\n", "output": "\ud83d\udc03\ud83d\udc0a900\ud83d\udc010 \u27c1shader1\ud83d\udc02, \ud83d\udc0a901\ud83d\udc010 \u27c1shader1\ud83d\udc02, \ud83d\udc0a902\ud83d\udc010 \u27c1pipeline\ud83d\udc011 32\ud83d\udc012 32\ud83d\udc013 1\ud83d\udc02\ud83d\udc04"}
+{"input": "### Instruction:\nWhen should I use HLXL vs LC-T vs LC-R?\n\n### Response:\n", "output": "HLXL: Human editing, readability. LC-T: ASCII-only environments, logs, config files. LC-R: Compact representation, Unicode support. LC-B: Network/storage."}
+{"input": "### Instruction:\nWhat's the relationship between all HLX formats?\n\n### Response:\n", "output": "HLXL is the source format. LC-T/LC-R are compressed equivalents (ASCII/Unicode). LC-B is binary encoding. All are losslessly convertible."}
+{"input": "### Instruction:\nExplain the HLX contract system\n\n\n### Response:\n", "output": "Contracts are typed operations identified by numbers (900-902 GPU, 1000 general). Fields use @N notation. Each contract defines specific semantics."}
+{"input": "### Instruction:\nWhat makes HLX different from JSON?\n\n### Response:\n", "output": "HLX adds: 1) Handles (&h_/@/\u27c1), 2) Contracts ({N: {...}}), 3) Multiple formats (text/Unicode/binary), 4) GPU-first design, 5) Zero-copy semantics."}
+{"input": "### Instruction:\nCan I embed HLX in other languages?\n\n### Response:\n", "output": "Yes. LC-T embeds in any text (logs, JSON, YAML). LC-R in Unicode strings. LC-B in binary protocols. HLXL in source code comments."}
+{"input": "### Instruction:\nConvert {1000: {@0: \"op\", @1: \"a\", @2: \"b\", @3: \"c\", @4: \"d\", @5: \"e\"}} to LC-T\n\n### Response:\n", "output": "{C:1000,0=\"op\",1=\"a\",2=\"b\",3=\"c\",4=\"d\",5=\"e\"}"}
+{"input": "### Instruction:\nHow many fields can a contract have?\n\n### Response:\n", "output": "Contracts can have unlimited fields (@0, @1, @2, ...). Each contract type defines which fields are required vs optional."}
+{"input": "### Instruction:\nNest contract 902 inside contract 1000 in LC-T\n\n### Response:\n", "output": "{C:1000,0=\"dispatch\",1={C:902,0=@pipeline,1=64,2=64,3=1}}"}
+{"input": "### Instruction:\nArray of contracts in LC-R\n\n### Response:\n", "output": "\ud83d\udc03\ud83d\udc0a900\ud83d\udc010 \u27c1shader1\ud83d\udc02, \ud83d\udc0a900\ud83d\udc010 \u27c1shader2\ud83d\udc02, \ud83d\udc0a900\ud83d\udc010 \u27c1shader3\ud83d\udc02\ud83d\udc04"}
+{"input": "### Instruction:\nConvert {1000: {@0: [1,2,3], @1: {x:10}, @2: \"str\", @3: &h_ref}} to LC-T\n\n### Response:\n", "output": "{C:1000,0=[1,2,3],1={x:10},2=\"str\",3=@ref}"}
+{"input": "### Instruction:\nConvert 9007199254740991 to all formats\n\n### Response:\n", "output": "HLXL: 9007199254740991\nLC-T: 9007199254740991\nLC-R: 9007199254740991\nLC-B: [int64:0x1FFFFFFFFFFFFF]"}
+{"input": "### Instruction:\nConvert -42 to all formats\n\n### Response:\n", "output": "HLXL: -42\nLC-T: -42\nLC-R: -42\nLC-B: [int32:0xFFFFFFD6]"}
+{"input": "### Instruction:\nConvert 1.23e-10 to all formats\n\n### Response:\n", "output": "HLXL: 1.23e-10\nLC-T: 1.23e-10\nLC-R: 1.23e-10\nLC-B: [float64:...]"}
+{"input": "### Instruction:\nHow are NaN and Infinity handled in HLX?\n\n### Response:\n", "output": "NaN: 'NaN' in all text formats, special bit pattern in LC-B. Infinity: 'Infinity'/-'Infinity' in text, IEEE 754 in binary."}
+{"input": "### Instruction:\nConvert \"Hello \u4e16\u754c\" to all formats\n\n### Response:\n", "output": "HLXL: \"Hello \u4e16\u754c\"\nLC-T: \"Hello \u4e16\u754c\" (UTF-8)\nLC-R: \"Hello \u4e16\u754c\"\nLC-B: [str:UTF8:...]"}
+{"input": "### Instruction:\nConvert \"line1\\nline2\\ttab\" to LC-T\n\n### Response:\n", "output": "\"line1\\nline2\\ttab\""}
+{"input": "### Instruction:\nConvert \"\" to all formats\n\n### Response:\n", "output": "HLXL: \"\"\nLC-T: \"\"\nLC-R: \"\"\nLC-B: [str:0]"}
+{"input": "### Instruction:\nConvert [1, null, 3, null, 5] to LC-T\n\n### Response:\n", "output": "[1,NULL,3,NULL,5]"}
+{"input": "### Instruction:\nConvert [1, \"two\", true, null, 3.14] to LC-R\n\n### Response:\n", "output": "\ud83d\udc031, \"two\", \u22a4, \u2205, 3.14\ud83d\udc04"}
+{"input": "### Instruction:\nConvert [&h_buf1, &h_buf2, &h_buf3] to all formats\n\n### Response:\n", "output": "HLXL: [&h_buf1, &h_buf2, &h_buf3]\nLC-T: [@buf1,@buf2,@buf3]\nLC-R: \ud83d\udc03\u27c1buf1, \u27c1buf2, \u27c1buf3\ud83d\udc04"}
+{"input": "### Instruction:\nOptimize storage for [1,2,3,4,5,6,7,8,9,10,...,100]\n\n### Response:\n", "output": "LC-B is best: [arr:100:int32:...]. Most compact for large homogeneous arrays."}
+{"input": "### Instruction:\nConvert {a:1, b:2, c:3, d:4, e:5} to LC-T\n\n### Response:\n", "output": "{a:1,b:2,c:3,d:4,e:5}"}
+{"input": "### Instruction:\nConvert {shader: &h_vert, pipeline: &h_pipe} to LC-R\n\n### Response:\n", "output": "{shader: \u27c1vert, pipeline: \u27c1pipe}"}
+{"input": "### Instruction:\nConvert {nums: [1,2,3], strs: [\"a\",\"b\"]} to LC-T\n\n### Response:\n", "output": "{nums:[1,2,3],strs:[\"a\",\"b\"]}"}
+{"input": "### Instruction:\nConvert {a: {b: {c: {d: 42}}}} to LC-R\n\n### Response:\n", "output": "{a: {b: {c: {d: 42}}}}"}
+{"input": "### Instruction:\nBest format for logging?\n\n### Response:\n", "output": "LC-T - fully ASCII, grep-friendly, embeds in any text log, human-readable."}
+{"input": "### Instruction:\nBest format for config files?\n\n### Response:\n", "output": "HLXL or LC-T. HLXL if humans edit frequently. LC-T for machine-generated configs."}
+{"input": "### Instruction:\nBest format for network protocols?\n\n### Response:\n", "output": "LC-B - smallest size, fastest parse, no encoding overhead. Use LC-T for debugging."}
+{"input": "### Instruction:\nBest format for database storage?\n\n### Response:\n", "output": "LC-B for performance. LC-T/LC-R if you need text search. Consider compression with LC-B."}
+{"input": "### Instruction:\nBest format for human debugging?\n\n### Response:\n", "output": "HLXL - most readable. LC-R for compact Unicode. Avoid LC-B (not human-readable)."}
+{"input": "### Instruction:\nWhich format parses fastest?\n\n### Response:\n", "output": "LC-B (binary, zero-copy). Then LC-T (simple ASCII). LC-R (Unicode handling). HLXL (most complex)."}
+{"input": "### Instruction:\nWhich format uses least memory?\n\n### Response:\n", "output": "LC-B is smallest. Then LC-T/LC-R (similar). HLXL largest (whitespace, verbose syntax)."}
+{"input": "### Instruction:\nHow to optimize: {1000: {@0: \"operation_with_long_name\", @1: &h_handle_reference}}\n\n### Response:\n", "output": "LC-T: {C:1000,0=\"operation_with_long_name\",1=@handle_reference}\nLC-B: [c:1000:...] (encode strings once, reference by ID)\nSavings: ~40% vs HLXL"}
+{"input": "### Instruction:\nCan formats be streamed?\n\n### Response:\n", "output": "Yes. LC-B supports streaming (length-prefixed). LC-T/LC-R can be line-delimited for streaming. HLXL needs complete parse."}
+{"input": "### Instruction:\nComplete image processing pipeline in LC-T\n\n### Response:\n", "output": "Load: {C:1000,0=\"load\",1=@image_file}\nShader: {C:900,0=@process_spirv,1=\"main\",2=\"compute\"}\nPipeline: {C:901,0=@shader,1=@layout}\nDispatch: {C:902,0=@pipeline,1=64,2=64,3=1}\nSave: {C:1000,0=\"save\",1=@output}"}
+{"input": "### Instruction:\nMulti-pass rendering in LC-R\n\n### Response:\n", "output": "Pass1: \ud83d\udc0a900\ud83d\udc010 \u27c1geometry\ud83d\udc011 \"main\"\ud83d\udc012 \"vertex\"\ud83d\udc02\nPass2: \ud83d\udc0a900\ud83d\udc010 \u27c1lighting\ud83d\udc011 \"main\"\ud83d\udc012 \"fragment\"\ud83d\udc02\nPass3: \ud83d\udc0a900\ud83d\udc010 \u27c1post\ud83d\udc011 \"main\"\ud83d\udc012 \"compute\"\ud83d\udc02"}
+{"input": "### Instruction:\nBuffer management workflow in LC-T\n\n### Response:\n", "output": "Allocate: {C:1000,0=\"alloc\",1=1024,2=\"vertex\"}\nMap: {C:1000,0=\"map\",1=@buffer,2=\"write\"}\nUpdate: {C:1000,0=\"write\",1=@buffer,2=[data]}\nUnmap: {C:1000,0=\"unmap\",1=@buffer}"}
+{"input": "### Instruction:\nDebug: Contract 900 fails with invalid stage\n\n### Response:\n", "output": "Check @2 field. Must be \"vertex\", \"fragment\", or \"compute\". Case-sensitive. Verify: {C:900,0=@shader,1=\"main\",2=\"compute\"}"}
+{"input": "### Instruction:\nDebug: Handle @buffer not found\n\n### Response:\n", "output": "Handle not initialized or already freed. Check: 1) Creation sequence, 2) Lifetime management, 3) Null before use. Use @null for optional handles."}
+{"input": "### Instruction:\nDebug: LC-T parse error at position 42\n\n### Response:\n", "output": "Common causes: 1) Missing comma, 2) Unquoted string, 3) Invalid handle format, 4) Mismatched braces. Use validator to check syntax."}
+{"input": "### Instruction:\nDebug: Contract 902 dispatch fails\n\n### Response:\n", "output": "Check: 1) Pipeline @0 is valid, 2) Workgroup counts @1/@2/@3 > 0, 3) Pipeline bound before dispatch, 4) Resources bound to pipeline."}
+{"input": "### Instruction:\nEmbed HLX in JSON\n\n### Response:\n", "output": "{\"config\": \"{C:900,0=@shader}\", \"params\": \"[1,2,3]\"} - Store LC-T as JSON strings."}
+{"input": "### Instruction:\nEmbed HLX in YAML\n\n### Response:\n", "output": "config: \"{C:900,0=@shader}\"\nparams: \"[1,2,3]\"\n# Store LC-T as YAML strings"}
+{"input": "### Instruction:\nParse HLX from environment variable\n\n### Response:\n", "output": "export HLX_CONFIG=\"{C:900,0=@shader}\"\nUse LC-T format in env vars (ASCII-safe, shell-friendly)."}
+{"input": "### Instruction:\nStore HLX in SQL database\n\n### Response:\n", "output": "Use TEXT column for LC-T (searchable). Use BLOB for LC-B (compact). Index handle fields for queries."}
+{"input": "### Instruction:\nWhat is HLXL-LS?\n\n### Response:\n", "output": "HLXL Language Server - provides IDE features: code completion, diagnostics, hover info, go-to-definition for HLXL/LC-T formats."}
+{"input": "### Instruction:\nWhat is HLX-LS?\n\n### Response:\n", "output": "HLX Language Server - same as HLXL-LS but for HLX/LC-R Unicode formats. Handles glyph input, Unicode completion."}
+{"input": "### Instruction:\nWhat IDE features do language servers provide?\n\n### Response:\n", "output": "Completion, diagnostics (errors/warnings), hover (type info), go-to-definition, find references, refactoring, formatting, semantic highlighting."}
+{"input": "### Instruction:\nAre contracts extensible?\n\n### Response:\n", "output": "Yes. Contracts 0-999 reserved. 1000+ user-defined. Each number defines operation semantics. Register custom contracts for domain-specific ops."}
+{"input": "### Instruction:\nCan I mix HLXL and LC-T in same file?\n\n### Response:\n", "output": "Not recommended. Pick one format per file. Use converters to translate. Mixing causes parse ambiguity."}
+{"input": "### Instruction:\nHow to version HLX documents?\n\n### Response:\n", "output": "Add version field: {version: \"1.0\", data: {...}}. Check version before parsing. Use contract 0 for version metadata."}
+{"input": "### Instruction:\nAre HLX formats stable?\n\n### Response:\n", "output": "Yes. Core syntax (contracts 900-902, 1000) is stable. LC-T/LC-R/LC-B encodings are fixed. Extensions via contract numbers 1001+."}
+{"input": "### Instruction:\nWhat is contract 900?\n\n### Response:\n", "output": "Contract 900: VulkanShader - defines compute/vertex/fragment shaders"}
+{"input": "### Instruction:\nWhat is contract 900?\n\n### Response:\n", "output": "Contract 900: VulkanShader - defines compute/vertex/fragment shaders"}
+{"input": "### Instruction:\nWhat is contract 900?\n\n### Response:\n", "output": "Contract 900: VulkanShader - defines compute/vertex/fragment shaders"}
+{"input": "### Instruction:\nWhat is contract 900?\n\n### Response:\n", "output": "Contract 900: VulkanShader - defines compute/vertex/fragment shaders"}
+{"input": "### Instruction:\nWhat is contract 900?\n\n### Response:\n", "output": "Contract 900: VulkanShader - defines compute/vertex/fragment shaders"}
+{"input": "### Instruction:\nWhat is contract 901?\n\n### Response:\n", "output": "Contract 901: VulkanPipeline - creates rendering/compute pipelines"}
+{"input": "### Instruction:\nWhat is contract 901?\n\n### Response:\n", "output": "Contract 901: VulkanPipeline - creates rendering/compute pipelines"}
+{"input": "### Instruction:\nWhat is contract 901?\n\n### Response:\n", "output": "Contract 901: VulkanPipeline - creates rendering/compute pipelines"}
+{"input": "### Instruction:\nWhat is contract 901?\n\n### Response:\n", "output": "Contract 901: VulkanPipeline - creates rendering/compute pipelines"}
+{"input": "### Instruction:\nWhat is contract 901?\n\n### Response:\n", "output": "Contract 901: VulkanPipeline - creates rendering/compute pipelines"}
+{"input": "### Instruction:\nWhat is contract 902?\n\n### Response:\n", "output": "Contract 902: VulkanDispatch - dispatches compute workgroups"}
+{"input": "### Instruction:\nWhat is contract 902?\n\n### Response:\n", "output": "Contract 902: VulkanDispatch - dispatches compute workgroups"}
+{"input": "### Instruction:\nWhat is contract 902?\n\n### Response:\n", "output": "Contract 902: VulkanDispatch - dispatches compute workgroups"}
+{"input": "### Instruction:\nWhat is contract 902?\n\n### Response:\n", "output": "Contract 902: VulkanDispatch - dispatches compute workgroups"}
+{"input": "### Instruction:\nWhat is contract 902?\n\n### Response:\n", "output": "Contract 902: VulkanDispatch - dispatches compute workgroups"}
+{"input": "### Instruction:\nWhat is contract 1000?\n\n### Response:\n", "output": "Contract 1000: General operation - flexible command contract"}
+{"input": "### Instruction:\nWhat is contract 1000?\n\n### Response:\n", "output": "Contract 1000: General operation - flexible command contract"}
+{"input": "### Instruction:\nWhat is contract 1000?\n\n### Response:\n", "output": "Contract 1000: General operation - flexible command contract"}
+{"input": "### Instruction:\nWhat is contract 1000?\n\n### Response:\n", "output": "Contract 1000: General operation - flexible command contract"}
+{"input": "### Instruction:\nWhat is contract 1000?\n\n### Response:\n", "output": "Contract 1000: General operation - flexible command contract"}
+{"input": "### Instruction:\nConvert &h_buffer to LC-T and LC-R\n\n### Response:\n", "output": "LC-T: @buffer\nLC-R: \u27c1buffer"}
+{"input": "### Instruction:\nConvert &h_texture to LC-T and LC-R\n\n### Response:\n", "output": "LC-T: @texture\nLC-R: \u27c1texture"}
+{"input": "### Instruction:\nConvert &h_shader to LC-T and LC-R\n\n### Response:\n", "output": "LC-T: @shader\nLC-R: \u27c1shader"}
+{"input": "### Instruction:\nConvert &h_pipeline to LC-T and LC-R\n\n### Response:\n", "output": "LC-T: @pipeline\nLC-R: \u27c1pipeline"}
+{"input": "### Instruction:\nConvert &h_sampler to LC-T and LC-R\n\n### Response:\n", "output": "LC-T: @sampler\nLC-R: \u27c1sampler"}
+{"input": "### Instruction:\nConvert &h_image to LC-T and LC-R\n\n### Response:\n", "output": "LC-T: @image\nLC-R: \u27c1image"}
+{"input": "### Instruction:\nConvert &h_data to LC-T and LC-R\n\n### Response:\n", "output": "LC-T: @data\nLC-R: \u27c1data"}
+{"input": "### Instruction:\nConvert &h_compute to LC-T and LC-R\n\n### Response:\n", "output": "LC-T: @compute\nLC-R: \u27c1compute"}
+{"input": "### Instruction:\nDescribe array of size 0 in HLX\n\n### Response:\n", "output": "Array with 0 elements. HLXL: []. Empty: [] if size=0."}
+{"input": "### Instruction:\nDescribe array of size 1 in HLX\n\n### Response:\n", "output": "Array with 1 elements. HLXL: [...]. Empty: [] if size=0."}
+{"input": "### Instruction:\nDescribe array of size 2 in HLX\n\n### Response:\n", "output": "Array with 2 elements. HLXL: [..., ...]. Empty: [] if size=0."}
+{"input": "### Instruction:\nDescribe array of size 5 in HLX\n\n### Response:\n", "output": "Array with 5 elements. HLXL: [..., ..., ...]. Empty: [] if size=0."}
+{"input": "### Instruction:\nDescribe array of size 10 in HLX\n\n### Response:\n", "output": "Array with 10 elements. HLXL: [..., ..., ...]. Empty: [] if size=0."}
+{"input": "### Instruction:\nDescribe array of size 100 in HLX\n\n### Response:\n", "output": "Array with 100 elements. HLXL: [..., ..., ...]. Empty: [] if size=0."}
