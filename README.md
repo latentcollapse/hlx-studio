@@ -1,6 +1,6 @@
 # HLX Development Studio
-
-Complete development environment for the HLX language and runtime.
+**NOWHERE CLOSE TO DONE YET, STILL BEING WORKED ON**
+Evolving development environment for the HLX language and runtime.
 
 [![Status](https://img.shields.io/badge/status-active-blue)]()
 [![Build](https://img.shields.io/badge/build-passing-brightgreen)]()
